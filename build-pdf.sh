@@ -11,5 +11,17 @@ wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmlt
 tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 
 echo "Generating PDF ..."
-./wkhtmltox/bin/wkhtmltopdf --enable-internal-links --enable-external-links https://wiztigers.github.io/${projectname}/ ${exportdir}/${projectname}.pdf
-
+generate_pdf()
+{
+  ./wkhtmltox/bin/wkhtmltopdf --enable-internal-links --enable-external-links https://wiztigers.github.io/${projectname}/ ${exportdir}/${projectname}.pdf
+}
+# /!\ wkhtml currently exits on error if there are relative links in the html.
+#     However, pdf is generated despite this error status.
+#     So for now I'll just consider it a success if the output file exists at all.
+#  ( @see https://github.com/wkhtmltopdf/wkhtmltopdf/issues/2051 )
+! generate_pdf
+rm -rf wkhtmltox*
+if [ ! -f ${exportdir}/${projectname}.pdf ]; then
+  echo ERROR: ${exportdir}/${projectname}.pdf not generated !
+  exit 1
+fi
