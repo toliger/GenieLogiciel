@@ -1,1 +1,3845 @@
-MY HANDS ARE WRITING WORDS!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="author" content="Régis WITZ">
+<title>Génie Logiciel - Support de cours</title>
+<link rel="stylesheet" href="./github.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Génie Logiciel - Support de cours</h1>
+<div class="details">
+<span id="author" class="author">Régis WITZ</span><br>
+<span id="email" class="email"><a href="mailto:rwitz@unistra.fr">rwitz@unistra.fr</a></span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table des Matières</div>
+<ul class="sectlevel1">
+<li><a href="#_définitions">Définitions</a>
+<ul class="sectlevel2">
+<li><a href="#_le_projet">Le projet</a></li>
+<li><a href="#_les_acteurs_et_leurs_rôles">Les acteurs et leurs rôles</a></li>
+</ul>
+</li>
+<li><a href="#chapter_quality">Qualité d&#8217;un logiciel</a>
+<ul class="sectlevel1">
+<li><a href="#_caractéristiques">Caractéristiques</a></li>
+<li><a href="#_la_sur_qualité">La « Sur-qualité »</a></li>
+</ul>
+</li>
+<li><a href="#chapter_lifecycle">Cycle de vie</a>
+<ul class="sectlevel1">
+<li><a href="#_phases_d_existence">Phases d&#8217;existence</a>
+<ul class="sectlevel2">
+<li><a href="#lifecycle_analysis">Analyse du besoin / Faisabilité / Cahier des charges</a></li>
+<li><a href="#lifecycle_specification">Spécification</a></li>
+<li><a href="#lifecycle_conception">Conception</a></li>
+<li><a href="#lifecycle_implementation">Implémentation / Développement</a></li>
+<li><a href="#lifecycle_tests">Tests</a></li>
+<li><a href="#lifecycle_delivery">Déploiement</a></li>
+<li><a href="#lifecycle_maintenance">Exploitation / Maintenance</a></li>
+</ul>
+</li>
+<li><a href="#_modèles_de_développement">Modèles de développement</a>
+<ul class="sectlevel2">
+<li><a href="#_caractéristiques_2">Caractéristiques</a></li>
+<li><a href="#_en_cascade">En cascade</a></li>
+<li><a href="#model_v">En "V"</a></li>
+<li><a href="#model_spiral">En spirale (de Boehm)</a></li>
+<li><a href="#model_explore">Exploratoire</a></li>
+<li><a href="#model_evolutive">Évolutif</a></li>
+<li><a href="#_agile">Agile</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_planification">Planification</a>
+<ul class="sectlevel1">
+<li><a href="#_pert_cpm">PERT/CPM</a>
+<ul class="sectlevel2">
+<li><a href="#_caractéristiques_d_une_tâche">Caractéristiques d&#8217;une tâche</a></li>
+<li><a href="#_démarche_pas_à_pas">Démarche pas à pas</a></li>
+</ul>
+</li>
+<li><a href="#_gantt">Gantt</a></li>
+</ul>
+</li>
+<li><a href="#_modélisation_uml">Modélisation UML</a>
+<ul class="sectlevel1">
+<li><a href="#_diagrammes_statiques">Diagrammes statiques</a>
+<ul class="sectlevel2">
+<li><a href="#uml_usecases">Cas d&#8217;utilisation (use cases)</a></li>
+<li><a href="#_classes_et_objets">Classes et Objets</a></li>
+</ul>
+</li>
+<li><a href="#_diagrammes_dynamiques">Diagrammes dynamiques</a>
+<ul class="sectlevel2">
+<li><a href="#_syntaxe_des_messages">Syntaxe des messages</a></li>
+<li><a href="#_types_de_message">Types de message</a></li>
+<li><a href="#_diagramme_de_collaboration">Diagramme de collaboration</a></li>
+<li><a href="#_diagramme_de_séquence">Diagramme de séquence</a></li>
+<li><a href="#_diagramme_d_activité">Diagramme d&#8217;activité</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_tests">Tests</a>
+<ul class="sectlevel1">
+<li><a href="#_analyse_statique">Analyse statique</a>
+<ul class="sectlevel2">
+<li><a href="#_revue_de_code">Revue de code</a></li>
+</ul>
+</li>
+<li><a href="#_niveaux_de_granularité">Niveaux de granularité</a>
+<ul class="sectlevel2">
+<li><a href="#bottom-up">Approche « bottom-up »</a></li>
+<li><a href="#top-down">Approche « top-down »</a></li>
+<li><a href="#_autres_approches">Autres approches</a></li>
+</ul>
+</li>
+<li><a href="#_niveaux_d_accessibilité">Niveaux d&#8217;accessibilité</a></li>
+<li><a href="#_tests_fonctionnels_vs_tests_non_fonctionnels">Tests fonctionnels vs tests non-fonctionnels</a></li>
+<li><a href="#tests_types">Types de tests</a></li>
+<li><a href="#_caractéristiques_3">Caractéristiques</a>
+<ul class="sectlevel2">
+<li><a href="#_déroulement">Déroulement</a></li>
+<li><a href="#_qualités">Qualités</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_intégration_continue">Intégration continue</a>
+<ul class="sectlevel1">
+<li><a href="#_configuration">Configuration</a></li>
+<li><a href="#_build">Build</a></li>
+<li><a href="#_commits">Commits</a></li>
+<li><a href="#_visibilité">Visibilité</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_définitions">Définitions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_le_projet">Le projet</h3>
+<div class="paragraph">
+<p>Un projet est un processus <strong>unique</strong>, qui consiste en un ensemble d'<strong>activités</strong> coordonnées et maîtrisées
+comportant des dates de début et de fin, entrepris dans le but d&#8217;atteindre un objectif conforme
+à des exigences spécifiques de <strong>qualité</strong> avec des contraintes de <strong>coûts</strong> et de <strong>délais</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/quality/QCT.png" alt="QCT">
+</div>
+<div class="title">Figure 01:Qualité, Budget, Délai sont interdépendants</div>
+</div>
+<div class="paragraph">
+<p>Ces contraintes de qualité, de coûts et de délais fixent le <strong>périmètre</strong> du projet.
+Elles sont interdépendantes : "gagner" sur l&#8217;une fait souvent "perdre" sur l&#8217;une ou l&#8217;autre.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/quality/NOPE.png" alt="NOPE" width="500px">
+</div>
+<div class="title">Figure 02:« Je veux le meilleur, le moins cher et je ne veux pas attendre ! »</div>
+</div>
+<div class="paragraph">
+<p>Les activités d&#8217;un projet informatique créent des <strong>livrables</strong> : outils, méthodes ou services informatiques.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_les_acteurs_et_leurs_rôles">Les acteurs et leurs rôles</h3>
+<div class="paragraph">
+<p>Le projet est réalisé avant tout par des hommes et des femmes.
+Ces personnes physiques sont réunies en <em>entités</em> qui sont autant de personnes morales
+(une entreprise, un service ou une équipe particuliers, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>Chacune de ces entités assume une ou plusieurs responsabilités
+(planifier, concevoir, développer, tester, &#8230;&#8203;)
+qui, si elles sont correctement menées, aboutiront au succès du projet.</p>
+</div>
+<div class="paragraph">
+<p>Durant la phase de réalisation d&#8217;un projet, on peut distinguer deux entités particulières :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>le <strong>client</strong>: aussi appelé <em>Maîtrise d&#8217;ouvrage</em> (<em>MOA</em>) ou <em>Project owner</em>,
+il s&#8217;agit de celui qui <strong>exprime le besoin</strong>.</p>
+</li>
+<li>
+<p>le <strong>fournisseur</strong>: aussi appelé <em>Maîtrise d&#8217;œuvre</em> (<em>MOE</em>),
+il s&#8217;agit de celui qui <strong>répond au besoin</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En plus du client et de son fournisseur, d&#8217;autres entités peuvent être <strong>partie prenante</strong> dans le projet.
+Il s&#8217;agit des utilisateurs finaux de la solution, des organismes finançant le projet, etc.</p>
+</div>
+<div class="sect3">
+<h4 id="roles_moa">La Maîtrise d&#8217;OuvrAge (MOA)</h4>
+<div class="paragraph">
+<p>La maîtrise d&#8217;ouvrage est à l&#8217;origine du projet.
+C&#8217;est elle qui en fixe les objectifs que sont le <strong>besoin</strong> à remplir, ainsi que les <strong>coûts</strong> et les <strong>délais</strong> du projet.</p>
+</div>
+<div class="paragraph">
+<p>C&#8217;est elle qui détient la <strong>connaissance fonctionnelle</strong> du domaine dans lequel s&#8217;inscrit le projet,
+tel que le cadre dans lequel doit exister le projet, et l&#8217;attente des fonctionnalités qu&#8217;il aportera.</p>
+</div>
+<div class="paragraph">
+<p>Il s&#8217;agit du <strong>propriétaire</strong> au final du projet.
+La MOA est donc <strong>celui qui paye</strong>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="roles_moe">La Maîtrise d&#8217;Œuvre (MOE)</h4>
+<div class="paragraph">
+<p>La maîtrise d&#8217;œuvre fournit le produit attendu par la maîtrise d&#8217;ouvrage.
+C&#8217;est elle qui assure la qualité, les coûts et les délais.</p>
+</div>
+<div class="paragraph">
+<p>Elle peut se faire aider par un ou plusieurs fournisseurs.
+C&#8217;est alors à elle qu&#8217;incombe la responsabilité de coordoner et de superviser ses prestataires.</p>
+</div>
+<div class="paragraph">
+<p>La MOE est <strong>celui qui réalise</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h1 id="chapter_quality" class="sect0">Qualité d&#8217;un logiciel</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>Lorsqu&#8217;on parle de la qualité d&#8217;un logiciel, on parle en fait de plusieurs <strong>caractéristiques</strong>
+différentes, elles-mêmes décomposées en sous-caractéristiques (ou attributs).</p>
+</div>
+<div class="paragraph">
+<p>Toutes les caractéristiques d&#8217;un logiciel n&#8217;ont pas forcément la même importance pour une organisation donnée.
+C&#8217;est pourquoi chaque organisation définit son propre <strong>modèle de qualité</strong>,
+avec parfois plusieurs modèles applicables à ses différents produits logiciels.
+En particulier, chaque organisation définit ses propres méthodes (métriques)
+pour évaluer le <strong>degré de présence</strong> des différents attributs de qualité.</p>
+</div>
+<div class="paragraph">
+<p>Les principales <strong>normes</strong> utilisées pour la définition de modèle(s) de qualité :
+ISO/IEC 9126 (ancienne version) et ISO/IEC 25010 (nouvelle version).</p>
+</div>
+<div class="paragraph">
+<p>Dans ces normes, le terme <em>logiciel</em> est employé au sens large.
+Il peut désigner à la fois le code source, les exécutables, les librairies,
+les documents d&#8217;architecture, et ainsi de suite.
+En conséquence, la notion d'<em>utilisateur</em> peut elle aussi s&#8217;appliquer, suivant la caractéristique
+et/ou le logiciel considéré, à un client ou à un développeur, par exemple.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_caractéristiques">Caractéristiques</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Capacité fonctionnelle</strong> (Functional suitability)<br>
+Est-ce que le logiciel répond aux besoins fonctionnels exprimés ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Pertinence</em> (Suitability / Functional appropriateness)<br>
+Est-ce que toutes les fonctionnalités présentes sont adéquates ?</p>
+</li>
+<li>
+<p><em>Exactitude</em> (Accuracy / Functional Correctness)<br>
+Est-ce que les résultats ou effets fournis sont corrects ?</p>
+</li>
+<li>
+<p><em>Complétude</em> (Functional completeness)<br>
+Est-ce que les résultats ou effets fournis sont suffisants ?</p>
+</li>
+<li>
+<p><em>Conformité</em> (Functionality compliance)<br>
+Est-ce que le logiciel respecte les normes et règlements en vigueur ?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Fiabilité</strong> (Reliability)<br>
+Est-ce que le logiciel maintient son niveau de service dans des conditions précises et pendant une période déterminée ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Maturité</em> (Maturity)<br>
+Est-ce que la fréquence d&#8217;apparition des incidents est faible ?</p>
+</li>
+<li>
+<p><em>Tolérance aux pannes</em> (Fault tolerance)<br>
+Est-ce que l&#8217;apparition d&#8217;un incident dégrade le comportement du logiciel ?</p>
+</li>
+<li>
+<p><em>Facilité de récupération</em> (Recoverability)<br>
+Quel est la capacité du logiciel à retourner dans un état opérationnel complet après une panne ?</p>
+</li>
+<li>
+<p><em>Disponibilité (Availability)</em><br>
+Est-ce que les fonctionnalités du logiciel sont disponibles en permanence ?</p>
+</li>
+<li>
+<p><em>Conformité</em> (Reliability compliance)<br>
+Est-ce que le logiciel respecte les normes et règlements en vigueur ?</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="quality_usability" class="ulist">
+<ul>
+<li>
+<p><strong>Ergonomie</strong> (Usability)<br>
+Effectivité, efficacité et satisfaction avec laquelle des utilisateurs spécifiés
+accomplissent des objectifs spécifiés dans un environnement particulier.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Facilité de compréhension</em> (Understandability / appropriateness recognizability)<br>
+Est-ce qu&#8217;il est (intuitivement) facile pour un utilisateur de comprendre et retenir comment réaliser une opération ?</p>
+</li>
+<li>
+<p><em>Facilité d&#8217;apprentissage</em> (Learnability)<br>
+Est-ce qu&#8217;il est facile de former de futurs utilisateurs à l&#8217;utilisation du logiciel ?</p>
+</li>
+<li>
+<p><em>Facilité d&#8217;exploitation</em> (Operability)<br>
+Est-ce qu&#8217;il est facile pour l&#8217;utilisateur d&#8217;accomplir sa tâche ?</p>
+</li>
+<li>
+<p><em>Protection contre les erreurs d&#8217;utilisation</em> (User error protection)<br>
+Comment réagit le logiciel si son utilisateur a un comportement inatendu ?</p>
+</li>
+<li>
+<p><em>Accessibilité</em> (Accessibility)<br>
+Est-ce que le logiciel est utilisable par des personnes en situation de handicap ?</p>
+</li>
+<li>
+<p><em>Attrait</em> (Attractiveness / user interface aesthetics)<br>
+Est-ce que l&#8217;utilisateur a envie d&#8217;utiliser l&#8217;interface ?</p>
+</li>
+<li>
+<p><em>Conformité</em> (Usability compliance)<br>
+Est-ce que le logiciel respecte les normes et règlements en vigueur ?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Rendement</strong> (Performance Efficiency)<br>
+Est-ce que le logiciel requiert un dimensionnement rentable et proportionné de la plate-forme d’hébergement en regard des autres exigences ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Comportement temporel</em> (Time behaviour)<br>
+Est-ce que le temps de réponse du logiciel varie en fonction de son usage ?</p>
+</li>
+<li>
+<p><em>Utilisation des ressources</em> (Resource utilization)<br>
+Est-ce que les resources (mémoire, processeur, &#8230;&#8203;) sont correctement utilisées par le logiciel ?</p>
+</li>
+<li>
+<p><em>Capacité</em> (Capacity)<br>
+Est-ce que les ressources fournies par le logiciel le sont au bon moment et en quantité adéquate ?</p>
+</li>
+<li>
+<p><em>Conformité</em> (Efficiency compliance)<br>
+Est-ce que le logiciel respecte les normes et règlements en vigueur ?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Maintenabilité</strong> (Maintainability)<br>
+Est-ce que faire évoluer le logiciel est aisé en cas d&#8217;anomalie ou de nouveaux besoins ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Facilité d&#8217;analyse</em> (Analyzability)<br>
+Est-ce qu&#8217;il est facile d&#8217;identifier les déficiences du logiciel ou leur cause ?</p>
+</li>
+<li>
+<p><em>Facilité de modification</em> (Modifiability)<br>
+Quel est l&#8217;effort nécessaire pour remédier à ces déficiences ?</p>
+</li>
+<li>
+<p><em>Testabilité</em> (Testability)<br>
+Quel est l&#8217;effort nécessaire pour valider le comportement du logiciel ?</p>
+</li>
+<li>
+<p><em>Modularité</em> (modularity)<br>
+Est-ce que modifier un composant du logiciel impacte peu les autres composants ?</p>
+</li>
+<li>
+<p><em>Ré-utilisabilité</em> (Reusability)<br>
+Est-ce qu&#8217;il est facile de combiner des composants existants pour obtenir une nouvelle fonctionnalité ?</p>
+</li>
+<li>
+<p><em>Conformité</em> (Maintainability compliance)<br>
+Est-ce que le logiciel respecte les normes et règlements en vigueur ?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Portabilité</strong> (Portability)<br>
+Est-ce que le logiciel peut être transféré d’une plate-forme ou d’un environnement à un autre ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Facilité d&#8217;adaptation</em> (Adaptability)<br>
+Est-ce qu&#8217;il est facile d&#8217;adapter le logiciel à des changements d&#8217;environnement opérationnel ?</p>
+</li>
+<li>
+<p><em>Facilité d&#8217;installation</em> (Installability)<br>
+Est-ce qu&#8217;il est facile d&#8217;installer le logiciel dans un environnement prévu ?</p>
+</li>
+<li>
+<p><em>Interchangeabilité</em> (Replaceability)<br>
+Est-ce qu&#8217;il est facile d&#8217;utiliser ce logiciel à la place d&#8217;un autre dans un même environnement ?</p>
+</li>
+<li>
+<p><em>Conformité</em> (Portability compliance)<br>
+Est-ce que le logiciel respecte les normes et règlements en vigueur ?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Compatibilité</strong> (Compatibility)
+Est-ce que le logiciel fonctionne bien avec d&#8217;autres ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Coexistence</em> (Co-existence)<br>
+Est-ce que le fonctionnement du logiciel altère ou est altéré par un autre ?</p>
+</li>
+<li>
+<p><em>Interopérabilité</em> (Interoperability)<br>
+Est-ce que le logiciel peut communiquer avec d&#8217;autres ?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Sécurité</strong> (Security)
+Est-ce qu&#8217;on peut faire confiance au logiciel ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Confidentialité</em> (Confidentiality)<br>
+Est ce que les données ne sont accessibles qu&#8217;à ceux qui y sont autorisés ?</p>
+</li>
+<li>
+<p><em>Intégrité</em> (Integrity)<br>
+Est-ce que les donnés sont garanties contre une modification non autorisée ?</p>
+</li>
+<li>
+<p><em>Non-répudiation</em> (Non-repudiation)<br>
+Est-ce que le logiciel peut prouver que chaque action a bien eu lieu ?</p>
+</li>
+<li>
+<p><em>Responsabilité</em> (Accountability)<br>
+Est-ce que le logiciel peut relier chaque action à son auteur ?</p>
+</li>
+<li>
+<p><em>Authentification</em> (Authenticity)<br>
+Est-ce que le logiciel peut empêcher une identité d&#8217;être usurpée ?</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_la_sur_qualité">La « Sur-qualité »</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On appelle parfois « sur-qualité » le fait de réaliser une fonctionnalité
+alors que celle-ci n&#8217;est pas <a href="#lifecycle_specification">spécifiée</a>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/quality/surqualite_hard.png" alt="« Sur-qualité »" width="400px">
+</div>
+<div class="title">Figure 03:« Sur-qualité »</div>
+</div>
+<div class="paragraph">
+<p>L&#8217;interprétation habituelle est alors la suivante :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Réaliser une fonctionnalité demandée est normal : c&#8217;est ce en quoi consiste la qualité logicielle.</p>
+</li>
+<li>
+<p>Ne pas réaliser une fonctionnalité alors qu&#8217;elle est demandée dégrade la qualité du logiciel.</p>
+</li>
+<li>
+<p>Ne pas réaliser une fonctionnalité qui n&#8217;est pas demandée est normal.</p>
+</li>
+<li>
+<p>Mais réaliser une fonctionnalité alors que celle-ci n&#8217;est pas demandée est une perte
+ou un manque à gagner pour le fournisseur, étant donné que le client ne va pas payer pour
+obtenir quelque chose qu&#8217;il n&#8217;a pas demandé !</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Bien que tout à fait défendable, cette façon de résumer la « sur-qualité » est limitative.
+Il est possible d&#8217;interpréter la situation de manière plus nuancée,
+en se posant la question : la fonctionnalité considérée est elle <em>utile</em> ou <em>inutile</em> pour le client ?
+Cette question exprime parfaitement la différence entre le besoin tel qu&#8217;il est <em>exprimé</em> par le client
+et le besoin <em>réel</em> du client (voir la phase d'<a href="#lifecycle_analysis">analyse du besoin</a>).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/quality/surqualite_smooth.png" alt="« Sur-qualité » alternative" width="400px">
+</div>
+<div class="title">Figure 04:Une vision alternative de la « Sur-qualité »</div>
+</div>
+<div class="paragraph">
+<p>On a alors l&#8217;interprétation suivante :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Réaliser une fonctionnalité demandée est normal <em>si celle-ci est utile</em>.</p>
+</li>
+<li>
+<p>Réaliser une fonctionnalité demandée mais <em>inutile</em> peut signifier un manque
+lors de la phase d'<a href="#lifecycle_analysis">analyse du besoin</a>.</p>
+</li>
+<li>
+<p>Ne pas réaliser une fonctionnalité alors que celle-ci est demandée est une faute du fournisseur.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Cependant, ci la fonctionnalité non réalisée s&#8217;avère inutile pour le client,
+celui-ci ne sera peut-être pas gêné par son absence.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Ne pas réaliser une fonctionnalité qui n&#8217;est pas demandée est normal.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Mais si la fonctionnalité non réalisée aurait été finalement utile au client ?
+Il s&#8217;agit-là d&#8217;une opportunité d&#8217;amélioration du produit &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Réaliser une fonctionnalité alors que celle-ci n&#8217;est pas demandée est:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>une perte pour le fournisseur, effectivement, si la fonctionnalité en question est inutile.</p>
+</li>
+<li>
+<p>une manière d&#8217;aller au devant du besoin du client, et donc une preuve de la qualité du service
+fourni par le fournisseur, qui apporte la preuve qu&#8217;il a mieux saisi le besoin réel du client
+que le client lui-même.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Avec ce point de vue alternatif, la « sur-qualité » peut donc devenir un atout commercial.</p>
+</div>
+</div>
+</div>
+<h1 id="chapter_lifecycle" class="sect0">Cycle de vie</h1>
+<div class="sect1">
+<h2 id="_phases_d_existence">Phases d&#8217;existence</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="lifecycle_analysis">Analyse du besoin / Faisabilité / Cahier des charges</h3>
+<div class="paragraph">
+<p>Cette phase permet de collecter les données nécessaires pour rendre compte de la situation réelle.</p>
+</div>
+<div class="paragraph">
+<p>Il est d&#8217;abord nécessaire de <strong>comprendre le contexte</strong>, en utilisant toutes les sources d&#8217;information pertinentes.
+La principale source d&#8217;information est le client, auquel il faut poser toute question utile, en n&#8217;hésitant pas à approfondir :
+certains éléments vitaux sont parfois tellement évidents/implicites pour le client qu&#8217;il ne pense pas à les mentionner.</p>
+</div>
+<div class="paragraph">
+<p>Ensuite, mettre en perspective les besoins exprimés par avec le contexte permet de redéfinir ou valider les besoins <strong>réels</strong>.
+Ces besoins réels devraient être ordonnés par degré d&#8217;importance et peuvent être regroupés par thèmes.</p>
+</div>
+<div class="paragraph">
+<p>À cette phase sont aussi établies les différents paramètres de conception,
+et en particulier les <strong>contraintes</strong> qui peuvent empêcher d&#8217;atteindre toute ou partie des objectifs de départ.
+Les contraintes techniques ou économiques ne sont pas les seules à considérer ; certains domaines sont aussi touchés
+par des contraintes légales, sociales, environnementales, et ainsi de suite.</p>
+</div>
+<div class="paragraph">
+<p>La phase d&#8217;analyse aboutit à la validation par la <a href="#roles_moa">MOA</a> d&#8217;un <strong>cahier des charges</strong> réaliste et convenant à ses besoins réels.
+Ce document précise clairement les tâche à effectuer ainsi qu&#8217;une estimation du temps nécessaire pour chacune.</p>
+</div>
+<div class="paragraph">
+<p>Cette phase permet aussi à la <a href="#roles_moe">MOE</a> d&#8217;évaluer qu&#8217;elle a accès à toutes les compétences nécessaires au projet,
+ou si le recours à des ressources externes est nécessaire.</p>
+</div>
+<div class="sect3">
+<h4 id="_étude_préalable">Étude préalable</h4>
+<div class="paragraph">
+<p>En amont de la phase d&#8217;analyse du besoin, on peut trouver une phase encore antérieure d&#8217;étude préalable.
+Tandis que l&#8217;analyse du besoin vise à être précise et exhaustive, l&#8217;étude préalable vise simplement à
+dresser un premier tour d&#8217;horizon et à fixer le périmètre.</p>
+</div>
+<div class="paragraph">
+<p>La phase d&#8217;étude préalable ne vise pas l&#8217;exhaustivité, mais à orienter les phases suivantes (y compris l&#8217;analyse détaillée du besoin).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_exemple_d_outils_d_analyse">Exemple d&#8217;outils d&#8217;analyse</h4>
+<div class="sect4">
+<h5 id="_qqoqccp">QQOQCCP</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>4 questions : Qui ? Quoi ? Où ? Quand ?</p>
+</li>
+<li>
+<p>Complétées par 3 modalités : Comment ? Combien ? Pourquoi ?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Un équivalent anglais est le Five W&#8217;s : Who, What, Where, When, Why ?
+Utilisé par les journalistes pour la rédaction de leurs articles.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_méthode_des_5_pourquoi">Méthode des 5 pourquoi</h5>
+<div class="paragraph">
+<p>Poser successivement cinq questions commençant par <em>Pourquoi</em> peut permettre de mieux cerner la cause réelle d&#8217;un problème.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_diagramme_de_pareto">Diagramme de Pareto</h5>
+<div class="paragraph">
+<p>Un tel diagramme représente sous forme graphique les différentes causes d&#8217;un problème, ordonnées par leur importance.</p>
+</div>
+<div class="paragraph">
+<p>C&#8217;est une application de la loi des 80/20 (ou principe de Pareto) : 20% des causes produisent 80% des effets.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/lifecycle/pareto.png" alt="Des ninjas ? Quoi ! Où ?" width="500px">
+</div>
+<div class="title">Exemple de diagramme de Pareto:Causes de retards en cours</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_diagramme_d_ishikawa">Diagramme d&#8217;Ishikawa</h5>
+<div class="paragraph">
+<p>Aussi appelé 5M ou arêtes de poisson, ce diagramme permet de mettre en relation les causes et les effets.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Matériaux entrant en jeu</p>
+</li>
+<li>
+<p>Matériel : équipement, machines, logiciels, technologies</p>
+</li>
+<li>
+<p>Méthode opératoire, logique</p>
+</li>
+<li>
+<p>Main d&#8217;œuvre humaine</p>
+</li>
+<li>
+<p>Milieu : environnement, contexte</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/lifecycle/ishikawa.png" alt="Ishikawa" width="500px">
+</div>
+<div class="title">Exemple de diagramme d'Ishikawa:Causes d&#8217;une consommation de carburant anormalement élevée</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lifecycle_specification">Spécification</h3>
+<div class="paragraph">
+<p>Lors de la phase de spécification, le besoin qui a été analysé précédemment est décrit
+avec plus de détail, sous forme d'<strong>exigences</strong> que la solution doit impérativement satisfaire.</p>
+</div>
+<div class="paragraph">
+<p>Un document de spécification peut être de deux types principaux :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Une spécification <strong>fonctionnelle</strong> décrit les <strong>processus métier</strong> dans lesquels la solution intervient.
+Par exemple, les unités utilisées, les règles de calcul ou d&#8217;interaction, etc.
+La spécification fonctionnelle représente le <strong>but à atteindre</strong>.</p>
+</li>
+<li>
+<p>Une spécification <strong>technique</strong> décrit l'<strong>environnement technique</strong> dans lequel la solution s&#8217;inscrit.
+Par exemple, le design architectural, le format des données d&#8217;échange avec les composants déja
+présents, les langages de programmation utilisés, le format des bases de données, le système hôte, &#8230;&#8203;
+peuvent être fixées dans ce document.
+La spécification technique représente le <strong>moyen d&#8217;atteindre le but</strong> fixé par la partie fonctionnelle.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cette phase débouche souvent sur plus d&#8217;un document de spécification.
+Notamment, les exigences peuvent être raffinées de plus en plus au cours de cette phase
+jusqu&#8217;à atteindre un niveau de détail satisfaisant :
+on peut alors créer des spécifications générales, puis plus détaillées.</p>
+</div>
+<div class="paragraph">
+<p>Le plus souvent, c&#8217;est la <a href="#roles_moa">MOA</a> qui est à l&#8217;origine des spécifications générales.
+Il peut cependant être pertinent que les spécifications détaillées soient plutôt écrites par la <a href="#roles_moe">MOE</a>.</p>
+</div>
+<div class="paragraph">
+<p>Puisqu&#8217;elle décrit aux futurs utilisateurs et développeurs à quoi ressemblera le produit fini,
+la spécification permet de faire les estimations de coût et de durée.
+Elle sert donc de base pour établir le planning du projet.</p>
+</div>
+<div class="paragraph">
+<p>La spécification sert aussi de base contractuelle.
+Après cette phase, toutes les fonctionnalités qui sont hors-spécification
+n&#8217;ont pas à être ni demandées, ni payées par le client.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lifecycle_conception">Conception</h3>
+<div class="paragraph">
+<p>Tandis que la phase de spécification a pour but de décrire la solution
+vue de l&#8217;extérieur, la conception la décrit vue de l&#8217;intérieur.
+Tandis que la phase de spécification décrit les contraintes,
+la conception apporte les solutions.</p>
+</div>
+<div class="paragraph">
+<p>C&#8217;est le travail de la <a href="#roles_moe">MOE</a>.</p>
+</div>
+<div class="paragraph">
+<p>Comme toute documentation, elle peut être raffinée de plus en plus, par exemple
+en un documents de conception préliminaire/architecturale, puis détaillée.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lifecycle_implementation">Implémentation / Développement</h3>
+<div class="paragraph">
+<p>Cette phase consiste en la <strong>réalisation</strong> de la solution telle qu&#8217;elle a été conçue.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lifecycle_tests">Tests</h3>
+<div class="paragraph">
+<p>Tester le logiciel tel qu&#8217;il est implémenté a pour objectif d&#8217;améliorer la qualité
+ou de connaître le <a href="#chapter_quality">degré de présence</a> d&#8217;une qualité particulière.</p>
+</div>
+<div class="paragraph">
+<p>Un <strong>test</strong> consiste en la vérification <em>partielle</em> du logiciel.
+Il correspond à la combinaison de trois choses:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>des données en entrée</p>
+</li>
+<li>
+<p>un objet à tester</p>
+</li>
+<li>
+<p>une situation attendue</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Si la situation attendue correspond à la situation observée lors du test,
+c&#8217;est un signe de la qualité du logiciel.</p>
+</div>
+<div class="sect3">
+<h4 id="_intégration">Intégration</h4>
+<div class="paragraph">
+<p>Durant la phase d'<strong>intégration</strong>, chaque module du logiciel est intégré et testé dans l&#8217;ensemble.</p>
+</div>
+<div class="paragraph">
+<p>Aussi appelé <strong>tests fonctionnels</strong>, cette phase a pour but de vérifier l&#8217;aspect fonctionnel
+(incluant performances, stabilité, etc), parfois non détectable par des tests de plus bas niveau.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_validation">Validation</h4>
+<div class="paragraph">
+<p>Durant la phase de <strong>validation</strong>, le système est testé dans son ensemble,
+et dans un environnement se rapprochant au maximum de l&#8217;environnement final.
+Le but est d&#8217;évaluer sa conformité avec les exigences spécifiés.</p>
+</div>
+<div class="paragraph">
+<p>Un type particulier de validation est la <strong>recette</strong>.
+Elle se déroule en présence de tous les acteurs (MOA et MOE).
+Elle précède souvent un jalon important de la vie du projet, comme une livraison.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lifecycle_delivery">Déploiement</h3>
+<div class="paragraph">
+<p>Le déploiement d&#8217;un logiciel consiste à sa <strong>mise en production</strong>,
+c&#8217;est à dire à le rendre disponible et utilisable pour le client,
+ainsi que pour ses utilisateurs finaux.</p>
+</div>
+<div class="paragraph">
+<p>On peut décomposer cette phase en plusieurs étapes qui s&#8217;appliqueront (ou pas) à un projet particulier.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Livraison (<em>release</em>, <em>packaging</em>)<br>
+Les différents composants de la solution sont préparés afin de les rendre utilisables.</p>
+</li>
+<li>
+<p>Activation (<em>install</em>, <em>activation</em>)<br>
+La solution est rendue utilisable dans son environnement de production.
+Ses différents composants sont installés et configurés.</p>
+</li>
+<li>
+<p>Désactivation (<em>uninstall</em>, <em>deactivation</em>)<br>
+Une solution précédente peut avoir à être totalement ou partiellement désinstallée
+ou désactivée pour permettre à la nouvelle solution de la remplacer.</p>
+</li>
+<li>
+<p>Mise à jour (<em>update</em>)<br>
+Le nouvelle solution peut nécessiter une version plus récente de dépendances déjà présentes
+dans son environnement de production. Elle peut aussi faire partie d&#8217;un système plus grand,
+qui doit alors être mis à jour pour permettre l&#8217;activation de la solution.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Le déploiement d&#8217;une même solution peut être effectué à plusieurs reprises.
+Cette phase rend indispensable l&#8217;utilisation d&#8217;un <strong>gestionnaire de version</strong>
+ainsi que d&#8217;un <strong>gestionnaire de configuration</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lifecycle_maintenance">Exploitation / Maintenance</h3>
+<div class="paragraph">
+<p>Un logiciel peut être amené à évoluer même après avoir été livré,
+au cours d&#8217;actions de <strong>maintenance</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Une maintenance peut être de plusieurs types :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La <strong>maintenance corrective</strong> consiste à résoudre une anomalie constatée</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>maintenance curative</em><br>
+Elle corrige l&#8217;anomalie de manière permanente.</p>
+</li>
+<li>
+<p><em>maintenance paliative</em><br>
+Elle empêche l&#8217;anomalie d&#8217;endommager le système on l&#8217;environnement client,
+tout en permettant au logiciel de continuer à remplir tout ou partie
+de ses fonctionnalités.
+Cependant, étant donné que son impact est forcément négatif à un certain degré,
+ce type de maintenance est souvent de nature temporaire.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>La <strong>maintenance préventive</strong> consiste à intervenir sur un logiciel avant qu&#8217;une anomalie ne survienne.
+Ce type de maintenance peut être <em>systématique</em> ou <em>conditionnel</em>.</p>
+</li>
+<li>
+<p>La <strong>maintenance évolutive</strong> permet de mieux répondre au besoin ou de répondre à de nouveaux besoins,
+en modifiant le logiciel existant ou en développant de nouvelles fonctionnalités.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>La maintenance se différencie des autres phases en ce que le logiciel considéré est déjà en production.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_modèles_de_développement">Modèles de développement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Un modèle de développement ordonne de manière structurées les activités de construction du logiciel.
+Le détail des activités qui se dérouleront dépend du projet.</p>
+</div>
+<div class="sect2">
+<h3 id="_caractéristiques_2">Caractéristiques</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Clairement défini et implémenté</p>
+</li>
+<li>
+<p>Compréhensible par les acteurs du projet</p>
+</li>
+<li>
+<p>Accepté par les acteurs du projet</p>
+</li>
+<li>
+<p>Observable de l&#8217;extérieur (autres acteurs, parties prenantes, &#8230;&#8203;)</p>
+</li>
+<li>
+<p>Il doit permettre de détecter les problèmes avant que le produit ne soit mis en service</p>
+</li>
+<li>
+<p>Un unique problème imprévu ne doit pas stopper toute la réalisation</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Au sein d&#8217;un modèle de développement, chaque activité doit détailler :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Les Tâches à réaliser et leurs auteurs</p>
+</li>
+<li>
+<p>Les Décisions à prendre (le cas échéant)</p>
+</li>
+<li>
+<p>Les artefacts livrables.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Documents</p>
+</li>
+<li>
+<p>Sources</p>
+</li>
+<li>
+<p>Binaires (exécutables, librairies, &#8230;&#8203;)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Il y a au minimum une activité de début et une activité de fin.
+Il doit y avoir un chemin reliant chaque activité à celle de fin.</p>
+</div>
+<div class="paragraph">
+<p>Deux activités sont séparées par au moins un artefact.
+Une activitée ne peut être commencée tant que ses artefacts d&#8217;entrée n&#8217;existent pas.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_en_cascade">En cascade</h3>
+<div class="paragraph">
+<p>Ce modèle linéaire se base sur deux idées :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>modifier une étape a des conséquences sur les étapes suivantes, et donc</p>
+</li>
+<li>
+<p>une étape ne peut pas être débutée avant que la précédente ne soit achevée</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ce modèle comporte un nombre <strong>fixe et prédéfini</strong> de phases.
+Chacune des phases produit un certain nombre de livrables, eux aussi définis à l&#8217;avance.
+Chaque phase commence et termine à une date fixe.
+On ne peut passer à la phase suivante que lorsque les livrables de la phase courante sont validés.</p>
+</div>
+<div class="paragraph">
+<p>Si une anomalie est détectée, on remonte d&#8217;une ou plusieurs phases en arrière.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/lifecycle/waterfall.png" alt="Cascade">
+</div>
+<div class="title">Figure 01:Cascade</div>
+</div>
+<div class="paragraph">
+<p>Ce modèle suppose que l&#8217;on connaisse et maîtrise la plupart des exigences au lancement du projet.</p>
+</div>
+<div class="paragraph">
+<p>Il nécessite d&#8217;accorder une attention très importante à la <strong>documentation</strong>.
+En particulier, il faut livrer proprement chaque document,
+puis attendre les retours et les commentaires sur cette livraison,
+puis faire évoluer ces documents pour y intégrer ces commentaires,
+et ainsi de suite, jusqu&#8217;à ce que chaque document soit accepté par toutes les parties.
+&#8230;&#8203; Et ce, à chaque étape.</p>
+</div>
+<div class="sect3">
+<h4 id="_avantages">Avantages</h4>
+<div class="paragraph">
+<p>Tout est <strong>prévisible</strong> :
+Les acteurs savent précisément ce qui doit être livré, à quelle date et ce que cela entraîne.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inconvénients">Inconvénients</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Le <strong>temps nécessaire</strong> pour obtenir un logiciel testable est important.</p>
+</li>
+<li>
+<p>Les phases les plus <strong>risquées</strong> (tests &#8230;&#8203;) arrivent <strong>à la fin</strong> du cycle.
+Ce modèle est donc dans les faits très peu tolérant aux erreurs.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Que se passe-t&#8217;il si un besoin a été mal interprété ?</p>
+</li>
+<li>
+<p>Et si un détail de conception s&#8217;avère inadapté lors de l&#8217;implémentation ou du déploiement ?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>La durée de vie d&#8217;un projet étant souvent de plusieurs années.
+Pourtant, ce modèle est très <strong>intolérant</strong> aux changements.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Que se passe-t&#8217;il si le besoin évolue ?</p>
+</li>
+<li>
+<p>Et si la nature du marché change ?</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_domaines_d_application">Domaines d&#8217;application</h4>
+<div class="paragraph">
+<p>Ce modèle peut néanmoins être adapté dans certains cas :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Les domaines où il est impossible ou très coûteux de revenir en arrière.
+Par exemple, c&#8217;est le monde du BTP qui a donné naissance à ce modèle
+(peut-on construire un bâtiment avant d&#8217;avoir spécifié le terrain et conçu les plans ?).</p>
+</li>
+<li>
+<p>Les projets dont le périmètre est faible et la durée très courte.
+Dans de tels petits projets, le risque de retour en arrière est à priori faible.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Il est à déconseiller pour les nouveaux systèmes en raison des nombreux problèmes de spécification
+et de conception que la nouveauté entraîne.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="model_v">En "V"</h3>
+<div class="paragraph">
+<p>Ce modèle linéaire tente de mettre en évidence la <strong>complémentarité</strong> entre certaines phases.
+Chaque phase d&#8217;étude et d&#8217;analyse est <strong>couplée</strong> avec un phase de tests qui la valide.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/lifecycle/v.png" alt="Cycle en V">
+</div>
+<div class="title">Figure 02:Cycle en V</div>
+</div>
+<div class="paragraph">
+<p>Ce modèle est calqué sur la production industrielle classique.
+Il est donc de loin le plus utilisé dans le <strong>domaine industriel</strong>.</p>
+</div>
+<div class="sect3">
+<h4 id="_avantages_2">Avantages</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Modèle <strong>éprouvé</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Vaste taux d&#8217;usage en entreprise depuis les années 80</p>
+</li>
+<li>
+<p>Supporté par de nombreux standards</p>
+</li>
+<li>
+<p>Appuyé par de nombreux outils</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Les phases de test sont aussi importantes que les phases de réflexion.
+De plus, il est plus facile de décrire de manière exhaustive comment tester une fonctionnalité
+au moment où celle-ci est conçue. La synergie entre analyse et description du test est profitable.</p>
+</li>
+<li>
+<p>Puisqu&#8217;il favorise la décomposition hiérarchique et fonctionnelle,
+il permet l&#8217;organisation du travail, des équipes et la maîtrise des coûts (voir la méthode COCOMO).
+Cela lui offre une bonne visibilité.
+Le suivi de projet est facilité.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inconvénients_2">Inconvénients</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Ne fait qu&#8217;amenuiser les inconvénients du <a href="#model_waterfall">modèle en cascade</a> sur lequel il est basé.
+Le principal problème restant le <strong>manque de souplesse</strong>.</p>
+</li>
+<li>
+<p>Différence entre la théorie et la pratique.
+Les phases durant lesquelles le niveau de détail est accru,
+en particulier celles de spécification détaillées et d&#8217;implémentation,
+permettent parfois de se rendre compte que les analyses issues des phases précédentes
+sont incomplètes ou carrément irréalisables en l&#8217;état.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_domaines_d_application_2">Domaines d&#8217;application</h4>
+<div class="paragraph">
+<p>Ses inconvénients persistants en dépit de son vaste taux d&#8217;utilisation font que le cycle en V
+est davantage un <strong>idéal</strong> vers lequel certains aimeraient tendre mais est rarement appliqué tel quel.</p>
+</div>
+<div class="paragraph">
+<p>Il est donc en général utilisé pour de grands projets industriels avec plus ou moins de bonheur.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/lifecycle/v-real.png" alt="Déséquilibre et retours en arrière">
+</div>
+<div class="title">Figure 03:Cycle en V, trop fréquemment</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="model_spiral">En spirale (de Boehm)</h3>
+<div class="paragraph">
+<p>Inspiré par la Roue de Deming, ce modèle itératif met l&#8217;accent sur la <strong>gestion des risques</strong>.
+Il reprend les étapes du <a href="#model_v">cycle en V</a>, mais prévoit la création de versions successives
+au cours de <strong>cycles</strong> de développement.</p>
+</div>
+<div class="paragraph">
+<p>Chaque cycle peut être découpé en 4 étapes distinctes
+représentées par l&#8217;acronyme PDAC (<em>Plan-Do-Check-Act</em>) :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Planifier</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Analyse des besoins</p>
+</li>
+<li>
+<p>Détermination des objectifs</p>
+</li>
+<li>
+<p><strong>Analyse des risques</strong></p>
+</li>
+<li>
+<p>Analyse des alternatives</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Développer</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Spécification</p>
+</li>
+<li>
+<p>Conception</p>
+</li>
+<li>
+<p>Implémentation</p>
+</li>
+<li>
+<p>Tests unitaires</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Contrôler</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Intégration</p>
+</li>
+<li>
+<p>Validation</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Ajuster</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Livraison</p>
+</li>
+<li>
+<p>Définition du prochain cycle</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/lifecycle/wheel_deming.png" alt="Roue de Deming">
+</div>
+<div class="title">Figure 04.1:Roue de Deming</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/lifecycle/spirale.png" alt="Modèle en spirale">
+</div>
+<div class="title">Figure 04.2:Exemple de développement en spirale</div>
+</div>
+<div class="paragraph">
+<p>Chaque cycle ne se base pas forcément sur les artefacts livrés par le cycle précédent :
+différents risques peuvent être addressés l&#8217;un après l&#8217;autre.</p>
+</div>
+<div class="paragraph">
+<p>Comme dans tout modèle itératif, le nombre de cycles n&#8217;est pas déterminé à l&#8217;avance.</p>
+</div>
+<div class="sect3">
+<h4 id="_avantages_3">Avantages</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Maîtrise des risques : on se concentre sur les aspects les plus incertains du développement.</p>
+</li>
+<li>
+<p>Mise en avant des objectifs de qualité.</p>
+</li>
+<li>
+<p>Intègre maintenance et développement.</p>
+</li>
+<li>
+<p>Possibilité d&#8217;intervertir l&#8217;ordre de certains cycles indépendants</p>
+</li>
+<li>
+<p>Compatible à de nombreuses approches et outils existants.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inconvénients_3">Inconvénients</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Nécessite une vraie expertise sur l&#8217;évaluation des risques :
+la nature des risques peut être différente d&#8217;un cycle à l&#8217;autre.</p>
+</li>
+<li>
+<p>Mettre en place ce modèle assez complexe nécessite une grande expérience.</p>
+</li>
+<li>
+<p>Les premiers cycles de la spirale ne produisent en général pas de solution exploitable.</p>
+</li>
+<li>
+<p>Verbosité inadaptée pour les petits projets ou des domaines suffisamment connus.
+Dans le pire des cas, la stricte application de ce modèle (en particulier l&#8217;évaluation des risques)
+engendre un coût plus élevé que la réalisation du projet elle-même.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_domaines_d_application_3">Domaines d&#8217;application</h4>
+<div class="paragraph">
+<p>Ce modèle est logiquement approprié aux projets où le périmètre et le risque sont importants.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="model_explore">Exploratoire</h3>
+<div class="paragraph">
+<p>Le principe de ce modèle itératif est de perfectionner à plusieurs reprises (on parle d&#8217;itérations)
+la spécification du projet, ainsi que son développement et sa validation.
+L&#8217;objectif est de <strong>collaborer</strong> avec le client et de <strong>raffiner</strong> de plus en plus la solution.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/lifecycle/explore.png" alt="Mutliples versions intermédiaires">
+</div>
+<div class="title">Figure 05:Modèle exploratoire</div>
+</div>
+<div class="paragraph">
+<p>En général, c&#8217;est le délai accordé au projet qui décide du nombre d&#8217;itérations.</p>
+</div>
+<div class="sect3">
+<h4 id="_avantages_4">Avantages</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Minimise le risque pour les nouvelles applications : il est possible d&#8217;explorer certaines spécificités
+du systèmes, de les évaluer afin d&#8217;opter pour la meilleure stratégie.</p>
+</li>
+<li>
+<p>Le résultat est souvent pleinement compréhensible et satisfaisant pour le client.</p>
+</li>
+<li>
+<p>Théoriquement livrable à chaque itération :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Favorise les tests et les validations intermédiaires.</p>
+</li>
+<li>
+<p>Il est possibile d&#8217;arrêter le processus n&#8217;importe quand.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inconvénients_4">Inconvénients</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Tentation d&#8217;abréger le processus et de se contenter d&#8217;une solution incomplète.</p>
+</li>
+<li>
+<p>Peu structuré, donc impossible à appliquer tel quel à grand échelle.</p>
+</li>
+<li>
+<p>Faible visibilité pour les intervenants extérieurs.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_domaines_d_application_4">Domaines d&#8217;application</h4>
+<div class="paragraph">
+<p>Le domaine d&#8217;application de ce modèle est donc les petits systèmes (ou parties d&#8217;un système) interactifs
+dont le résultat peut être visible rapidement. En particulier, les IHM.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="model_evolutive">Évolutif</h3>
+<div class="paragraph">
+<p>Ce modèle itératif vise a réaliser une version provisoire de la solution aux besoins connus
+afin de pouvoir la mettre en exploitation au plus vite.
+De <strong>nouvelles versions</strong> seront ensuite déployées, chacune remplaçant la version précédente.
+Chaque version apportera de nouvelles fonctionnalités ou modifiera les fonctionnalités existantes.</p>
+</div>
+<div class="paragraph">
+<p>Les versions intermédiaires sont réalisés avec tous les principes de qualité d&#8217;une version finale :
+ce ne sont donc <em>pas</em> des prototypes jetables !</p>
+</div>
+<div class="sect3">
+<h4 id="_modèle_incrémental">Modèle incrémental</h4>
+<div class="paragraph">
+<p>La première version constitue un système partiel.
+Chaque nouvelle version ajoute une nouvelle fonctionalité complète.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/lifecycle/iterative-vertical.png" alt="Prototypage vertical">
+</div>
+<div class="title">Figure 07.1:Incrémental, par prototypage vertical</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_modèle_itératif">Modèle itératif</h4>
+<div class="paragraph">
+<p>Le système doit être dès le départ découpé en fonctionalités bien définies.
+La première version constitue une coquille complète du système.
+Chaque fonctionnalité qui n&#8217;est pas implémentée est remplacée par un <strong>bouchon</strong>.
+Chaque nouvelle version modifie ou améliore une fonctionalité.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/lifecycle/iterative-horizontal.png" alt="Prototypage horizontal">
+</div>
+<div class="title">Figure 07.2:Évolutif, par prototypage horizontal</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_avantages_5">Avantages</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Augmente la <strong>compétitivité</strong> en réduisant le temps de mise sur le marché.</p>
+</li>
+<li>
+<p>Formation précoce des utilisateurs.</p>
+</li>
+<li>
+<p>Détection précoce des imprévus.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inconvénients_5">Inconvénients</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Le processus de deploiement de chaque version doit être maîtrisé.</p>
+</li>
+<li>
+<p>Risque d&#8217;aboutir à un parc hétérogène :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Assurer la tracabilité de chaque version.</p>
+</li>
+<li>
+<p>Assurer la tracabilité de chacun de leurs composants.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>La manière d&#8217;obtenir un retour des utilisateurs doit être maîtrisée.</p>
+</li>
+<li>
+<p>Risque de remise en cause du noyau assurant les fonctionnalités de base.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_domaines_d_application_5">Domaines d&#8217;application</h4>
+<div class="paragraph">
+<p>Ce modèle est approprié à tout domaine <strong>fortement concurrentiel</strong>,
+et où les utilisateurs sont disposés à utiliser un produit incomplet.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_agile">Agile</h3>
+<div class="paragraph">
+<p>En génie logiciel, le terme d&#8217;agilité couvre plusieurs modèles de développement distincts,
+qui offrent tous au moins les trois caractéristiques suivantes :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>itératifs</strong> : les différents intervenants travaillent par périodes de durée variable (quelques semaines),</p>
+</li>
+<li>
+<p><strong>incrémentaux</strong> : chaque itération travaille sur le résultat des précédentes</p>
+</li>
+<li>
+<p><strong>flexibles</strong> : chaque itération n&#8217;est planifiée qu&#8217;à son début, et non pas au lancement du projet</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Les principes de l&#8217;agilité à été formalisées dans le <em>Manifeste Agile</em> (2001).</p>
+</div>
+<div class="paragraph">
+<p>Différents implémentations de ces principes ont vu le jour :
+<em>RAD</em>, <em>Crystal Clear</em>, processessus unifiés (modèle en "Y" ou <em>2TUP</em>, <em>RUP</em>, <em>AUP</em>, <em>XUP</em>), &#8230;&#8203;
+Cependant, les implémentations les plus utilisées sont aujourd&#8217;hui
+<a href="#lifecycle_xp"><em>Extreme Programming</em> (<em>XP</em>)</a> et <a href="#lifecycle_scrum"><em>Scrum</em></a>.</p>
+</div>
+<div class="paragraph">
+<p>Le modèle agile voit le produit comme la somme de ses <strong>fonctionnalités</strong>.
+Chaque itération (ou <strong>sprint</strong>) produit un certain nombre de fonctionnalités.</p>
+</div>
+<div class="paragraph">
+<p>Le processus s&#8217;arrête quand les fonctionnalités implémentées satisfont le client.
+Le nombre de fonctionnalités final n&#8217;est pas connu à l&#8217;avance ;
+à l&#8217;inverse, la situation est examinée à la fin de chaque itération.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Expression du besoin. Ce besoin peut varier à chaque itération.</p>
+</li>
+<li>
+<p>Déroulement de l&#8217;itération.
+Chaque itération doit se concentrer sur l&#8217;essentiel ;
+quelles fonctionnalités sont essentielles pour cette itération dépend du besoin exprimé.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Planification conjointe entre le client et l&#8217;équipe de développement</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Décision de quelles fonctionnalités vont être développées, et desquelles vont être laissées de coté.</p>
+</li>
+<li>
+<p>Traduction du besoin en langage technique.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Développement : réalisation de ce qui a été spécifié.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implémentation</p>
+</li>
+<li>
+<p>Tests</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Inspection</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Validation client : vérification que le résultat de l&#8217;itération (les <em>artefacts</em> produits)
+est conforme au besoin exprimé.</p>
+</li>
+<li>
+<p>Déploiement : mise à disposition du client des artefacts qu&#8217;il a validés.</p>
+</li>
+<li>
+<p>Éventuellement, évaluation : comprendre l&#8217;état actuel du projet</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Analyse des difficultés rencontrées</p>
+</li>
+<li>
+<p>Plan d&#8217;amélioration.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_avantages_6">Avantages</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Pragmatisme : chaque itération se consacre sur l&#8217;essentiel.
+Ce processus évite de perdre du temps sur des tâches sans valeur ajoutée pour le client.
+Cela permet de s&#8217;approcher d&#8217;un mode de fonctionnement optimal.</p>
+</li>
+<li>
+<p>Réactivité offerte par des itérations courtes.</p>
+</li>
+<li>
+<p>Met l&#8217;accent sur la satisfaction du client.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inconvénients_6">Inconvénients</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Le coût en temps pour le client n&#8217;est pas à négliger.</p>
+</li>
+<li>
+<p>Moins facile à mettre en place qu&#8217;il n&#8217;y parait.</p>
+</li>
+<li>
+<p>Comment justifier des tâches nécessaires à l&#8217;organisation mais sans bénéfice immédiat pour le client ?</p>
+</li>
+<li>
+<p>Un nombre étonnant de freins d&#8217;ordre organisationnel ou personnel peuvent apparaître.
+Cette méthode de travail peut en effet être difficile d&#8217;approche pour certains
+(résistance au changement, difficulté à communiquer, etc).</p>
+</li>
+<li>
+<p>Difficile à adapter aux équipes trop grandes, souffrant d&#8217;un turnover trop important,
+ou composées de membres trop spécialisés dans leurs domaines respectifs.</p>
+</li>
+<li>
+<p>Difficile à adopter si le code du produit est mal maitrisé ou insuffisamment testé.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_domaines_d_application_6">Domaines d&#8217;application</h4>
+<div class="paragraph">
+<p>Les modèles implémentant ce processus nécessitent que le besoin client soit clairement exprimable.
+Il est adapté aux entreprises ouvertes d&#8217;esprit et où la communication inter- et intra- équipe est bonne.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_deux_exemples_de_modèles_agiles">Deux exemples de modèles agiles</h4>
+<div class="paragraph">
+<p>L'<em>XP</em> et <em>Scrum</em> sont aujourd&#8217;hui les deux méthodes agiles les plus connues et utilisées en entreprise.
+Elles sont compatibles entre elles.</p>
+</div>
+<div class="sect4">
+<h5 id="agility_backlogs">Planification</h5>
+<div class="paragraph">
+<p><em>XP</em> et <em>Scrum</em> font toutes les deux un usage intensif de « TODO lists » appelés <strong>backlogs</strong>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Le <em>Product backlog</em> est la liste de toutes les activités à réaliser pour que le projet soit terminé.
+Les activités y sont triées par ordre de priorité.</p>
+</li>
+<li>
+<p>Le <em>Sprint backlog</em> est la liste des activitées à réaliser dans le sprint en cours.
+Au début de chaque sprint, cette liste est peuplée avec des activités issus du product backlog
+au cours d&#8217;une réunion appelée le <em>planning poker</em> (ou <em>planning game</em>),
+qui réunit l&#8217;équipe de développement mais aussi son client.
+En général, ce sont les activités les plus prioritaires qui sont choisies.
+La durée prévue pour réaliser chaque activité placée dans le sprint backlog doit être estimée (chiffrée).
+Cette durée est représentée sous forme de « coût » abstrait de l&#8217;activité
+par rapport aux autres activités déjà réalisées lors des sprints précédents.<br>
+La somme des coûts des activités réalisées lors des sprints précédents donne la <strong>vélocité</strong> respective
+de l&#8217;équipe de développement.
+C&#8217;est en se basant sur ces vélocités que l&#8217;équipe de développement peut déterminer de manière réaliste
+combien d&#8217;activités elle peut s&#8217;attendre à pouvoir réaliser au cours du sprint qui débute.</p>
+</li>
+<li>
+<p>La liste <em>« Doing »</em> regroupe les activités en cours de réalisation.
+Il est important de sortir ainsi les activités du sprint backlog afin que plusieurs personnes
+ne travaillent pas sur la même chose.</p>
+</li>
+<li>
+<p>La liste <em>« Done »</em> regroupe les activités du sprint en cours qui sont terminées.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="lifecycle_xp">Extreme Programming (XP)</h5>
+<div class="paragraph">
+<p><em>XP</em> est autant un style qu&#8217;une discipline de développement.
+C&#8217;est aussi une voie d'<strong>amélioration continue</strong>.
+Comme son nom l&#8217;indique, cette méthode est quasiment uniquement axée sur développement logiciel.
+Il s&#8217;agit avant tout d&#8217;un assortiment de principes simples qui, combinés et poussés à l&#8217;extrême,
+permettent d&#8217;atteindre un excellent niveau de qualité logicielle.</p>
+</div>
+<div class="sect5">
+<h6 id="_principes">Principes</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>Étant admis que parler un vocabulaire commun est le moyen le plus efficace de se comprendre,
+<em>XP</em> encourage la définition et l&#8217;usage des mêmes <strong>métaphores</strong> par les différents acteurs.</p>
+</li>
+<li>
+<p>Étant admis que le meilleur moyen de gagner du temps est de faire les choses simplement,
+une <strong>solution simple</strong> doit toujours être privilégiée par rapport à une solution compliquée.</p>
+</li>
+<li>
+<p>Étant admis que les besoins du clients sont changeants, des <strong>itérations courtes</strong> sont à privilégier.</p>
+</li>
+<li>
+<p>Étant admis que les <a href="#tests_types">tests</a> sont utiles, ils faut développer et exécuter des <strong>tests systématiques</strong>,
+en particulier en pratiquant le <a href="#tdd">TDD</a>.</p>
+</li>
+<li>
+<p>Étant admis que l&#8217;intégration est une phase cruciale,
+il est indispensable de faire de l'<a href="#continuous_integration"><strong>intégration continue</strong></a>.</p>
+</li>
+<li>
+<p>Étant admis que la revue de code est utile, celle-ci sera faite systématiquement, via la <strong>programmation en binôme</strong>.</p>
+</li>
+<li>
+<p>Étant admis qu&#8217;une bonne architecture logicielle est indispensable, la conception sera améliorée systématiquement,
+via la pratique de <strong>refactoring</strong> systématique.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_test_driven_development_tdd">Test Driven Development (TDD)</h6>
+<div class="paragraph">
+<p>Le <em>TDD</em> est une discipline de développement qui oblige à écrire systématiquement et de manière exhaustive
+le code testant la fonctionnalité avant même de développer la fonctionnalité en elle-même.
+Outre la volonté de ne pas « oublier » de tester ce qu&#8217;on implémente,
+cette discipline offre aussi l&#8217;avantage de déboucher sur une meilleure conception logicielle,
+qui découle du fait que, dès le départ, le code est envisagé du point de vue de l&#8217;appelant.</p>
+</div>
+<div class="paragraph">
+<p>Voici le workflow typique d&#8217;un développeur travaillant en TDD :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Écrire un test</p>
+</li>
+<li>
+<p>Éxécuter le test, et vérifier que celui-ci est en échec.</p>
+</li>
+<li>
+<p>Écrire le code source nécessaire et suffisant pour que le test passe.</p>
+</li>
+<li>
+<p>Vérifier que le test passe.</p>
+</li>
+<li>
+<p><a href="#refactoring">Refactorer</a> le code source.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_refactoring">Refactoring</h6>
+<div class="paragraph">
+<p>La discipline de refactoring consiste à remanier/réécrire le code afin de l&#8217;améliorer.
+Refactorer un code consiste en particulier à accorder l&#8217;attention nécessaire eux points suivants :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Est-ce que que quelqu&#8217;un lisant le code dispose au même endroit de toute l&#8217;information nécessaire
+à la compréhension du code ?
+Entre autres :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pour quelle raison ce code a t&#8217;il été écrit ?</p>
+</li>
+<li>
+<p>Quelles en sont les entrées et les sorties ?</p>
+</li>
+<li>
+<p>Quelles sont les principes algorithmiques entrant en jeu ?</p>
+</li>
+<li>
+<p>Les commentaires de code, si ils sont présents, sont-ils synchronisés avec le code source ?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Toute redondance est-elle supprimée ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Factorisation du code pour en éviter la duplication.</p>
+</li>
+<li>
+<p>Suppression du code mort.</p>
+</li>
+<li>
+<p>Suppression des commentaires inutiles.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Les algorithmes sont ils écrits de la manière la plus compréhensible possible ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Extraction de méthodes nommées et éventuellement commentées de manière descriptive.</p>
+</li>
+<li>
+<p>Formattage du code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Le <a href="#solid_principle">meilleur compromis</a> est-il fait entre nombre minimal de classes
+et complexité propre à chaque classe ?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="lifecycle_scrum">Scrum</h5>
+<div class="paragraph">
+<p><em>Scrum</em> est une méthode initialement empirique d&#8217;organisation et de suivi du projet.
+Elle a la particularité de laisser l&#8217;équipe de développement s&#8217;auto-organiser,
+ce qui la rend par exemple compatible avec l'<em>Extreme Programming</em>.</p>
+</div>
+<div class="paragraph">
+<p>Ses valeurs sont celles de <strong>transparence</strong> (envers toutes les parties concernées, et par le biais d&#8217;un langage commun),
+d'<strong>inspection</strong> des livrables, et d'<strong>adaptabilité</strong>.</p>
+</div>
+<div class="sect5">
+<h6 id="_rituels">Rituels</h6>
+<div class="paragraph">
+<p><em>Scrum</em> comporte certaines réunions, ou rituels, pour promouvoir ces valeurs :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>la <strong>réunion de planification</strong> (ou _planning poker) qui a lieu en début de sprint</p>
+</li>
+<li>
+<p>la <strong>mêlée quotidienne</strong> (ou <em>standup meeting</em>), qui réunit quotidiennement tous les membres de l&#8217;équipe
+durant 15 minutes au maximum, et offre à chacun l&#8217;opportunité de confier rapidement aux autres :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ce qu&#8217;il a fait depuis la denière mêlée</p>
+</li>
+<li>
+<p>ce qu&#8217;il prévoit de faire d&#8217;ici à la prochaine mêlée</p>
+</li>
+<li>
+<p>le cas échéant, les problèmes qu&#8217;il a rencontré ou qu&#8217;il prévoit que l&#8217;équipe risque de rencontrer à l&#8217;avenir</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>la <strong>revue de sprint</strong> est axée produit, et réunit à la fin de chaque sprint tous les intervenants,
+avec pour objectifs de :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>valider l&#8217;incrément apporté au produit par le sprint</p>
+</li>
+<li>
+<p>mettre à jour les différents <a href="#agility_backlogs">backlogs</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>la <strong>rétrospective</strong> est propre à l&#8217;équipe de développement, et lui permet de revenir sur le ou les derniers sprints
+dans une optique d'<strong>amélioration continue</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_rôles">Rôles</h6>
+<div class="paragraph">
+<p><em>Scrum</em> reconnait exactement trois rôles (ni plus, ni moins) pour les membres d&#8217;une équipe projet.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Le <strong>product owner</strong> est le propriétaire du produit, et le client de l&#8217;équipe de développement.
+C&#8217;est lui qui détient la <strong>vision</strong> de ce que doit être le produit.
+C&#8217;est donc aussi à lui qu&#8217;appartient le <a href="#agility_backlogs">product backlog</a> :
+il fixe la priorité entre les différentes activités et qui s&#8217;assure que leur spécification est comprise de tous.
+<em>Scrum</em> recommande que le product owner soit <strong>toujours présent</strong> sur le même site que l&#8217;équipe de développement,
+qui peut avoir besoin de son retour ou de ses explications à tout moment pendant le sprint.</p>
+</li>
+<li>
+<p>Les membres de l'<strong>équipe de développement</strong> sont collectivement responsables de la livraison du sprint,
+que cela soit au niveau de la qualité comme des délais.
+Ce sont eux qui estiment le coût de chaque activité lors du <em>planning poker</em>.<br>
+Chacun des membres de l&#8217;équipe de développement est considéré comme <strong>non-spécialisé</strong> / pluridisciplinaire.
+Cela signifie que n&#8217;importe quel membre peut intervenir sur n&#8217;importe quelle activité du sprint backlog.<br>
+L&#8217;équipe de développement fonctionne en auto-organisation : <em>Scrum</em> n&#8217;impose rien quant à la façon dont les développements se déroulent ; elle se contente de fournir un cadre pour que la qualité et les délais soient respectés.<br>
+L&#8217;équipe de développement est <strong>mono-produit</strong> et ne prend ses ordres que du product owner.<br>
+<em>Scrum</em> recommande une taille de 3 à 9 personnes composant l&#8217;équipe de développement.</p>
+</li>
+<li>
+<p>Le <strong>scrum master</strong> est responsable de l&#8217;adhésion de tous à la méthode <em>Scrum</em> et de sa mise en œuvre.
+Il a un rôle de <strong>facilitateur</strong>, de <strong>formateur</strong> et de <strong>coach</strong>.<br>
+C&#8217;est aussi lui qui participe au « scrum de scrums ».</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_planification" class="sect0">Planification</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>Le rôle principal d&#8217;un chef de projet est d&#8217;organiser l&#8217;usage des différentes ressources à sa disposition
+(charge de travail des équipes, &#8230;&#8203;) en les découpant en différentes activités, ou tâches,
+dont l&#8217;enchainement garantit que le périmètre du projet soit respecté.</p>
+</div>
+<div class="paragraph">
+<p>Une tâche est un ensemble d&#8217;actions qui, lorsqu&#8217;elles sont toutes entièrement réalisées,
+marquent un avancement significatif du projet.
+Le projet est lui-même terminé lorsque toutes les tâches qui le composent sont réalisées.</p>
+</div>
+<div class="paragraph">
+<p>Le périmètre de chaque tâche doit être correctement défini :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>si une tâche n&#8217;est pas assez détaillée, la visibilité ne sera pas bonne et la gestion de projet ne sera guère facilitée.</p>
+</li>
+<li>
+<p>si une tâche est trop détaillée, le trop grand nombre de tâches obstruera à son tour la visibilité.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Le diagramme PERT/CPM et le diagramme de Gantt sont deux techniques largement utilisées pour planifier.
+Ces deux types de diagrammes permettent de coordonner des tâches plus ou moins séquentielles
+avec pour objectif d&#8217;obtenir une prévision réaliste des délais et des coûts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pert_cpm">PERT/CPM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PERT/CPM permet de mettre en évidence :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>les dépendances entre tâches</p>
+</li>
+<li>
+<p>la parallélisation des tâches</p>
+</li>
+<li>
+<p>trois estimations (optimiste, pessimiste, réaliste) de la durée des tâches</p>
+</li>
+<li>
+<p>la marge des tâches et du projet qu&#8217;elles composent</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_caractéristiques_d_une_tâche">Caractéristiques d&#8217;une tâche</h3>
+<div class="paragraph">
+<p>Chaque tâche <code>T</code> offre les caractéristiques suivantes :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Durée</strong> : Durée <code>D(T)</code> nécessaire à la réalisation de la tâche considérée.</p>
+</li>
+<li>
+<p><strong>Prédécesseurs</strong> : Autres tâches devant être entièrement réalisées avant que <code>T</code> ne puisse débuter.</p>
+</li>
+<li>
+<p><strong>Successeurs</strong> : Autres tâches ayant <code>T</code> comme prédecesseur.</p>
+</li>
+<li>
+<p><strong>DO</strong> : Date de Début au plus tôt <code>DO(T)</code> (<em>ES: Earliest Start Time</em>).
+<code>T</code> ne peut pas débuter avant cette date.</p>
+</li>
+<li>
+<p><strong>FO</strong> : Date de Fin au plus tôt   <code>FO(T)</code>  (<em>EF: Earliest Finish Time</em>).
+<code>T</code> ne peut pas être terminée avant cette date.</p>
+</li>
+<li>
+<p><strong>DA</strong> : Date de Début au plus tard <code>DA(T)</code> (<em>ES: Latest Start Time</em>).
+<code>T</code> doit commencer avant cette date.</p>
+</li>
+<li>
+<p><strong>FA</strong> : Date de Fin au plus tard   <code>FA(T)</code> (<em>ES: Latest Finish Time</em>).
+<code>T</code> doit être terminée avant cette date.</p>
+</li>
+<li>
+<p><strong>Marge</strong> : La marge <code>M(T)</code> est le retard maximal admissible (<em>Slack</em>/<em>Float</em>).</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/pert/task.png" alt="Example de représentation">
+</div>
+<div class="title">Figure 01:Tâche PERT/CPM</div>
+</div>
+<div class="paragraph">
+<p><code>FO(T) = DO(T) + D(T)</code> : une tâche ne peut finir avant qu&#8217;elle ait été entièrement réalisée.<br>
+<code>DA(T) = FA(T) - D(T)</code> : une tâche doit être entièrement réalisée avant de finir.<br>
+<code>DO(T) = max(FO(prédécesseurs(T)))</code> : une tâche ne peut débuter que lorsque ses prérequis sont finis.<br>
+<code>FA(T) = min(DA(successeurs(T)))</code> : les successeurs d&#8217;une tâche ne peuvent débuter que lorsque cette tâche est finie.<br>
+<code>M(T) = FA(T) - FO(T)</code> : la marge est égal au délai entre la date à laquelle elle <em>doit</em> terminer et la date à laquelle elle <em>peut</em> terminer.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/pert/chart.png" alt="PERT/CPM">
+</div>
+<div class="title">Figure 02:Diagramme PERT/CPM</div>
+</div>
+<div class="sect3">
+<h4 id="_chemin_critique">Chemin critique</h4>
+<div class="paragraph">
+<p>Une tâche dont la marge est égale à 0 est considérée comme <strong>critique</strong>.
+Cela signifie que le moindre retard dans la réalisation de cette tâche retardera d&#8217;autant le projet complet.</p>
+</div>
+<div class="paragraph">
+<p>Le <strong>chemin critique</strong> est le chemin le plus long du diagramme de PERT.
+Toutes les tâches du chemin critique ont la même marge (éventuellement 0, mais pas forcément).
+Si une tâche du chemin critique accuse davantage de retard que sa marge, tout le projet sera retardé d&#8217;autant.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_jalons">Jalons</h4>
+<div class="paragraph">
+<p>Il peut être pertinent de créer dans un diagramme de PERT des <strong>jalons</strong>.
+Un jalon est typiquement une tâche "virtuelle" dont la durée est égale à 0.
+Elle marque (et permet de contrôler) un moment important de l&#8217;avancement d&#8217;un projet.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_topologie">Topologie</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Y a t&#8217;il exactement un tâche de début et une tâche de fin ?</p>
+</li>
+<li>
+<p>Toutes les tâches ont-elles au moins un prédecesseur et un successeur ?</p>
+</li>
+<li>
+<p>Tous les liens sont-ils représentatifs ?</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/pert/error-1.png" alt="Redondance">
+</div>
+<div class="title">Figure 03.1:Transition redondante</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/pert/error-2.png" alt="Simplification">
+</div>
+<div class="title">Figure 03.2:Création d&#8217;un jalon</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_démarche_pas_à_pas">Démarche pas à pas</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Identifier</strong> <em>toutes</em> les tâches à réaliser, sans négliger certaines tâches "annexes" :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Le projet nécessite-t-il des technologies non maîtrisées en interne (besoins en formation, en procédure d&#8217;achat, &#8230;&#8203;) ?</p>
+</li>
+<li>
+<p>La charge est-elle trop grande pour les équipes actuelles (besoins en recrutement, &#8230;&#8203;) ?</p>
+</li>
+<li>
+<p>Tout est-il présent pour assurer la qualité du projet (besoin en documentation, en tests, &#8230;&#8203;) ?</p>
+</li>
+<li>
+<p>Une tâche particulièrement complexe nécessite-t-elle d&#8217;être gérée comme un sous-projet ?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Estimer la durée</strong> de chacune des tâches.
+Étant donné qu&#8217;il est impossible, lors de la phase de planification, de connaître la durée réelle
+de chaque tâche, on l&#8217;estime comme une variable, de manière probabiliste.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Temps moyen estimé <code>TM</code> : temps de travail réaliste, nécessaire dans des conditions "normales"</p>
+</li>
+<li>
+<p>Temps optimiste <code>TO</code> : temps de travail dans des conditions "idéales" (aucune interruption ni difficulté imprévue, &#8230;&#8203;)</p>
+</li>
+<li>
+<p>Temps pessimiste <code>TP</code> : temps de travail dans les "pires" conditions (déficit d&#8217;effectif, multiples imprévus, &#8230;&#8203;)</p>
+</li>
+<li>
+<p>La durée est donc une durée "espérée", obtenue grâce à la formule suivante:
+<code>D = (TO + 4×TM + TP)÷6</code></p>
+</li>
+<li>
+<p>C&#8217;est lors du calcul de la durée qu&#8217;on choisit (ou non) de s&#8217;accorder un délai de précaution.
+Après, il est trop tard ; en particulier, le calcul ultérieur de sa marge n&#8217;est pas là pour ça !</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Ordonnancer</strong> les tâches</p>
+<div class="ulist">
+<ul>
+<li>
+<p>organiser leur séquencement chronologique</p>
+</li>
+<li>
+<p>optimiser en envisageant les parallélismes possibles</p>
+</li>
+<li>
+<p>déterminer le chemin critique</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Planifier</strong> les différentes tâches</p>
+<div class="ulist">
+<ul>
+<li>
+<p>affectation des ressources humaines nécessaires</p>
+</li>
+<li>
+<p>affectation des ressources matérielles nécessaires</p>
+</li>
+<li>
+<p>affectation de davantage de (ou de meilleures) ressources sur les tâches critiques</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gantt">Gantt</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Comparé à un diagramme de PERT/CPM, un diagramme de Gantt est peut-être plus simple à appréhender.
+Il a comme avantage de permettre de clairement visualiser les dates de début et de fin,
+le pourcentage de complétion de chaque tâche, ainsi que leur chevauchement éventuel.
+En revanche, il met moins l&#8217;accent sur les dépendances entre tâches et ne prend pas en compte
+la marge ou le risque.</p>
+</div>
+<div class="paragraph">
+<p>Dans un diagramme de Gantt, un tâche n&#8217;a qu&#8217;une date de début ou une date de fin, ainsi qu&#8217;une durée.
+Les tâches s&#8217;enchainent ensuite de manière logique, en utilisant l&#8217;un des quatre types de liaison :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>de Fin à Début (FD) : une tâche ne peut pas commencer avant que la précédente ne soit terminée</p>
+</li>
+<li>
+<p>de Début à Début (DD) : une tâche ne peut pas commencer avant que la précédente ne commence</p>
+</li>
+<li>
+<p>de Fin à Fin (FF) : une tâche ne peut pas se terminer avant que la précédente ne soit terminée</p>
+</li>
+<li>
+<p>de Début à Fin (DF) : une tâche ne peut pas se terminer avant que la précédente ne commence</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Une tâche peut évidemment avoir plusieurs autres tâches la précédant.
+De même, une tâche peut précéder plusieurs autres tâches.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/pert/gantt.png" alt="Gantt">
+</div>
+<div class="title">Figure 04:Exemple de diagramme de Gantt : Rédaction d&#8217;une documentation</div>
+</div>
+</div>
+</div>
+<h1 id="_modélisation_uml" class="sect0">Modélisation UML</h1>
+<div class="sect1">
+<h2 id="_diagrammes_statiques">Diagrammes statiques</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Les diagrammes de cette section modélisent des éléments
+de manière statique.
+Ils ne s&#8217;occupent pas des aspects dynamiques (déroulement du temps,
+enchaînement d&#8217;opérations, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>Quand ce qui est à modéliser est complexe,
+il vaut mieux dresser plusieurs diagrammes complémentaires,
+chacun se focalisant sur un aspect particulier.
+Par exemple: la structure hiérarchique des différents éléments, leur regroupement logique, l&#8217;état du système à un instant T, la manière dont les éléments collaborent entre eux, et ainsi de suite.</p>
+</div>
+<div class="paragraph">
+<p>Souvent, même se focaliser sur un aspect particulier est trop complexe pour résumer cet aspect en un seul diagramme.</p>
+</div>
+<div class="sect2">
+<h3 id="uml_usecases">Cas d&#8217;utilisation (use cases)</h3>
+<div class="paragraph">
+<p>Un <strong>diagramme de cas d&#8217;utilisation</strong> est utilisé pour comprendre et structurer des besoins.
+Il ne vise pas l&#8217;exhaustivité (forte abstraction, faible niveau de détail),
+mais la clarté et l&#8217;organisation des besoins.
+Par exemple, il permet de trier les besoins des utilisateurs finaux entre besoins avérés
+et besoins qui sont en fait couverts par d&#8217;autres besoins ou besoins qui n&#8217;en sont pas vraiment.
+Définir les besoins réels permet de fixer le périmètre du projet
+en identifiant les fonctionnalités principales du système en cours de conception.
+Ce sont ces objectifs qu&#8217;il faut garder en tête tout au long du projet.</p>
+</div>
+<div class="paragraph">
+<p>Le diagramme de cas d&#8217;utilisation classe les différents acteurs et la façon dont ils utilisent (interagissent avec) le système.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/usecase_simple.png" alt="Cas d&#8217;utilisation simple">
+</div>
+<div class="title">Figure 01:Cas d&#8217;utilisation simple</div>
+</div>
+<div class="sect3">
+<h4 id="_éléments_uml">Éléments UML</h4>
+<div class="sect4">
+<h5 id="_relation">Relation</h5>
+<div class="paragraph">
+<p>Lien unissant deux éléments ou plus.
+La relation peut être de différentes natures : utilisation, extension, dépendance, agrégation, etc.
+On peut détailler la nature d&#8217;une relation en utilisant un <strong>stéréotype</strong>
+(<code>&lt;&lt; stereotype &gt;&gt;</code>).</p>
+</div>
+<div class="paragraph">
+<p>En ce qui concerne les diagrammes de cas d&#8217;utilisation, UML reconnait trois types de relation : inclusion, extension et généralisation.</p>
+</div>
+<div class="paragraph">
+<p>Une relation d'<strong>inclusion</strong> représente la décomposition d&#8217;une tâche en plusieurs sous-tâches.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/usecase_includes.png" alt="Inclusion">
+</div>
+<div class="title">Figure 02.1:Relation d&#8217;inclusion</div>
+</div>
+<div class="paragraph">
+<p>Une relation d'<strong>extension</strong> représente le fait qu&#8217;une tâche puisse en appeler une autre.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/usecase_extends.png" alt="Extension">
+</div>
+<div class="title">Figure 02.2:Relation d&#8217;extension</div>
+</div>
+<div class="paragraph">
+<p>Une relation de <strong>généralisation</strong> représente le fait qu&#8217;une tâche puisse être substituée par une autre, plus spécialisée.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/usecase_generalizes.png" alt="Généralisation">
+</div>
+<div class="title">Figure 02.3:Relation de généralisation</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_acteur">Acteur</h5>
+<div class="paragraph">
+<p><strong>Entité extérieure</strong> au système, mais qui agit sur lui.
+Ce peut être une personne physique, un autre système déjà en place, etc.
+En réponse à chaque action d&#8217;un acteur, le système accomplit une action en retour qui correspond au besoin de l&#8217;acteur.</p>
+</div>
+<div class="paragraph">
+<p>Une même personne physique peut exercer plusieurs rôles différents dans un même projet.
+C&#8217;est pourquoi les acteurs sont surtout définis par leur rôle dans un diagramme UML.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_cas_d_utilisation">Cas d&#8217;utilisation</h5>
+<div class="paragraph">
+<p><strong>Action</strong> du système en réponse au besoin exprimé par un acteur.
+Plusieurs cas d&#8217;utilisation peuvent être relié entre eux (relations de dépendance, de hiérarchie).
+Pour faciliter la compréhension et la réutilisation, les cas d&#8217;utilisation peuvent être organisés en <strong>packages</strong>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_package_paquet">Package (paquet)</h5>
+<div class="paragraph">
+<p>Élément d&#8217;organisation qui rassemble d&#8217;autres éléments en un groupe <strong>logique</strong>.
+Les éléments qu&#8217;il contient sont accessibles via une <strong>interface</strong> d&#8217;accès.
+Il sert aussi d'<strong>espace de noms</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/usecase_package.png" alt="Package logique">
+</div>
+<div class="title">Figure 04:Regroupement en package</div>
+</div>
+<div class="paragraph">
+<p>Un package peut dépendre d&#8217;un ou plusieurs autres packages.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_classes_et_objets">Classes et Objets</h3>
+<div class="paragraph">
+<p>UML permet de modéliser des <strong>diagrammes de classe</strong> ainsi que des <strong>diagrammes d&#8217;objets</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title"></div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Un petit rappel de POO ?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Une classe, c&#8217;est un nom, des attributs et des méthodes.</p>
+</li>
+<li>
+<p>Un objet, c&#8217;est une instance de classe.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Les notations sont les suivantes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/class_simple.png" alt="Classe">
+</div>
+<div class="title">Figure 05.1:Classe <code>Person</code>.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/class_abstract.png" alt="Classe abstraite">
+</div>
+<div class="title">Figure 05.2:Classe abstraite <code>Œuvre</code>.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/class_instance_anonymous.png" alt="Objet anonyme">
+</div>
+<div class="title">Figure 05.3:Instance anonyme de la classe <code>Person</code>.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/class_instance_named.png" alt="Objet nommé">
+</div>
+<div class="title">Figure 05.4:Instance nommée de la classe <code>Person</code>.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/class_instance.png" alt="Classe anonyme">
+</div>
+<div class="title">Figure 05.5:Instance nommée d&#8217;une classe anonyme.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/class_instance_attributes.png" alt="Objet avec attributs">
+</div>
+<div class="title">Figure 05.6:Instance nommée de la classe <code>Person</code>. Les valeurs de certains attributs <em>pour cette instance</em> sont spécifiés.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/class_collection.png" alt="Collection d&#8217;objets">
+</div>
+<div class="title">Figure 05.7:Collection d&#8217;instances anonymes de la classe <code>Person</code>.</div>
+</div>
+<div class="sect3">
+<h4 id="_documentation_d_une_classe">Documentation d&#8217;une classe</h4>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/class_description.png" alt="Classe documentée">
+</div>
+<div class="title">Figure 05.8:Documentation plus complète de la classe <code>Person</code>.</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Les attributs dont la visibilité est <strong>publique</strong> sont précédés d&#8217;un <code>+</code></p>
+</li>
+<li>
+<p>Les attributs dont la visibilité est <strong>protégée</strong> sont précédés d&#8217;un <code>#</code></p>
+</li>
+<li>
+<p>Les attributs dont la visibilité est <strong>privée</strong> sont précédés d&#8217;un <code>-</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title"></div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce n&#8217;est pas parce que la représentation d&#8217;une classe au sein d&#8217;un diagramme donné
+ne contient pas certains attributs ou méthodes qu&#8217;elle ne les possède pas.</p>
+</div>
+<div class="paragraph">
+<p>De même, la visibilité de certains attributs peut être omise.</p>
+</div>
+<div class="paragraph">
+<p>La représentation d&#8217;un élément UML est une <strong>abstraction</strong> qui contient plus ou moins de détails
+suivant ce que nécessite le diagramme qui la contient pour être compréhensible.
+Le but d&#8217;un diagramme donné est d&#8217;être <strong>clair</strong>.
+L&#8217;exhaustivité, quand à elle, est atteinte en combinant tous les diagrammes d&#8217;un document de conception.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_associations">Associations</h4>
+<div class="paragraph">
+<p>Deux classes ou objets sont associés lorsqu&#8217;ils sont connectés d&#8217;une manière ou d&#8217;une autre.</p>
+</div>
+<div class="paragraph">
+<p>Le sens de lecture privilégié d&#8217;une association peut être précisé à coté de son libellé.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_direction_read.png" alt="Association">
+</div>
+<div class="title">Figure 06.1:Sens de lecture</div>
+</div>
+<div class="paragraph">
+<p>Plus de deux éléments peuvent évidemment être associés.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_multiple.png" alt="Association multiple">
+</div>
+<div class="title">Figure 06.2:Association multiple</div>
+</div>
+<div class="sect4">
+<h5 id="_rôle">Rôle</h5>
+<div class="paragraph">
+<p>Préciser le <strong>rôle</strong> de chaque élément dans une association est parfois indispensable quand la relation va dans les deux sens.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_role.png" alt="Rôles">
+</div>
+<div class="title">Figure 06.3:Rôles</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_cardinalité">Cardinalité</h5>
+<div class="paragraph">
+<p>La <strong>cardinalité</strong> est le nombre d&#8217;objets qui participent à une association.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1</code> Exactement un, ni plus ni moins</p>
+</li>
+<li>
+<p><code>*</code> Un nombre indéfini</p>
+</li>
+<li>
+<p><code>1..n</code> Entre un (inclus) et <code>n</code> (inclus)</p>
+</li>
+<li>
+<p><code>n..m</code> Entre <code>n</code> (inclus) et <code>m</code> (inclus)</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_cardinality.png" alt="Cardinalités">
+</div>
+<div class="title">Figure 06.4:Cardinalités</div>
+</div>
+<div class="admonitionblock note warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title"></div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Attention, il n&#8217;est utile de modéliser que ce qui est requis, pas la vie réelle !
+Évidemment, dans la réalité, une personne peut évidemment être inscrite à plusieurs universités,
+mais le système que ce diagramme modélise ne semble pas avoir besoin de ce niveau de détail &#8230;&#8203;</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_contraintes">Contraintes</h5>
+<div class="paragraph">
+<p>Les <strong>contraintes</strong> permettent de préciser la portée d&#8217;un autre élément.
+Par exemple, un contrainte peut préciser un rôle ou restreindre un nombre d&#8217;instances.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_constraints_1.png" alt="Contraintes">
+</div>
+<div class="title">Figure 06.5:Contraintes</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_constraints_2.png" alt="Contraintes">
+</div>
+<div class="title">Figure 06.6:Contraintes</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_relation_à_sens_unique">Relation à sens unique</h5>
+<div class="paragraph">
+<p>Par défaut, une association est navigable dans les deux sens.
+Mais parfois, il est nécessaire d&#8217;indiquer qu&#8217;un élément n&#8217;en "connait" pas un autre.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_directional.png" alt="Direction">
+</div>
+<div class="title">Figure 06.7:Relation à sens unique</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_relation_interdite">Relation interdite</h5>
+<div class="paragraph">
+<p>Parfois, il est utile d&#8217;indiquer qu&#8217;une association entre deux éléments est à proscrire.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_forbidden.png" alt="Interdiction">
+</div>
+<div class="title">Figure 06.8:Relation interdite</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_relation_n_aire_et_classe_d_association">Relation n-aire et classe d&#8217;association</h5>
+<div class="paragraph">
+<p>Une <strong>classe d&#8217;association</strong> permet de réaliser la relation entre les éléments.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_naire.png" alt="Classe d&#8217;association">
+</div>
+<div class="title">Figure 06.8:Relation n-aire avec classe d&#8217;association</div>
+</div>
+<div class="admonitionblock note warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title"></div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>De telles associations peuvent être difficiles à déchiffrer.
+Il peut être préférable de limiter leur utilisation, et de modéliser d&#8217;autres relations.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_interfaces">Interfaces</h5>
+<div class="paragraph">
+<p>TODO</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_héritage">Héritage</h5>
+<div class="paragraph">
+<p>Sert à modéliser la hierarchie qui relie les différentes classes.
+Cette modélisation peut être :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ascendante</strong> : partir des objets les plus concrets,
+et <strong>généraliser</strong> progressivement en factorisant leur propriétés
+(attributs et méthodes) dans des super classes.</p>
+</li>
+<li>
+<p><strong>descendante</strong> : partir des objets génériques, et les <strong>spécialiser</strong>
+en étendant leurs propriétés dans des classes plus spécifiques.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/class_inheritance.png" alt="Héritage">
+</div>
+<div class="title">Figure 07:Héritage</div>
+</div>
+<div id="solid_principle" class="admonitionblock note warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title"></div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La manière de hiérarchiser des classes est souvent subjective.
+Cependant, les principes de base les plus connus sont représentés par l&#8217;acronyme <strong>SOLID</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>S</strong>: Responsabilité unique (Single responsibility) <br>
+Une classe doit avoir une et une seule responsabilité, qu&#8217;elle doit remplir complètement.</p>
+</li>
+<li>
+<p><strong>O</strong>: Ouverture/fermeture (Open/closed) <br>
+Une classe doit être ouverte à l&#8217;extension (c&#8217;est à dire : facilement spécialisable),
+mais fermée à la modification (son comportement ne doit pas pouvoir être altéré).</p>
+</li>
+<li>
+<p><strong>L</strong>: substitution de Liskov (Liskov substitution) <br>
+Une instance de type T doit pouvoir être remplacée par une instance de type G,
+tel que G sous-type de T, sans que cela ne modifie la cohérence du programme.</p>
+</li>
+<li>
+<p><strong>I</strong>: ségrégation des interfaces (Interface segregation) <br>
+Il vaut mieux créer plusieurs interfaces, chacune adaptée à un client, plutôt qu&#8217;une seule interface générale.</p>
+</li>
+<li>
+<p><strong>D</strong>: inversion des Dépendances (Dependency inversion) <br>
+Les abstractions ne doivent pas dépendre des détails d&#8217;implémentation.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Le "God object" est un contre-exemple (anti-pattern).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_agrégation">Agrégation</h5>
+<div class="paragraph">
+<p>Tandis que l&#8217;héritage est une relation de type "Être" ("Is a"),
+l&#8217;agrégation est une relation de type "Avoir" ("Has a").
+C&#8217;est une relation non symétrique.
+Elle exprime une relation de <strong>subordination</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Une agrégation peut vouloir dire qu&#8217;un élément <em>fait partie</em> d&#8217;un autre (l&#8217;autre est un "agrégat" de l&#8217;un).
+Elle peut aussi signifier qu&#8217;un changement d&#8217;état ou une action sur l&#8217;un a des conséquences sur l&#8217;autre.</p>
+</div>
+<div class="paragraph">
+<p>Un élément peut être agrégé dans plusieurs autres.</p>
+</div>
+<div class="paragraph">
+<p>Le cycle de vie d&#8217;un agrégat peut être différent de celui des éléments qu&#8217;il agrège.
+En d&#8217;autre termes, une instance d&#8217;élément agrégé peut éxister sans agrégat, et inversement.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_agregation.png" alt="Agrégation">
+</div>
+<div class="title">Figure 08.1:Agrégation</div>
+</div>
+<div class="sect5">
+<h6 id="_composition">Composition</h6>
+<div class="paragraph">
+<p>La composition est une agrégation forte.</p>
+</div>
+<div class="paragraph">
+<p>Un composant ne peut être lié qu&#8217;à un seul composé.</p>
+</div>
+<div class="paragraph">
+<p>Les cycle de vie des éléments agrégés (les <strong>composants</strong>) et de l&#8217;agrégat (le <strong>composite</strong>) sont liés.
+En d&#8217;autre termes, si l&#8217;agrégat est détruit, ses composants le sont aussi (mais l&#8217;inverse n&#8217;est pas forcément vrai).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/association_composition.png" alt="Composition">
+</div>
+<div class="title">Figure 08.2:Composition</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_diagrammes_dynamiques">Diagrammes dynamiques</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_syntaxe_des_messages">Syntaxe des messages</h3>
+<div class="paragraph">
+<p>Chaque message peut être assortis d&#8217;attributs.
+Ces attributs permettent entre autres d&#8217;indiquer, pour un message donné :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>son numéro d&#8217;ordre</p>
+</li>
+<li>
+<p>la condition de son envoi</p>
+</li>
+<li>
+<p>ses arguments</p>
+</li>
+<li>
+<p>sa récurrence</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>[pre"/"] [["["guard"]"] [number] ["*"["||"]["["times"]"]] ":"] [var":="] label"("[params]")"</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>label</code> libellé du message</p>
+</li>
+<li>
+<p><code>params</code> paramètres du message, le cas échéant</p>
+</li>
+<li>
+<p><code>var</code> permet d&#8217;affecter le retour du message à une "variable".
+Cela permet par exemple d&#8217;utiliser ce retour comme paramètre (<code>params</code>) d&#8217;un autre message.</p>
+</li>
+<li>
+<p><code>pre</code> Liste de numéros d&#8217;ordre (<code>number</code>) séparés par des virgules.
+Le message n&#8217;est envoyé que lorsque tous les messages précédents l&#8217;ont été.
+Cet attribut permet la <strong>synchronisation</strong> de différents messages.</p>
+</li>
+<li>
+<p><code>guard</code> Expression booléenne.
+C&#8217;est la condition d&#8217;envoi du message, appelée <strong>garde</strong> (<em>guard</em>) en UML.
+Le message n&#8217;est envoyé que si cette condition est vérifiée.
+La condition elle-même peut être exprimée en langage naturelle, par une expression mathématique, etc.</p>
+</li>
+<li>
+<p><code>number</code> Numéro d'<strong>ordre</strong> du message dans la séquence de message modélisée par le diagramme.
+Ce numéro peut être un simple entier, ou suivre un indiçage plus complexe.</p>
+</li>
+<li>
+<p><code>times</code> permet d&#8217;envoyer autant de fois un message.
+Par défaut, l&#8217;envoi est séquentiel.
+Combiné avec <code>||</code>, les envois se font en parallèle.
+Le nombre <code>times</code> peut être remplacé par <code>*</code> pour figurer un nombre indéfini d&#8217;envois.
+<code>*||</code> figure un nombre indéfini d&#8217;envoi parallèles.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_exemples">Exemples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>1: hi()
+2: lmao()
+3: kthxbye()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Une séquence de trois messages numérotés <code>1</code>, <code>2</code>, <code>3</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>1: humeur := comment_ca_va()
+[humeur = "bien"] 2.a: content_pour_toi()
+[humeur = "pas top"] 2.b: compatir()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On se sert du résultat du premier message pour conditionner l&#8217;envoi du message suivant.
+Notez que les numéros d&#8217;ordre ne sont ni forcément des entiers, ni n&#8217;ont tous exactement le même format.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>4,5.1 / [3]||[i := 1..3]: message()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le message <code>message</code> est envoyé 3 fois, en parallèle.
+Ces envois parallèles n&#8217;ont lieu qu&#8217;après que les message <code>4</code> et <code>5.1</code> ont été eux-mêmes envoyés.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[disque plein] 4.2.a * : deleteTmpFile()
+[disque plein] 4.2.b   : reduceSwap(20%)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ces messages sont envoyés simultanément si la condition <code>disque plein</code> est vérifiée.
+<code>reduceSwap</code> est envoyé une seule fois ; <code>deleteTmpFile</code> peut être envoyé plusieurs fois.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_types_de_message">Types de message</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Un message simple <span class="image"><img src="resources/uml/message_simple.png" alt="msg_simple" title="Flèche de message simple"></span>
+ne spécifie aucune caractéristique particulière utile à la compréhension du diagramme.
+Attention, ça n&#8217;est pas pour ça qu&#8217;il n&#8217;en a pas !</p>
+</li>
+<li>
+<p>Un message synchrone <span class="image"><img src="resources/uml/message_sync.png" alt="msg_sync" title="Flèche de message synchrone"></span>
+bloque son expéditeur jusqu&#8217;à réception de la réponse de son destinataire.</p>
+</li>
+<li>
+<p>Un message avec timeout <span class="image"><img src="resources/uml/message_timeout.png" alt="msg_timeout" title="Flèche de message avec timeout"></span>
+bloque son expéditeur pendant un certain temps.
+La durée de blocage précise peut être spécifiée par une contrainte.
+L&#8217;expéditeur est bloqué, soit :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>jusqu&#8217;à réception de la réponse du destinataire</p>
+</li>
+<li>
+<p>jusqu&#8217;à la fin du timeout</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Un message asynchrone <span class="image"><img src="resources/uml/message_async.png" alt="msg_async" title="Flèche de message asynchrone"></span>
+n&#8217;interrompt pas le flot d&#8217;exécution de l&#8217;émetteur.
+L&#8217;émetteur n&#8217;a à priori aucune confirmation de la prise en compte du message par son destinataire.
+C&#8217;est pour cela que le retour d&#8217;un message asynchrone devrait toujours être modélisé explicitement.</p>
+</li>
+<li>
+<p>Un message dérobant <span class="image"><img src="resources/uml/message_expected.png" alt="msg_expected" title="Flèche de message dérobant"></span> est un message qui ne déclenche une action de la part de son destinataire que si celui-ci s&#8217;est préalablement mis en attente de ce message.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Un élément peut tout à fait s&#8217;envoyer un message à lui même.
+Cela représente une activité interne à l&#8217;élément, comme une période de calcul par exemple.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_diagramme_de_collaboration">Diagramme de collaboration</h3>
+<div class="paragraph">
+<p>Ce diagramme permet de modéliser les interactions entre objets, dans un contexte donné.
+Le contexte des interactions est donné par l&#8217;état des objets qui interagissent.</p>
+</div>
+<div class="paragraph">
+<p>Ce diagramme est aussi appelé diagramme de communication.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/collaboration.png" alt="Collaboration">
+</div>
+<div class="title">Figure 09:Exemple de diagramme de collaboration</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_diagramme_de_séquence">Diagramme de séquence</h3>
+<div class="paragraph">
+<p>Ce diagramme permet de modéliser les interactions entre objets au cours du temps.
+Il met l&#8217;accent sur la chronologie des envois de message.</p>
+</div>
+<div class="paragraph">
+<p>Sur un diagramme de séquence, le temps s&#8217;écoule verticalement.
+Les événements qui surviennent en premier sont en haut du diagramme,
+et ceux plus tardifs se rencontrent chronologiquement, au fur et à mesure
+qu&#8217;on progresse vers le bas.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;ordre horizontal des éléments (acteurs, objets, &#8230;&#8203;) n&#8217;a par contre aucune importance.</p>
+</div>
+<div class="paragraph">
+<p>Un diagramme de séquence peut illustrer un cas d&#8217;utilisation de manière dynamique.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/sequence.png" alt="Dialogue client/serveur">
+</div>
+<div class="title">Figure 10:Diagramme de séquence</div>
+</div>
+<div class="sect3">
+<h4 id="_période_d_activité">Période d&#8217;activité</h4>
+<div class="paragraph">
+<p>Un diagramme de séquence permet de représenter une période d&#8217;activité d&#8217;un objet
+à l&#8217;aide d&#8217;une zone rectangulaire représentant la période de la vie de l&#8217;objet
+durant laquelle cet objet est actif (au sens du diagramme considéré).</p>
+</div>
+<div class="paragraph">
+<p>Cette zone rectangulaire permet aussi de représenter une récursion.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_conditions_et_itérations">Conditions et itérations</h4>
+<div class="paragraph">
+<p>Pour représenter une exécution conditionnelle sur un diagramme de séquence,
+il est possible de dédoubler la ligne de vie de l&#8217;objet concerné.
+Cela n&#8217;est cependant pas nécessaire : on peut en effet exprimer les conditions
+dans le descriptif d&#8217;un message.</p>
+</div>
+<div class="paragraph">
+<p>Il est aussi possible de représenter une itération.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_destruction_d_un_objet">Destruction d&#8217;un objet</h4>
+<div class="paragraph">
+<p>Il est possible de représenter la fin du cycle de vie d&#8217;un objet
+grâce à une croix en bas de sa ligne de vie.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_diagramme_d_activité">Diagramme d&#8217;activité</h3>
+<div class="paragraph">
+<p>Un diagramme d&#8217;activité permet de relier différentes activités entre elles.
+Passer d&#8217;une activité à une autre se fait via une transition.
+Une transition reliant deux activités est utilisée automatiquement dès que la première activité se termine.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/activity_transition.png" alt="Flèche">
+</div>
+<div class="title">Figure 12.1:Transition d&#8217;un diagramme d&#8217;activité</div>
+</div>
+<div class="paragraph">
+<p>Le début d&#8217;un diagramme d&#8217;activité est matérialisé par un rond noir plein.
+Il est indispensable.</p>
+</div>
+<div class="paragraph">
+<p>La fin d&#8217;un diagramme d&#8217;activité est matérialisée par un rond noir entouré d&#8217;un cercle.
+Elle est facultative, car un diagramme d&#8217;activité est terminé quand il n&#8217;y a plus d&#8217;activité en cours.</p>
+</div>
+<div class="paragraph">
+<p>Pour organiser et faciliter la lecture d&#8217;un diagramme d&#8217;activité,
+il est possible de matérialiser des "couloirs d&#8217;activité".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/activity_corridors.png" alt="Couloirs">
+</div>
+<div class="title">Figure 12.2:Couloirs d&#8217;activité</div>
+</div>
+<div class="paragraph">
+<p>Une transition conditionnelle est représentée en utilisant un ou plusieurs losanges ainsi que des gardes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/activity.png" alt="Choix d&#8217;un animal domestique">
+</div>
+<div class="title">Figure 12.3:Transitions conditionnelles</div>
+</div>
+<div class="paragraph">
+<p>Il est possible de paralléliser plusieurs activités grâce à des barres de synchronisation.
+Les barres de synchronisation respectent les règles suivantes :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>une barre n&#8217;est franchie que lorsque toutes les activités qui y arrivent sont terminées</p>
+</li>
+<li>
+<p>les activités partant d&#8217;une barre démarrent toutes en même temps</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/uml/activity_parallelization.png" alt="Démarrage d&#8217;une voiture">
+</div>
+<div class="title">Figure 12.4:Parallélisation</div>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_tests" class="sect0">Tests</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>Tester un produit a pour but d&#8217;en garantir sa qualité.
+Un test logiciel fournit une vue objective et indépendante
+de l&#8217;état d&#8217;implémentation de la fonctionalité correspondante.
+Il permet entre autres d&#8217;évaluer que le produit :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>réagit correctement face à toutes sortes d&#8217;interactions
+qu&#8217;il est possible d&#8217;avoir avec lui</p>
+</li>
+<li>
+<p>accomplit ses fonctions de la manière désirée par le client :
+non seulement chaque fonctionnalité doit déboucher sur la situation attendue,
+mais elle doit le faire dans le temps et l&#8217;environnement spécifiés</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Il semble évidemment impossible de décrire le moindre cas de test
+sans disposer de la spécification correspondante.
+Spécifications et tests sont donc entre autres intrinsèquement liés
+dans la plupart des modèles de développement, comme le <a href="#model_v">cycle en V</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analyse_statique">Analyse statique</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>L'<strong>analyse statique</strong> du code (<em>sans</em> l&#8217;exécuter) permet d&#8217;obtenir
+une idée du comportement qu&#8217;il aura lors de son exécution.
+Certaine méthodes formelles d&#8217;analyse statique de code existent
+(par exemple, la logique de Hoare) ; mais aucune ne permet de dire à coup sûr
+si le code produira des erreurs lors de son exécution.
+Cependant, appliquer un certain nombre de principes lors du codage
+permet de réduire le <em>risque d&#8217;erreur</em> lors de l&#8217;exécution du code.</p>
+</div>
+<div class="paragraph">
+<p>Les principes à appliquer peuvent parfois être empiriques.
+Ils dépendent en général du langage de programmation utilisé
+(toujours initialiser une variable avant de l&#8217;utiliser,
+limiter le nombre de structures de contrôle, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;analyse statique du code est aujourd&#8217;hui souvent intégrée dans
+les outils de développement de base des langages de programmation
+que sont les compilateurs et les IDE.
+Une solution comme SonarQube est un autre exemple d&#8217;outil d&#8217;analyse statique.</p>
+</div>
+<div class="sect2">
+<h3 id="_revue_de_code">Revue de code</h3>
+<div class="paragraph">
+<p>La revue de code est une méthode empirique d&#8217;analyse statique qui consiste
+à faire lire le code source d&#8217;un développeur par une autre développeur.
+Le but est d&#8217;obtenir un point de vue additionel sur la conception et
+l&#8217;implémentation, et ainsi d&#8217;augmenter la qualité du code.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_niveaux_de_granularité">Niveaux de granularité</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Un <strong>test unitaire</strong> teste individuellement une unité de code ;
+il s&#8217;agit en général d&#8217;une fonction ou d&#8217;un objet.
+On s&#8217;intéresse à la <em>plus petite partie testable</em> d&#8217;un logiciel.</p>
+</li>
+<li>
+<p>Un <strong>test d&#8217;intégration</strong> combine différents modules logiciels et les teste
+comme un groupe fonctionnel.</p>
+</li>
+<li>
+<p>Un <strong>test système</strong> est conduit sur un système <em>complet</em> et <em>intégré</em>.
+Il évalue la manière dont les différents groupes fonctionnels communiquent.</p>
+</li>
+<li>
+<p>Un <strong>test de validation</strong> vérifie que le système correspond au besoin exprimé.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Puisque pour tester le logiciel à un niveau toujours plus élevé
+il s&#8217;agit de combiner/intégrer ses différents composants les uns avec les autres,
+il est légitime de se demander dans quel ordre intégrer ces composants.</p>
+</div>
+<div class="paragraph">
+<p>Il existe pour répondre à cette qustion différentes approches.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="resources/tests/dependances.png" alt="Dépendances" width="400px">
+</div>
+<div class="title">Figure 01:Exemple de dépendances</div>
+</div>
+<div class="sect2">
+<h3 id="bottom-up">Approche « bottom-up »</h3>
+<div class="paragraph">
+<p>Avec l&#8217;approche « <strong>bottom-up</strong> », on intègre les composants les uns avec les autres
+en commencant par ceux qui ont le moins de dépendances.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>D&#8217;abord l&#8217;ensemble des composants sans aucune dépendance</p>
+</li>
+<li>
+<p>Ensuite, l&#8217;ensemble des modules qui dépendent d&#8217;un ou plusieurs composants de l&#8217;ensemble précédent</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Et ainsi de suite, jusqu&#8217;à intégrer le (ou les) composant(s) du plus haut niveau.</p>
+</div>
+<div class="paragraph">
+<p>Dans la figure précédente, on intègrerait avec l&#8217;approche « bottom-up »
+d&#8217;abord les composants <em>D</em>, <em>E</em>, <em>G</em> et <em>H</em>, puis seulement <em>F</em> et <em>B</em>, puis ensuite <em>C</em>, et enfin <em>A</em>.</p>
+</div>
+<div class="sect3">
+<h4 id="_avantages_7">Avantages</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Étant donné qu&#8217;on ne commence les tests d&#8217;intégration d&#8217;un composant particulier
+que lorsque les tests d&#8217;intégration de <em>toutes</em> ses dépendances ont réussi,
+cela signifie qu&#8217;une intégration échouée d&#8217;un composant indique que l&#8217;erreur se trouve
+dans ce composant particulier, et pas dans une de ses dépendances.<br>
+Cette approche offre donc une bonne <strong>localisation des erreurs</strong>.</p>
+</li>
+<li>
+<p>Cette approche étant intuitive et correspondant bien souvent à la réalité de la phase de développement
+(où les dépendances d&#8217;un composant sont développées avant le composant lui-même),
+les tests d&#8217;intégration d&#8217;un composant peuvent être réalisés <strong>juste après son développement</strong>.</p>
+</li>
+<li>
+<p>Pour la même raison, cette approche tire parti de la <strong>réutilisabilité</strong> des composants :
+chaque composant est testé avec ses dépendances réelles, elles-mêmes déjà développées et intégrées.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inconvénients_7">Inconvénients</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Les composants de plus haut niveau, qui sont bien souvent ceux qui remplissent directement
+le besoin métier, et donc les seuls qui intéressent vraiment le client, sont testés <strong>en dernier</strong>.
+La qualité du système n&#8217;est donc garantie qu&#8217;à la toute fin.</p>
+</li>
+<li>
+<p>De même, cette approche est tardive à valider la conception du logiciel.
+En effet, plus tardive est le test d&#8217;intégration d&#8217;un composant,
+plus tardif est le fait de vérifier que celui-ci fonctionne comme le prévoit le schéma d&#8217;architecture.</p>
+</li>
+<li>
+<p>Enfin, cette approche nécessite évidemment la présence de modules <strong>sans dépendances</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="top-down">Approche « top-down »</h3>
+<div class="paragraph">
+<p>Avec l&#8217;approche « <strong>top-down</strong> », on intègre les composants les uns avec les autres
+en commencant par celui ou ceux de plus haut niveau.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>D&#8217;abord le composant de plus haut niveau</p>
+</li>
+<li>
+<p>Puis l&#8217;ensemble des composants dont le précédent dépend directement</p>
+</li>
+<li>
+<p>Puis l&#8217;ensemble des dépendances directes de l&#8217;ensemble des composants précédent</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Et ainsi de suite, jusqu&#8217;à intégrer le (ou les) composant(s) qui n&#8217;ont aucune dépendance.</p>
+</div>
+<div class="paragraph">
+<p>Les dépendances d&#8217;un composant particulier sont, avec cette approche, remplacés par des bouchons
+(voir la description du <a href="#model_evolutive">modèle de développement évolutif - itératif</a>).</p>
+</div>
+<div class="paragraph">
+<p>Dans la figure précédente, on intègrerait avec l&#8217;approche « bottom-up »
+d&#8217;abord le composant <em>A</em>, puis <em>B</em> et <em>C</em>, puis seulement <em>D</em>, <em>E</em> et <em>F</em>, puis enfin <em>G</em> et <em>H</em>.</p>
+</div>
+<div class="sect3">
+<h4 id="_avantages_8">Avantages</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Puisqu&#8217;on peut vérifier la qualité des composants les plus importants (fonctionnellement parlant)
+dès le début, cette approche permet un <strong>prototypage rapide</strong> de la solution.</p>
+</li>
+<li>
+<p>La <strong>conception est mise à l&#8217;épreuve</strong>, elle aussi, plus rapidement :
+les besoins des composants de plus haut niveau sont implémentés et éprouvés au fur et à mesure.
+En cas d&#8217;inadéquation entre la réalité et la conception d&#8217;origine,
+cette dernière peut être améliorée sans remettre en cause trop importante de l&#8217;existant.
+Elle offre donc une <strong>flexibilité d&#8217;implémentation</strong> appréciable.</p>
+</li>
+<li>
+<p>De par le recours systématique au bouchonnage, chaque composant est testé <strong>en isolation</strong>,
+ce qui offre une bonne localisation des erreurs.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inconvénients_8">Inconvénients</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Le recours systématique aux bouchons peut être vu comme imposant
+une <strong>charge de développement et de maintenance</strong> un peu plus importante.</p>
+</li>
+<li>
+<p>Le risque est de <strong>négliger les composants de plus bas niveau</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Il est nécessaire de s&#8217;assurer que ceux-ci soient entièrement développés et testés,
+même si ce sont les derniers à l&#8217;être.
+En effet il faut garder à l&#8217;esprit que même si les tests des modules de plus haut niveau sont réussis,
+rien ne garantit qu&#8217;il fonctionneront correctement lorsque les bouchons seront remplacés par leurs
+dépendances réelles.</p>
+</li>
+<li>
+<p>Il est parfois facile d&#8217;oublier de prendre en compte la réutilisabilité des composants.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_autres_approches">Autres approches</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>L&#8217;approche en « <strong>sandwich</strong> » tente de maximiser les avantages des deux approches précédentes
+en intégrant en même temps et indépendamment les composants de haut et de bas niveau.
+En contrepartie, le niveau médian est parfois négligé.</p>
+</li>
+<li>
+<p>L&#8217;approche « <strong>big bang</strong> » intègre tous les composants en même temps.
+Pour des raisons évidentes de complexité, cette approche est difficile à adopter pour les gros projets.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_niveaux_d_accessibilité">Niveaux d&#8217;accessibilité</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Tester un logiciel en mode « <strong>boîte noire</strong> » consiste à en tester le comportement
+sans avoir aucune connaissance concernant son fonctionnement interne.
+Un test « boîte noire » connaît uniquement <em>ce que</em> doit faire le logiciel,
+et pas <em>comment</em> il le fait.<br>
+En mode boite noire, le testeur n&#8217;a à priori pas besoin de savoir programmer.
+Il peut donc apporter un regard différent, mais peut potentiellement fournir
+des efforts inutiles.</p>
+</li>
+<li>
+<p>Un test en mode « <strong>boîte blanche</strong> » nécessite de connaître le fonctionnement
+interne d&#8217;un logiciel ainsi que les structures de données mises en jeu.
+Un tel test accorde autant d&#8217;intérêt aux mécanismes internes d&#8217;un programme
+qu&#8217;aux résultats qu&#8217;il produit.<br>
+L&#8217;analyse statique fonctionne évidemment toujours en mode boîte blanche.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tests_fonctionnels_vs_tests_non_fonctionnels">Tests fonctionnels vs tests non-fonctionnels</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Un test fonctionnel a pour objectif de vérifier la bonne implémentation d&#8217;un <a href="#uml_usecases">cas d&#8217;utilisation</a>. Il est donc fortement lié à un <strong>besoin</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Un test non fonctionnel a pour objectif de vérifier le respect d&#8217;une <strong>contrainte</strong>. Cette contrainte est la plupart du temps technique.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tests_types">Types de tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On peut citer de nombreux types de tests différents.
+Même si elle a vocation à mettre en évidence la diversité des tests possibles à réaliser,
+la liste suivante n&#8217;est pas exhaustive.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tests de <strong>déploiement</strong> / d'<strong>installation</strong> du logiciel dans son environnement de production</p>
+</li>
+<li>
+<p>test de <strong>compatibilité</strong> du logiciel avec d&#8217;autres composants existants</p>
+</li>
+<li>
+<p><strong>smoke tests</strong> / tests de <strong>démarrage</strong> :
+vérifier que le logiciel démarre bien et accomplit ses fonctionnalités minimales</p>
+</li>
+<li>
+<p><strong>soak tests</strong> / <strong>stress tests</strong> / tests de <strong>charge</strong> :
+vérifier que le logiciel continue de remplir le besoin à grande échelle,
+ou en le privant d&#8217;une partie de ses ressources</p>
+</li>
+<li>
+<p><strong>sanity tests</strong> : vérifier si on peut se permettre d&#8217;exécuter le test suivant</p>
+</li>
+<li>
+<p>test de <strong>non-regression</strong> par rapport aux fonctionnalités existantes du logiciel</p>
+</li>
+<li>
+<p>tests <strong>alpha</strong> puis <strong>beta</strong> / <strong>pilote</strong> : sur un panel d&#8217;utilisateurs pré-sélectionnés</p>
+</li>
+<li>
+<p>tests <strong>destructifs</strong> : vérifier si on arrive à détruire tout ou partie des fonctionnalités du logiciel</p>
+</li>
+<li>
+<p>tests de <strong>performance</strong> : vérifier si les contraintes de performance du logiciel sont remplies</p>
+</li>
+<li>
+<p>tests de <strong>sécurité</strong> : vérifier la présence d&#8217;aucune faille de sécurité</p>
+</li>
+<li>
+<p>tests de <strong>concurrence</strong> : vérifier le comportement du logiciel durant une phase d&#8217;activité normale</p>
+</li>
+<li>
+<p>tests d'<strong>usabilité</strong>, tests d'<strong>accessibilité</strong> : voir la qualité d'<a href="#quality_usability">ergonomie</a></p>
+</li>
+<li>
+<p>tests de <strong>localisation</strong> : vérifier que la qualité du logiciel est maintenue pour toutes les cultures</p>
+</li>
+<li>
+<p>tests de <strong>conformité</strong> par rapport à une norme, par exemple en activant tous les warnings du compilateur</p>
+</li>
+<li>
+<p>tests <strong>continuels</strong> : voir le chapitre sur l&#8217;intégration continue</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_caractéristiques_3">Caractéristiques</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Un logiciel étant constitué de la somme de tous ses composants,
+si chacun de ces composants est testé de manière indépendante, exhaustive
+et conforme à sa spécification, la qualité de tout le logiciel est garantie.</p>
+</div>
+<div class="paragraph">
+<p>Afin de se rapprocher au maximum de l&#8217;exhaustivité, les tests d&#8217;une application
+doivent être les plus détaillés possibles.</p>
+</div>
+<div class="paragraph">
+<p>Idéalement, chaque test devrait être indépendant des autres.
+Par extension, cela signifie que le périmètre de chaque test devrait être limité.
+Cependant, au sein de ce périmètre, le test doit être le plus détaillé possible.</p>
+</div>
+<div class="sect2">
+<h3 id="_déroulement">Déroulement</h3>
+<div class="sect3">
+<h4 id="_situation_initiale_em_given_em">Situation initiale (« <em>given</em> »)</h4>
+<div class="paragraph">
+<p>Il s&#8217;agit de l&#8217;état dans lequel se trouve le système avant
+d&#8217;appliquer le comportement décrit par le test.</p>
+</div>
+<div class="paragraph">
+<p>La situation initiale d&#8217;un test correspond à ses <strong>pré-conditions</strong>:
+les données en entrées et/ou une suite de commandes de <strong>mise en place</strong> (<em>setup</em>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_action_em_when_em">Action (« <em>when</em> »)</h4>
+<div class="paragraph">
+<p>Il s&#8217;agit d&#8217;une suite d&#8217;événements (actions utilisateur, message réseau, &#8230;&#8203;)
+appliqués au système à partir de la situation initiale.</p>
+</div>
+<div class="paragraph">
+<p>Ce comportement appliqué se traduit souvent par une commande (ou une suite de commandes)
+visant à amener le système de la situation initiale vers une situation attendue correspondante.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_situation_attendue_em_then_em">Situation attendue (« <em>then</em> »)</h4>
+<div class="paragraph">
+<p>Il s&#8217;agit de l&#8217;état dans lequel doit se trouver le système après avoir appliqué
+le comportement décrit à partir de la situation initiale.</p>
+</div>
+<div class="paragraph">
+<p>Si la situation réelle (ou situation observée) est différente de la situation attendue, le test <em>doit</em> échouer.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_qualités">Qualités</h3>
+<div class="sect3">
+<h4 id="_isolation">Isolation</h4>
+<div class="sect4">
+<h5 id="_isolation_de_l_élément_testé">Isolation de l&#8217;élément testé</h5>
+<div class="paragraph">
+<p>Afin de minimiser les effets de bords indésirables lors des tests,
+il est préférable que l&#8217;élément à tester le soit en isolation ;
+c&#8217;est à dire, en remplaçant ses dépendances par des objets spécifiquement créés pour le test.
+Ces objets spécifiques sont à priori bien plus simples, et donc exempts de dysfonctionnements, que leurs équivalents « réels ».</p>
+</div>
+<div class="paragraph">
+<p>Cette manière de tester est similaire à l&#8217;approche <a href="#top-down">« top-down »</a> vue précédement.
+En pratique, il est cependant souvent nécessaire de trouver le bon compromis en ce qui concerne le niveau d&#8217;étanchéité des tests :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Une étanchéité totale des tests isole parfaitement chaque élément testé.
+Un échec à un tel test localise automatiquement l&#8217;anomalie dans l&#8217;élement en question, puisqu&#8217;aucune de ses dépendances n&#8217;est utilisée.
+Cependant, en raison de la multiplicité des objets de tests spécifiques, le code de test correspondant peut être difficile à maintenir.</p>
+</li>
+<li>
+<p>Ne tester aucun composant en isolation garantit à priori de gagner du temps, puisque tout les éléments de code produits sont utilisés en production.
+Cependant, en cas de test(s) en échec, l&#8217;analyse est complexe, puisque l&#8217;anomalie peut se trouver non seulement dans l&#8217;objet testé,
+mais aussi dans n&#8217;importe laquelle de ses dépendances, ou encore dans les interactions entre ces différents éléments.</p>
+</li>
+</ul>
+</div>
+<div class="sect5">
+<h6 id="_objets_spécifiques_à_un_contexte_de_test">Objets spécifiques à un contexte de test</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>Un <em>dummy</em> est un objet sans aucun comportement, qui peut être utilisé par exemple pour compléter une liste de paramètres d&#8217;appel.
+Le comportement de l&#8217;objet remplacé ne doit avoir aucune influence sur le déroulement du test.</p>
+</li>
+<li>
+<p>Un <em>stub</em> (ou <em>bouchon</em>) est un objet dont le retour est pré-programmé, et est à priori toujours le même.
+Le <em>stub</em> a un comportement peu complexe.</p>
+</li>
+<li>
+<p>Un <em>fake</em> s&#8217;apparente à un <em>stub</em> dont le comportement est plus complexe.
+Le comportement d&#8217;un <em>fake</em> est censé se rapprocher de celui d&#8217;un objet ou d&#8217;un groupe d&#8217;objets utilisés en production.
+Cependant, un <em>fake</em> est bel est bien un objet à n&#8217;utiliser que dans un contexte de tests, et ne doit jamais être utilisé en production !</p>
+</li>
+<li>
+<p>Un <em>spy</em> est un <em>stub</em> qui offre des fonctionnalités d&#8217;analyse.
+Il permet par exemple de logger des informations supplémentaires quand on l&#8217;utilise, ou d&#8217;accumuler certaines métriques sur son utilisation.</p>
+</li>
+<li>
+<p>Un <em>mock</em> est un objet dont le comportement est pré-programmé.
+Un <em>mock</em> provoque une erreur si il est utilisé en dehors de ce comportement.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_isolation_des_tests_entre_eux">Isolation des tests entre eux</h5>
+<div class="paragraph">
+<p>Chaque test devrait pouvoir être exécuté de manière indépendante, en autonomie.
+De plus, si plusieurs tests sont exécutés (ie. sous forme de <strong>suite</strong> de tests),
+leur séquencement devrait pouvoir changer d&#8217;une exécution à l&#8217;autre sans altérer le résultat de chaque test.</p>
+</div>
+<div class="paragraph">
+<p>En effet, si un test <code>T</code> dépend de l&#8217;exécution préalable d&#8217;un autre test <code>P</code> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>si <code>P</code> et <code>T</code> échouent, l&#8217;échec de <code>T</code> est-il du uniquement à l&#8217;échec de <code>P</code>, ou à un ou plusieurs autres problèmes propres à <code>T</code> ?</p>
+</li>
+<li>
+<p>si <code>P</code> échoue mais que <code>T</code> réussit, la situation est-elle normale ?
+<code>T</code> ne devrait-il pas échouer aussi, puisque sa précondition, <code>P</code>, n&#8217;est pas remplie ?</p>
+</li>
+<li>
+<p>cette dépendance de <code>T</code> envers <code>P</code> reflète-t-elle vraiment la spécification ?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Toutes ces questions compliquent fortement l&#8217;analyse et donc la maintenance du système.
+Dans la situation précédement décrite, il est préférable de considérer <code>P</code>,
+non pas comme un test indépendant, mais comme faisant partie de la mise en place de <code>T</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_fixtures">Fixtures</h5>
+<div class="paragraph">
+<p>La plupart des frameworks de test proposent au moins deux fonctions spécifiques, appelées <strong>fixtures</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>une fonction <code>setUp</code> destinée à regrouper les commandes de mise en place d&#8217;un contexte
+(ie. d&#8217;une sitation initiale) commun à tous les tests d&#8217;une suite donnée.
+Cette fonction est systématiquement appelée avant chaque test de la suite.</p>
+</li>
+<li>
+<p>une fonction <code>tearDown</code> destinée à regrouper les commandes de "nettoyage",
+permettant aux autres tests de la suite de repartir d&#8217;une situation initiale saine.
+Cette fonction est systématiquement appelée après chaque test de la suite.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note example">
+<table>
+<tr>
+<td class="icon">
+<div class="title"></div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Voici certaines opérations qui sont typiquement à faire dans une fonction <code>setUp</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Créer une base de données de test spécifique, différente de la base de données de production.
+Cela peut permettre de préserver la sécurité du système (la base contient de "fausses" informations),
+de diminuer le temps d&#8217;exécution des tests (la base de test est plus légère que la base de prodution),
+ou tout simplement de rendre leur exécution possible (si le format des données de production est difficilement reproductible).</p>
+</li>
+<li>
+<p>Créer un certain nombre de fichiers (réels ou virtuels).
+Si les fichiers sont créés sur le disque, ils devront évidemment être supprimés par la fonction <code>tearDown</code>.</p>
+</li>
+<li>
+<p>Formatter un disque et installer un système d&#8217;exploitation propre.
+Cela permet de garantir un contexte d&#8217;exécution des tests sain.</p>
+</li>
+<li>
+<p>Acquisition d&#8217;un device.
+Ce device devra évidemment être libéré par la fonction <code>tearDown</code>.</p>
+</li>
+<li>
+<p>Préparation des données servant au tests sous forme de fakes/stubs/mocks.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_déterminisme">Déterminisme</h4>
+<div class="paragraph">
+<p>Le résultat d&#8217;un test doit être systématique.
+Tant qu&#8217;aucun changement n&#8217;est apporté, un test réussi doit rester réussi, et un test en échec doit rester en échec.</p>
+</div>
+<div class="paragraph">
+<p>Un test déterministe permet de garantir, via entre autres l&#8217;usage de bouchons, de mocks et d&#8217;une implémentation en isolation,
+qu&#8217;une anomalie constatée est reproductible, et donc qu&#8217;elle peut être corrigée.</p>
+</div>
+<div class="admonitionblock note example">
+<table>
+<tr>
+<td class="icon">
+<div class="title"></div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>De nombreux éléments peuvent rendre un test non déterministe.
+Par exemple :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>la génération de variables aléatoires (<em>random</em>)</p>
+</li>
+<li>
+<p>les <em>threads</em></p>
+</li>
+<li>
+<p>les appels systèmes : date/heure, internationalisation, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_exhaustivité">Exhaustivité</h4>
+<div class="paragraph">
+<p>Un test unitaire étant la validation d&#8217;un comportement spécifique, il n&#8217;est par nature qu&#8217;un indicateur partiel de qualité.
+Seule l&#8217;exhaustivité des tests permet donc de garantir la qualité globale d&#8217;un système.</p>
+</div>
+<div class="paragraph">
+<p>Il est en pratique nécessaire de tester <em>tous</em> les élements suivants :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>les cas nominaux, testant la capacité fonctionnelle du système en regard de sa spécification</p>
+</li>
+<li>
+<p>les cas d&#8217;erreur, ou la façon dont le système réagit aux entrées imprévues</p>
+</li>
+<li>
+<p>différentes types d&#8217;inputs, notamment les cas limites</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En pratique, il est indispensable de créer un ou plusieurs nouveaux tests dès qu&#8217;une anomalie (eg. une régression) est constatée !</p>
+</div>
+<div class="sect4">
+<h5 id="_couverture_de_code">Couverture de code</h5>
+<div class="paragraph">
+<p>Tester le niveau de couverture du code offre un bon indicateur sur l&#8217;exhaustivité avec laquelle le code de tests vérifie le code source.</p>
+</div>
+<div class="paragraph">
+<p>Il existe différent niveau de granularité de couverture de code :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>vérifier que toutes les fonctions sont appelées</p>
+</li>
+<li>
+<p>vérifier que toutes les instructions sont exécutées</p>
+</li>
+<li>
+<p>pour chaque structure de contrôle, vérifier que tous les chemins d&#8217;exécutions sont empruntés</p>
+</li>
+<li>
+<p>pour chaque expression booléenne, vérifier que toutes les opérandes contribuent à son évaluation</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_intégration_continue" class="sect0">Intégration continue</h1>
+<div class="openblock partintro">
+<div class="content">
+<div id="continuous_integration" class="paragraph">
+<p>L&#8217;intégration continue permet de builder, tester et, éventuellement, livrer et déployer un ou plusieurs systèmes
+et ce, de manière <strong>automatique</strong>, <strong>fiable</strong> et <strong>systématique</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Voici à quoi ressemble le workflow typique d&#8217;un développeur travaillant avec un serveur d&#8217;intégration continue.
+Partons du principe que le développeur doit implémenter une nouvelle fonctionnalité <code>F</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>D&#8217;abord, le développeur met à jour sa copie locale avec le code issue du dépôt de sources central</p>
+</li>
+<li>
+<p>Ensuite, il implémente <code>F</code>, en codant à la fois.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>la fonctionnalité <code>F</code> proprement dite</p>
+</li>
+<li>
+<p>le code testant l&#8217;implémentation de <code>F</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Ensuite, il effectue un build local.
+Ce build effectue non seulement la phase habituelle de compilation, mais exécute aussi les tests.</p>
+</li>
+<li>
+<p>Si les tests sont OK, il peut mettre à jour sa copie locale.
+En effet, d&#8217;autres développeurs ont très bien pu modifier le code du dépôt central pendant qu&#8217;il implémentait <code>F</code>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Si il y a des nouveautés, le développeur les fusionne (<em>merge</em>) dans les siennes.
+Puis, il retourne à l&#8217;étape <em>3</em>.</p>
+</li>
+<li>
+<p>Sinon, il commite son implémentation de <code>F</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Suite à ce commit, l&#8217;intégration continue va automatiquement builder le système (et donc lancer les tests).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Si le build échoue, le développeur doit corriger le problème qui fait que son build passe localement,
+mais qu&#8217;il échoue sur le serveur. Donc : retour à l&#8217;étape <em>2</em>.</p>
+</li>
+<li>
+<p>Si le build passe, et seulement alors, <code>F</code> peut être considérée comme finie d&#8217;être implémentée !</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Afin d&#8217;en arriver là, il est nécessaire de prendre en compte plusieurs points en termes
+de configuration du serveur d&#8217;intégration continue,
+du mécanisme de build proprement dit,
+de la manière dont les développeur vont commiter,
+et de la visibilité offerte par l&#8217;intégration continue.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration">Configuration</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Une intégration continue nécessite l&#8217;usage impératif d&#8217;un gestionnaire de sources.
+Le gestionnaire de source choisi dépend des préférences de l&#8217;équipe de développement.
+Cependant, il est important qu&#8217;une seule branche de référence soit identifiée.
+C&#8217;est cette branche, appelée <em>master</em>, qui servira pour la livraison.</p>
+</li>
+<li>
+<p>De la même manière, il est nécessaire d&#8217;avoir un serveur d&#8217;intégration continue.
+Ce serveur d&#8217;intégration continue doit :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>avoir accès à tout le nécessaire pour builder et tester entièrement le projet.</p>
+</li>
+<li>
+<p>fournir le maximum d&#8217;outils aux membres de l&#8217;équipe de développement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_build">Build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Le build doit impérativement être automatique.
+En d&#8217;autre termes, cela signifie que toute modification du système doit systématiquement déclencher un build.</p>
+</div>
+<div class="paragraph">
+<p>Les bénéfices sont multiples :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Le mécanisme de build peut être très complexe :
+nécessitant de nombreuses dépendances,
+découpée en nombreuses phases conditionnelles,
+visant plusieurs plateformes différentes,
+intégrant une pipeline de déploiement &#8230;&#8203;
+Toute automatisation de ce processus est cela de moins à gérer par l&#8217;équipe de développement.</p>
+</li>
+<li>
+<p>Un build automatique est la meilleure manière de se préserver des erreurs humaines.</p>
+</li>
+<li>
+<p>L&#8217;exécution des tests fait partie intégrante du build.</p>
+</li>
+<li>
+<p>Un serveur d&#8217;intégration continue peut être configuré pour ne builder que le nécessaire
+(c&#8217;est à dire uniquement ce qui a été modifié, ainsi que ce qui en dépend).
+Cela améliore la rapidité avec laquelle le produit peut être livrée.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_commits">Commits</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Un bon usage quotidien d&#8217;un serveur d&#8217;intégration se traduit par une discipline de modification du code résumée par l&#8217;axiome <em>« commit early, commit often »</em> : cela signifie que toute modification devrait être commitée, de la manière la plus immédiate et la plus atomique possible.</p>
+</div>
+<div class="paragraph">
+<p>Les bénéfices sont les suivants :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Si un ou plusieurs tests sont en échec suite à un commit de quelques lignes,
+l&#8217;erreur est plus facile à analyser et à corriger que si le commit fesait des dizaine de lignes ou davantage.</p>
+</li>
+<li>
+<p>Se forcer à commiter souvent favorise en général un meilleur découpage du code, et donc une meilleure conception.</p>
+</li>
+<li>
+<p>Commiter souvent de manière utile permet d&#8217;enrichir l&#8217;historique maintenue par le gestionnaire de sources,
+ce qui facilite l&#8217;analyse lors de corrections ou d&#8217;évolutions futures.
+Ce dernier point suppose évidemment la présence de commentaires de commits informatifs.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_visibilité">Visibilité</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>L&#8217;intégration continue permet la transparence.</p>
+</div>
+<div class="paragraph">
+<p>Transparent pour les membres de l&#8217;équipe de développement eux-mêmes, qui savent de manière permanente où ils vont,
+car ils profitent à la fois du feedback du client mais aussi de celui de leur intégration continue.</p>
+</div>
+<div class="paragraph">
+<p>Cela signifie aussi de se rendre visible à l&#8217;extérieur de l&#8217;équipe de développement,
+par exemple en rendant les artefacts disponibles aux endroits appropriés à ceux qui en ont besoin.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-01-23 16:00:00 UTC
+</div>
+</div>
+</body>
+</html>
