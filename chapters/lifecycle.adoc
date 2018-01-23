@@ -2,8 +2,6 @@
 :imagesdir: resources/lifecycle
 
 [[chapter_lifecycle]]
-= Cycle de vie
-
 == Phases d'existence
 
 [[lifecycle_analysis]]

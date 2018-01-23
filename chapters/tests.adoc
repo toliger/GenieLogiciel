@@ -1,3 +1,4 @@
+== Tests
 
 :imagesdir: resources/tests
 
@@ -19,7 +20,7 @@ dans la plupart des modèles de développement, comme le <<model_v,cycle en V>>.
 
 
 
-== Analyse statique
+=== Analyse statique
 
 L'*analyse statique* du code (_sans_ l'exécuter) permet d'obtenir
 une idée du comportement qu'il aura lors de son exécution.
@@ -39,7 +40,7 @@ les outils de développement de base des langages de programmation
 que sont les compilateurs et les IDE.
 Une solution comme SonarQube est un autre exemple d'outil d'analyse statique.
 
-=== Revue de code
+==== Revue de code
 
 La revue de code est une méthode empirique d'analyse statique qui consiste
 à faire lire le code source d'un développeur par une autre développeur.
@@ -48,7 +49,7 @@ l'implémentation, et ainsi d'augmenter la qualité du code.
 
 
 
-== Niveaux de granularité
+=== Niveaux de granularité
 
 * Un *test unitaire* teste individuellement une unité de code ;
   il s'agit en général d'une fonction ou d'un objet.
@@ -68,7 +69,7 @@ Il existe pour répondre à cette qustion différentes approches.
 image::dependances.png[caption="Figure 01:", 400px, title="Exemple de dépendances", alt="Dépendances"]
 
 [[bottom-up]]
-=== Approche « bottom-up »
+==== Approche « bottom-up »
 
 Avec l'approche « *bottom-up* », on intègre les composants les uns avec les autres
 en commencant par ceux qui ont le moins de dépendances.
@@ -81,7 +82,7 @@ Et ainsi de suite, jusqu'à intégrer le (ou les) composant(s) du plus haut nive
 Dans la figure précédente, on intègrerait avec l'approche « bottom-up »
 d'abord les composants _D_, _E_, _G_ et _H_, puis seulement _F_ et _B_, puis ensuite _C_, et enfin _A_.
 
-==== Avantages
+===== Avantages
 
 * Étant donné qu'on ne commence les tests d'intégration d'un composant particulier
   que lorsque les tests d'intégration de _toutes_ ses dépendances ont réussi,
@@ -94,7 +95,7 @@ d'abord les composants _D_, _E_, _G_ et _H_, puis seulement _F_ et _B_, puis ens
 * Pour la même raison, cette approche tire parti de la *réutilisabilité* des composants :
   chaque composant est testé avec ses dépendances réelles, elles-mêmes déjà développées et intégrées.
 
-==== Inconvénients
+===== Inconvénients
 
 * Les composants de plus haut niveau, qui sont bien souvent ceux qui remplissent directement
   le besoin métier, et donc les seuls qui intéressent vraiment le client, sont testés *en dernier*.
@@ -105,7 +106,7 @@ d'abord les composants _D_, _E_, _G_ et _H_, puis seulement _F_ et _B_, puis ens
 * Enfin, cette approche nécessite évidemment la présence de modules *sans dépendances*.
 
 [[top-down]]
-=== Approche « top-down »
+==== Approche « top-down »
 
 Avec l'approche « *top-down* », on intègre les composants les uns avec les autres
 en commencant par celui ou ceux de plus haut niveau.
@@ -122,7 +123,7 @@ Les dépendances d'un composant particulier sont, avec cette approche, remplacé
 Dans la figure précédente, on intègrerait avec l'approche « bottom-up »
 d'abord le composant _A_, puis _B_ et _C_, puis seulement _D_, _E_ et _F_, puis enfin _G_ et _H_.
 
-==== Avantages
+===== Avantages
 
 * Puisqu'on peut vérifier la qualité des composants les plus importants (fonctionnellement parlant)
   dès le début, cette approche permet un *prototypage rapide* de la solution.
@@ -134,7 +135,7 @@ d'abord le composant _A_, puis _B_ et _C_, puis seulement _D_, _E_ et _F_, puis 
 * De par le recours systématique au bouchonnage, chaque composant est testé *en isolation*,
   ce qui offre une bonne localisation des erreurs.
 
-==== Inconvénients
+===== Inconvénients
 
 * Le recours systématique aux bouchons peut être vu comme imposant
   une *charge de développement et de maintenance* un peu plus importante.
@@ -146,7 +147,7 @@ d'abord le composant _A_, puis _B_ et _C_, puis seulement _D_, _E_ et _F_, puis 
    dépendances réelles.
 ** Il est parfois facile d'oublier de prendre en compte la réutilisabilité des composants.
 
-=== Autres approches
+==== Autres approches
 
 * L'approche en « *sandwich* » tente de maximiser les avantages des deux approches précédentes
   en intégrant en même temps et indépendamment les composants de haut et de bas niveau.
@@ -156,7 +157,7 @@ d'abord le composant _A_, puis _B_ et _C_, puis seulement _D_, _E_ et _F_, puis 
 
 
 
-== Niveaux d'accessibilité
+=== Niveaux d'accessibilité
 
 * Tester un logiciel en mode « *boîte noire* » consiste à en tester le comportement
   sans avoir aucune connaissance concernant son fonctionnement interne.
@@ -173,7 +174,7 @@ d'abord le composant _A_, puis _B_ et _C_, puis seulement _D_, _E_ et _F_, puis 
 
 
 
-== Tests fonctionnels vs tests non-fonctionnels
+=== Tests fonctionnels vs tests non-fonctionnels
 
 Un test fonctionnel a pour objectif de vérifier la bonne implémentation d'un <<uml_usecases,cas d'utilisation>>. Il est donc fortement lié à un *besoin*.
 
@@ -181,7 +182,7 @@ Un test non fonctionnel a pour objectif de vérifier le respect d'une *contraint
 
 
 [[tests_types]]
-== Types de tests
+=== Types de tests
 
 On peut citer de nombreux types de tests différents.
 Même si elle a vocation à mettre en évidence la diversité des tests possibles à réaliser,
@@ -208,7 +209,7 @@ la liste suivante n'est pas exhaustive.
 
 
 
-== Caractéristiques
+=== Caractéristiques
 
 Un logiciel étant constitué de la somme de tous ses composants,
 si chacun de ces composants est testé de manière indépendante, exhaustive
@@ -221,9 +222,9 @@ Idéalement, chaque test devrait être indépendant des autres.
 Par extension, cela signifie que le périmètre de chaque test devrait être limité.
 Cependant, au sein de ce périmètre, le test doit être le plus détaillé possible.
 
-=== Déroulement
+==== Déroulement
 
-==== Situation initiale (« _given_ »)
+===== Situation initiale (« _given_ »)
 
 Il s'agit de l'état dans lequel se trouve le système avant
 d'appliquer le comportement décrit par le test.
@@ -231,7 +232,7 @@ d'appliquer le comportement décrit par le test.
 La situation initiale d'un test correspond à ses *pré-conditions*:
 les données en entrées et/ou une suite de commandes de *mise en place* (_setup_).
 
-==== Action (« _when_ »)
+===== Action (« _when_ »)
 
 Il s'agit d'une suite d'événements (actions utilisateur, message réseau, ...)
 appliqués au système à partir de la situation initiale.
@@ -239,18 +240,18 @@ appliqués au système à partir de la situation initiale.
 Ce comportement appliqué se traduit souvent par une commande (ou une suite de commandes)
 visant à amener le système de la situation initiale vers une situation attendue correspondante.
 
-==== Situation attendue (« _then_ »)
+===== Situation attendue (« _then_ »)
 
 Il s'agit de l'état dans lequel doit se trouver le système après avoir appliqué
 le comportement décrit à partir de la situation initiale.
 
 Si la situation réelle (ou situation observée) est différente de la situation attendue, le test _doit_ échouer.
 
-=== Qualités
+==== Qualités
 
-==== Isolation
+===== Isolation
 
-===== Isolation de l'élément testé
+====== Isolation de l'élément testé
 
 Afin de minimiser les effets de bords indésirables lors des tests,
 il est préférable que l'élément à tester le soit en isolation ;
@@ -281,7 +282,7 @@ En pratique, il est cependant souvent nécessaire de trouver le bon compromis en
 * Un _mock_ est un objet dont le comportement est pré-programmé.
   Un _mock_ provoque une erreur si il est utilisé en dehors de ce comportement.
 
-===== Isolation des tests entre eux
+====== Isolation des tests entre eux
 
 Chaque test devrait pouvoir être exécuté de manière indépendante, en autonomie.
 De plus, si plusieurs tests sont exécutés (ie. sous forme de *suite* de tests),
@@ -298,7 +299,7 @@ Toutes ces questions compliquent fortement l'analyse et donc la maintenance du s
 Dans la situation précédement décrite, il est préférable de considérer `P`,
 non pas comme un test indépendant, mais comme faisant partie de la mise en place de `T`.
 
-===== Fixtures
+====== Fixtures
 
 La plupart des frameworks de test proposent au moins deux fonctions spécifiques, appelées *fixtures* :
 
@@ -327,7 +328,7 @@ Voici certaines opérations qui sont typiquement à faire dans une fonction `set
 
 ====
 
-==== Déterminisme
+===== Déterminisme
 
 Le résultat d'un test doit être systématique.
 Tant qu'aucun changement n'est apporté, un test réussi doit rester réussi, et un test en échec doit rester en échec.
@@ -346,7 +347,7 @@ Par exemple :
 
 ====
 
-==== Exhaustivité
+===== Exhaustivité
 
 Un test unitaire étant la validation d'un comportement spécifique, il n'est par nature qu'un indicateur partiel de qualité.
 Seule l'exhaustivité des tests permet donc de garantir la qualité globale d'un système.
@@ -359,7 +360,7 @@ Il est en pratique nécessaire de tester _tous_ les élements suivants :
 
 En pratique, il est indispensable de créer un ou plusieurs nouveaux tests dès qu'une anomalie (eg. une régression) est constatée !
 
-===== Couverture de code
+====== Couverture de code
 
 Tester le niveau de couverture du code offre un bon indicateur sur l'exhaustivité avec laquelle le code de tests vérifie le code source.
 

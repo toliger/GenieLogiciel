@@ -1,4 +1,5 @@
-﻿
+﻿== Planification
+
 :imagesdir: resources/pert
 
 Le rôle principal d'un chef de projet est d'organiser l'usage des différentes ressources à sa disposition
@@ -18,7 +19,7 @@ Le diagramme PERT/CPM et le diagramme de Gantt sont deux techniques largement ut
 Ces deux types de diagrammes permettent de coordonner des tâches plus ou moins séquentielles
 avec pour objectif d'obtenir une prévision réaliste des délais et des coûts.
 
-== PERT/CPM
+=== PERT/CPM
 
 PERT/CPM permet de mettre en évidence :
 
@@ -27,7 +28,7 @@ PERT/CPM permet de mettre en évidence :
 * trois estimations (optimiste, pessimiste, réaliste) de la durée des tâches
 * la marge des tâches et du projet qu'elles composent
 
-=== Caractéristiques d'une tâche
+==== Caractéristiques d'une tâche
 Chaque tâche `T` offre les caractéristiques suivantes :
 
 * *Durée* : Durée `D(T)` nécessaire à la réalisation de la tâche considérée.
@@ -53,7 +54,7 @@ image::task.png[caption="Figure 01:", title="Tâche PERT/CPM", alt="Example de r
 
 image::chart.png[caption="Figure 02:", title="Diagramme PERT/CPM", alt="PERT/CPM"]
 
-==== Chemin critique
+===== Chemin critique
 
 Une tâche dont la marge est égale à 0 est considérée comme *critique*.
 Cela signifie que le moindre retard dans la réalisation de cette tâche retardera d'autant le projet complet.
@@ -62,13 +63,13 @@ Le *chemin critique* est le chemin le plus long du diagramme de PERT.
 Toutes les tâches du chemin critique ont la même marge (éventuellement 0, mais pas forcément).
 Si une tâche du chemin critique accuse davantage de retard que sa marge, tout le projet sera retardé d'autant.
 
-==== Jalons
+===== Jalons
 
 Il peut être pertinent de créer dans un diagramme de PERT des *jalons*.
 Un jalon est typiquement une tâche "virtuelle" dont la durée est égale à 0.
 Elle marque (et permet de contrôler) un moment important de l'avancement d'un projet.
 
-==== Topologie
+===== Topologie
 
 * Y a t'il exactement un tâche de début et une tâche de fin ?
 * Toutes les tâches ont-elles au moins un prédecesseur et un successeur ?
@@ -78,7 +79,7 @@ image::error-1.png[caption="Figure 03.1:", title="Transition redondante", alt="R
 
 image::error-2.png[caption="Figure 03.2:", title="Création d'un jalon", alt="Simplification"]
 
-=== Démarche pas à pas
+==== Démarche pas à pas
 
 1. *Identifier* _toutes_ les tâches à réaliser, sans négliger certaines tâches "annexes" :
 ** Le projet nécessite-t-il des technologies non maîtrisées en interne (besoins en formation, en procédure d'achat, ...) ?
@@ -104,7 +105,7 @@ image::error-2.png[caption="Figure 03.2:", title="Création d'un jalon", alt="Si
 ** affectation des ressources matérielles nécessaires
 ** affectation de davantage de (ou de meilleures) ressources sur les tâches critiques
 
-== Gantt
+=== Gantt
 
 Comparé à un diagramme de PERT/CPM, un diagramme de Gantt est peut-être plus simple à appréhender.
 Il a comme avantage de permettre de clairement visualiser les dates de début et de fin,

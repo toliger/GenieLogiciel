@@ -1,4 +1,5 @@
 ﻿[[continuous_integration]]
+== Intégration continue
 
 L'intégration continue permet de builder, tester et, éventuellement, livrer et déployer un ou plusieurs systèmes
 et ce, de manière *automatique*, *fiable* et *systématique*.
@@ -28,7 +29,7 @@ du mécanisme de build proprement dit,
 de la manière dont les développeur vont commiter,
 et de la visibilité offerte par l'intégration continue.
 
-== Configuration
+=== Configuration
 
 * Une intégration continue nécessite l'usage impératif d'un gestionnaire de sources.
   Le gestionnaire de source choisi dépend des préférences de l'équipe de développement.
@@ -39,7 +40,7 @@ et de la visibilité offerte par l'intégration continue.
 ** avoir accès à tout le nécessaire pour builder et tester entièrement le projet.
 ** fournir le maximum d'outils aux membres de l'équipe de développement.
 
-== Build
+=== Build
 
 Le build doit impérativement être automatique.
 En d'autre termes, cela signifie que toute modification du système doit systématiquement déclencher un build.
@@ -58,7 +59,7 @@ Les bénéfices sont multiples :
   (c'est à dire uniquement ce qui a été modifié, ainsi que ce qui en dépend).
   Cela améliore la rapidité avec laquelle le produit peut être livrée.
 
-== Commits
+=== Commits
 
 Un bon usage quotidien d'un serveur d'intégration se traduit par une discipline de modification du code résumée par l'axiome _« commit early, commit often »_ : cela signifie que toute modification devrait être commitée, de la manière la plus immédiate et la plus atomique possible.
 
@@ -71,7 +72,7 @@ Les bénéfices sont les suivants :
   ce qui facilite l'analyse lors de corrections ou d'évolutions futures.
   Ce dernier point suppose évidemment la présence de commentaires de commits informatifs.
 
-== Visibilité
+=== Visibilité
 
 L'intégration continue permet la transparence.
 

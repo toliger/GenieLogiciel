@@ -12,19 +12,11 @@ include::chapters/quality.adoc[]
 
 include::chapters/lifecycle.adoc[]
 
-= Planification
-
 include::chapters/pert.adoc[]
-
-= Modélisation UML
 
 include::chapters/uml.adoc[]
 
-= Tests
-
 include::chapters/tests.adoc[]
-
-= Intégration continue
 
 include::chapters/ci.adoc[]
 

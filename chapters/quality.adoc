@@ -2,7 +2,7 @@
 :imagesdir: resources/quality
 
 [[chapter_quality]]
-= Qualité d'un logiciel
+== Qualité d'un logiciel
 
 Lorsqu'on parle de la qualité d'un logiciel, on parle en fait de plusieurs *caractéristiques*
 différentes, elles-mêmes décomposées en sous-caractéristiques (ou attributs).
@@ -23,7 +23,7 @@ les documents d'architecture, et ainsi de suite.
 En conséquence, la notion d'_utilisateur_ peut elle aussi s'appliquer, suivant la caractéristique
 et/ou le logiciel considéré, à un client ou à un développeur, par exemple.
 
-== Caractéristiques
+=== Caractéristiques
 
 * *Capacité fonctionnelle* (Functional suitability) +
   Est-ce que le logiciel répond aux besoins fonctionnels exprimés ?
@@ -125,7 +125,7 @@ et/ou le logiciel considéré, à un client ou à un développeur, par exemple.
 ** _Authentification_ (Authenticity) +
    Est-ce que le logiciel peut empêcher une identité d'être usurpée ?
 
-== La « Sur-qualité »
+=== La « Sur-qualité »
 
 On appelle parfois « sur-qualité » le fait de réaliser une fonctionnalité
 alors que celle-ci n'est pas <<lifecycle_specification,spécifiée>>.

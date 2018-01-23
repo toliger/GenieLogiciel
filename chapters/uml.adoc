@@ -1,16 +1,15 @@
+== Modélisation UML
 
 :imagesdir: resources/uml
 
-== Diagrammes statiques
+=== Diagrammes statiques
 
-Les diagrammes de cette section modélisent des éléments
-de manière statique.
-Ils ne s'occupent pas des aspects dynamiques (déroulement du temps,
-enchaînement d'opérations, ...).
+Les diagrammes de cas d'utilisation ainsi que les diagrammes de classes et les diagrammes d'objets sont des *diagrammes statiques*.
 
-Quand ce qui est à modéliser est complexe,
-il vaut mieux dresser plusieurs diagrammes complémentaires,
-chacun se focalisant sur un aspect particulier.
+Ces diagrammes modélisent des éléments de manière statique.
+Ils ne s'occupent pas des aspects dynamiques (déroulement du temps, enchaînement d'opérations, ...).
+
+Quand ce qui est à modéliser est complexe, il vaut mieux dresser plusieurs diagrammes complémentaires, chacun se focalisant sur un aspect particulier.
 Par exemple: la structure hiérarchique des différents éléments, leur regroupement logique, l'état du système à un instant T, la manière dont les éléments collaborent entre eux, et ainsi de suite.
 
 Souvent, même se focaliser sur un aspect particulier est trop complexe pour résumer cet aspect en un seul diagramme.
@@ -268,7 +267,6 @@ image::association_composition.png[caption="Figure 08.2:", title="Composition", 
 
 
 
-== Diagrammes dynamiques
 
 === Syntaxe des messages
 
