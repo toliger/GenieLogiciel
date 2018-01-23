@@ -8,7 +8,7 @@ image::https://ent.unistra.fr/uPortal/media/skins/universality/blunistra/images/
 == Description
 
 Ce document constitue un https://wiztigers.github.io/GenieLogiciel/[support de cours] de génie logiciel, enseigné depuis l'année scolaire 2016-2017 à l'https://www.unistra.fr/[Université de Strasbourg]. +
-Vous pouvez le consulter https://wiztigers.github.io/GenieLogiciel/[en suivant le lien suivant].
+Il est consultable *directement en ligne à l'aide des liens suivants*: [https://wiztigers.github.io/GenieLogiciel/[html]] [https://wiztigers.github.io/GenieLogiciel/GenieLogiciel.pdf[pdf]].
 
 Les objectifs en termes de connaissances et de compétences à acquérir par l'étudiant lors de ce cours sont les suivantes :
 

@@ -4,6 +4,7 @@ before_install:
   - gem install compass zurb-foundation # CSS stylesheets generation
   - gem install prawn -v 2.1.0
   - gem install asciidoctor # HTML generation
+  - gem install asciidoctor-pdf --pre # PDF generation
 
 script:
   # create export dir from website branch
@@ -13,6 +14,12 @@ script:
   # commit the new website version and push it
   - cd gh-pages; git config user.name "travis-ci"; git config user.email "this@is-not.travis"
   - git add .; git commit --author="${GITHUB_USER_NAME} <${GITHUB_USER_EMAIL}>" -m "Deploy ${TRAVIS_COMMIT_RANGE} to github pages"
+  - git push --quiet "https://${GITHUB_TOKEN}@${GITHUB_REPOSITORY}" gh-pages > /dev/null 2>&1
+  - cd ..
+  # generate PDF document from HTML
+  - ./build-pdf.sh gh-pages GenieLogiciel
+  - cd gh-pages
+  - git add .; git commit --author="${GITHUB_USER_NAME} <${GITHUB_USER_EMAIL}>" -m "Deploy PDF corresponding to ${TRAVIS_COMMIT_RANGE} to github pages"
   - git push --quiet "https://${GITHUB_TOKEN}@${GITHUB_REPOSITORY}" gh-pages > /dev/null 2>&1
   - cd ..
 
