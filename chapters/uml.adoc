@@ -1,0 +1,441 @@
+
+:imagesdir: resources/uml
+
+== Diagrammes statiques
+
+Les diagrammes de cette section modélisent des éléments
+de manière statique.
+Ils ne s'occupent pas des aspects dynamiques (déroulement du temps,
+enchaînement d'opérations, ...).
+
+Quand ce qui est à modéliser est complexe,
+il vaut mieux dresser plusieurs diagrammes complémentaires,
+chacun se focalisant sur un aspect particulier.
+Par exemple: la structure hiérarchique des différents éléments, leur regroupement logique, l'état du système à un instant T, la manière dont les éléments collaborent entre eux, et ainsi de suite.
+
+Souvent, même se focaliser sur un aspect particulier est trop complexe pour résumer cet aspect en un seul diagramme.
+
+
+[[uml_usecases]]
+=== Cas d'utilisation (use cases)
+
+Un *diagramme de cas d'utilisation* est utilisé pour comprendre et structurer des besoins.
+Il ne vise pas l'exhaustivité (forte abstraction, faible niveau de détail),
+mais la clarté et l'organisation des besoins.
+Par exemple, il permet de trier les besoins des utilisateurs finaux entre besoins avérés
+et besoins qui sont en fait couverts par d'autres besoins ou besoins qui n'en sont pas vraiment.
+Définir les besoins réels permet de fixer le périmètre du projet
+en identifiant les fonctionnalités principales du système en cours de conception.
+Ce sont ces objectifs qu'il faut garder en tête tout au long du projet.
+
+Le diagramme de cas d'utilisation classe les différents acteurs et la façon dont ils utilisent (interagissent avec) le système.
+
+image::usecase_simple.png[caption="Figure 01:", title="Cas d'utilisation simple", alt="Cas d'utilisation simple"]
+
+==== Éléments UML
+
+===== Relation
+
+Lien unissant deux éléments ou plus.
+La relation peut être de différentes natures : utilisation, extension, dépendance, agrégation, etc.
+On peut détailler la nature d'une relation en utilisant un *stéréotype*
+(`<< stereotype >>`).
+
+En ce qui concerne les diagrammes de cas d'utilisation, UML reconnait trois types de relation : inclusion, extension et généralisation.
+
+Une relation d'*inclusion* représente la décomposition d'une tâche en plusieurs sous-tâches.
+
+image::usecase_includes.png[caption="Figure 02.1:", title="Relation d'inclusion", alt="Inclusion"]
+
+Une relation d'*extension* représente le fait qu'une tâche puisse en appeler une autre.
+
+image::usecase_extends.png[caption="Figure 02.2:", title="Relation d'extension", alt="Extension"]
+
+Une relation de *généralisation* représente le fait qu'une tâche puisse être substituée par une autre, plus spécialisée.
+
+image::usecase_generalizes.png[caption="Figure 02.3:", title="Relation de généralisation", alt="Généralisation"]
+
+===== Acteur
+
+*Entité extérieure* au système, mais qui agit sur lui.
+Ce peut être une personne physique, un autre système déjà en place, etc.
+En réponse à chaque action d'un acteur, le système accomplit une action en retour qui correspond au besoin de l'acteur.
+
+Une même personne physique peut exercer plusieurs rôles différents dans un même projet.
+C'est pourquoi les acteurs sont surtout définis par leur rôle dans un diagramme UML.
+
+===== Cas d'utilisation
+
+*Action* du système en réponse au besoin exprimé par un acteur.
+Plusieurs cas d'utilisation peuvent être relié entre eux (relations de dépendance, de hiérarchie).
+Pour faciliter la compréhension et la réutilisation, les cas d'utilisation peuvent être organisés en *packages*.
+
+===== Package (paquet)
+
+Élément d'organisation qui rassemble d'autres éléments en un groupe *logique*.
+Les éléments qu'il contient sont accessibles via une *interface* d'accès.
+Il sert aussi d'*espace de noms*.
+
+image::usecase_package.png[caption="Figure 04:", title="Regroupement en package", alt="Package logique"]
+
+Un package peut dépendre d'un ou plusieurs autres packages.
+
+
+
+=== Classes et Objets
+
+UML permet de modéliser des *diagrammes de classe* ainsi que des *diagrammes d'objets*.
+
+[NOTE,caption=""]
+====
+Un petit rappel de POO ?
+
+* Une classe, c'est un nom, des attributs et des méthodes.
+* Un objet, c'est une instance de classe.
+====
+
+Les notations sont les suivantes.
+
+image::class_simple.png[caption="Figure 05.1:", title="Classe `Person`.", alt="Classe"]
+image::class_abstract.png[caption="Figure 05.2:", title="Classe abstraite `Œuvre`.", alt="Classe abstraite"]
+image::class_instance_anonymous.png[caption="Figure 05.3:", title="Instance anonyme de la classe `Person`.", alt="Objet anonyme"]
+image::class_instance_named.png[caption="Figure 05.4:", title="Instance nommée de la classe `Person`.", alt="Objet nommé"]
+image::class_instance.png[caption="Figure 05.5:", title="Instance nommée d'une classe anonyme.", alt="Classe anonyme"]
+image::class_instance_attributes.png[caption="Figure 05.6:", title="Instance nommée de la classe `Person`. Les valeurs de certains attributs _pour cette instance_ sont spécifiés.", alt="Objet avec attributs"]
+image::class_collection.png[caption="Figure 05.7:", title="Collection d'instances anonymes de la classe `Person`.", alt="Collection d'objets"]
+
+==== Documentation d'une classe
+
+image::class_description.png[caption="Figure 05.8:", title="Documentation plus complète de la classe `Person`.", alt="Classe documentée"]
+
+* Les attributs dont la visibilité est *publique* sont précédés d'un `+`
+* Les attributs dont la visibilité est *protégée* sont précédés d'un `#`
+* Les attributs dont la visibilité est *privée* sont précédés d'un `-`
+
+[NOTE.warning,caption=""]
+====
+Ce n'est pas parce que la représentation d'une classe au sein d'un diagramme donné
+ne contient pas certains attributs ou méthodes qu'elle ne les possède pas.
+
+De même, la visibilité de certains attributs peut être omise.
+
+La représentation d'un élément UML est une *abstraction* qui contient plus ou moins de détails
+suivant ce que nécessite le diagramme qui la contient pour être compréhensible.
+Le but d'un diagramme donné est d'être *clair*.
+L'exhaustivité, quand à elle, est atteinte en combinant tous les diagrammes d'un document de conception.
+====
+
+
+
+==== Associations
+
+Deux classes ou objets sont associés lorsqu'ils sont connectés d'une manière ou d'une autre.
+
+Le sens de lecture privilégié d'une association peut être précisé à coté de son libellé. 
+
+image::association_direction_read.png[caption="Figure 06.1:", title="Sens de lecture", alt="Association"]
+
+Plus de deux éléments peuvent évidemment être associés.
+
+image::association_multiple.png[caption="Figure 06.2:", title="Association multiple", alt="Association multiple"]
+
+===== Rôle
+
+Préciser le *rôle* de chaque élément dans une association est parfois indispensable quand la relation va dans les deux sens.
+
+image::association_role.png[caption="Figure 06.3:", title="Rôles", alt="Rôles"]
+
+===== Cardinalité
+
+La *cardinalité* est le nombre d'objets qui participent à une association.
+
+* `1` Exactement un, ni plus ni moins
+* `*` Un nombre indéfini
+* `1..n` Entre un (inclus) et `n` (inclus)
+* `n..m` Entre `n` (inclus) et `m` (inclus)
+
+image::association_cardinality.png[caption="Figure 06.4:", title="Cardinalités", alt="Cardinalités"]
+
+[NOTE.warning,caption=""]
+====
+Attention, il n'est utile de modéliser que ce qui est requis, pas la vie réelle !
+Évidemment, dans la réalité, une personne peut évidemment être inscrite à plusieurs universités,
+mais le système que ce diagramme modélise ne semble pas avoir besoin de ce niveau de détail ...
+====
+
+===== Contraintes
+
+Les *contraintes* permettent de préciser la portée d'un autre élément.
+Par exemple, un contrainte peut préciser un rôle ou restreindre un nombre d'instances.
+
+image::association_constraints_1.png[caption="Figure 06.5:", title="Contraintes", alt="Contraintes"]
+image::association_constraints_2.png[caption="Figure 06.6:", title="Contraintes", alt="Contraintes"]
+
+===== Relation à sens unique
+
+Par défaut, une association est navigable dans les deux sens.
+Mais parfois, il est nécessaire d'indiquer qu'un élément n'en "connait" pas un autre.
+
+image::association_directional.png[caption="Figure 06.7:", title="Relation à sens unique", alt="Direction"]
+
+===== Relation interdite
+
+Parfois, il est utile d'indiquer qu'une association entre deux éléments est à proscrire.
+
+image::association_forbidden.png[caption="Figure 06.8:", title="Relation interdite", alt="Interdiction"]
+
+
+===== Relation n-aire et classe d'association
+
+Une *classe d'association* permet de réaliser la relation entre les éléments.
+
+image::association_naire.png[caption="Figure 06.8:", title="Relation n-aire avec classe d'association", alt="Classe d'association"]
+
+[NOTE.warning,caption=""]
+====
+De telles associations peuvent être difficiles à déchiffrer.
+Il peut être préférable de limiter leur utilisation, et de modéliser d'autres relations.
+====
+
+===== Interfaces
+
+TODO
+
+===== Héritage
+
+Sert à modéliser la hierarchie qui relie les différentes classes.
+Cette modélisation peut être :
+
+* *ascendante* : partir des objets les plus concrets,
+  et *généraliser* progressivement en factorisant leur propriétés
+  (attributs et méthodes) dans des super classes.
+* *descendante* : partir des objets génériques, et les *spécialiser*
+  en étendant leurs propriétés dans des classes plus spécifiques.
+
+image::class_inheritance.png[caption="Figure 07:", title="Héritage", alt="Héritage"]
+
+[[solid_principle]]
+[NOTE.warning,caption=""]
+====
+La manière de hiérarchiser des classes est souvent subjective.
+Cependant, les principes de base les plus connus sont représentés par l'acronyme *SOLID* :
+
+* *S*: Responsabilité unique (Single responsibility)  +
+  Une classe doit avoir une et une seule responsabilité, qu'elle doit remplir complètement.
+* *O*: Ouverture/fermeture (Open/closed)  +
+  Une classe doit être ouverte à l'extension (c'est à dire : facilement spécialisable),
+  mais fermée à la modification (son comportement ne doit pas pouvoir être altéré).
+* *L*: substitution de Liskov (Liskov substitution)  +
+  Une instance de type T doit pouvoir être remplacée par une instance de type G,
+  tel que G sous-type de T, sans que cela ne modifie la cohérence du programme.
+* *I*: ségrégation des interfaces (Interface segregation)  +
+  Il vaut mieux créer plusieurs interfaces, chacune adaptée à un client, plutôt qu'une seule interface générale.
+* *D*: inversion des Dépendances (Dependency inversion)  +
+  Les abstractions ne doivent pas dépendre des détails d'implémentation.
+
+Le "God object" est un contre-exemple (anti-pattern).
+====
+
+===== Agrégation
+
+Tandis que l'héritage est une relation de type "Être" ("Is a"),
+l'agrégation est une relation de type "Avoir" ("Has a").
+C'est une relation non symétrique.
+Elle exprime une relation de *subordination*.
+
+Une agrégation peut vouloir dire qu'un élément _fait partie_ d'un autre (l'autre est un "agrégat" de l'un).
+Elle peut aussi signifier qu'un changement d'état ou une action sur l'un a des conséquences sur l'autre.
+
+Un élément peut être agrégé dans plusieurs autres.
+
+Le cycle de vie d'un agrégat peut être différent de celui des éléments qu'il agrège.
+En d'autre termes, une instance d'élément agrégé peut éxister sans agrégat, et inversement.
+
+image::association_agregation.png[caption="Figure 08.1:", title="Agrégation", alt="Agrégation"]
+
+====== Composition
+
+La composition est une agrégation forte.
+
+Un composant ne peut être lié qu'à un seul composé.
+
+Les cycle de vie des éléments agrégés (les *composants*) et de l'agrégat (le *composite*) sont liés.
+En d'autre termes, si l'agrégat est détruit, ses composants le sont aussi (mais l'inverse n'est pas forcément vrai).
+
+image::association_composition.png[caption="Figure 08.2:", title="Composition", alt="Composition"]
+
+
+
+
+
+== Diagrammes dynamiques
+
+=== Syntaxe des messages
+
+Chaque message peut être assortis d'attributs.
+Ces attributs permettent entre autres d'indiquer, pour un message donné :
+
+* son numéro d'ordre
+* la condition de son envoi
+* ses arguments
+* sa récurrence
+
+`[pre"/"] [["["guard"]"] [number] ["*"["||"]["["times"]"]] ":"] [var":="] label"("[params]")"`
+
+* `label` libellé du message
+* `params` paramètres du message, le cas échéant
+* `var` permet d'affecter le retour du message à une "variable".
+  Cela permet par exemple d'utiliser ce retour comme paramètre (`params`) d'un autre message.
+* `pre` Liste de numéros d'ordre (`number`) séparés par des virgules.
+  Le message n'est envoyé que lorsque tous les messages précédents l'ont été.
+  Cet attribut permet la *synchronisation* de différents messages.
+* `guard` Expression booléenne.
+  C'est la condition d'envoi du message, appelée *garde* (_guard_) en UML.
+  Le message n'est envoyé que si cette condition est vérifiée.
+  La condition elle-même peut être exprimée en langage naturelle, par une expression mathématique, etc.
+* `number` Numéro d'*ordre* du message dans la séquence de message modélisée par le diagramme.
+  Ce numéro peut être un simple entier, ou suivre un indiçage plus complexe.
+* `times` permet d'envoyer autant de fois un message.
+  Par défaut, l'envoi est séquentiel.
+  Combiné avec `||`, les envois se font en parallèle.
+  Le nombre `times` peut être remplacé par `\*` pour figurer un nombre indéfini d'envois.
+  `*||` figure un nombre indéfini d'envoi parallèles.
+
+==== Exemples
+
+```
+1: hi()
+2: lmao()
+3: kthxbye()
+```
+Une séquence de trois messages numérotés `1`, `2`, `3`.
+
+```
+1: humeur := comment_ca_va()
+[humeur = "bien"] 2.a: content_pour_toi()
+[humeur = "pas top"] 2.b: compatir()
+```
+On se sert du résultat du premier message pour conditionner l'envoi du message suivant.
+Notez que les numéros d'ordre ne sont ni forcément des entiers, ni n'ont tous exactement le même format.
+
+```
+4,5.1 / [3]||[i := 1..3]: message()
+```
+Le message `message` est envoyé 3 fois, en parallèle.
+Ces envois parallèles n'ont lieu qu'après que les message `4` et `5.1` ont été eux-mêmes envoyés.
+
+```
+[disque plein] 4.2.a * : deleteTmpFile()
+[disque plein] 4.2.b   : reduceSwap(20%)
+```
+Ces messages sont envoyés simultanément si la condition `disque plein` est vérifiée.
+`reduceSwap` est envoyé une seule fois ; `deleteTmpFile` peut être envoyé plusieurs fois.
+
+=== Types de message
+
+* Un message simple image:message_simple.png[msg_simple,title="Flèche de message simple"]
+  ne spécifie aucune caractéristique particulière utile à la compréhension du diagramme.
+  Attention, ça n'est pas pour ça qu'il n'en a pas !
+
+* Un message synchrone image:message_sync.png[msg_sync,title="Flèche de message synchrone"]
+  bloque son expéditeur jusqu'à réception de la réponse de son destinataire.
+
+* Un message avec timeout image:message_timeout.png[msg_timeout,title="Flèche de message avec timeout"]
+  bloque son expéditeur pendant un certain temps.
+  La durée de blocage précise peut être spécifiée par une contrainte.
+  L'expéditeur est bloqué, soit :
+
+** jusqu'à réception de la réponse du destinataire
+** jusqu'à la fin du timeout
+
+* Un message asynchrone image:message_async.png[msg_async,title="Flèche de message asynchrone"]
+  n'interrompt pas le flot d'exécution de l'émetteur.
+  L'émetteur n'a à priori aucune confirmation de la prise en compte du message par son destinataire.
+  C'est pour cela que le retour d'un message asynchrone devrait toujours être modélisé explicitement.
+
+* Un message dérobant image:message_expected.png[msg_expected,title="Flèche de message dérobant"] est un message qui ne déclenche une action de la part de son destinataire que si celui-ci s'est préalablement mis en attente de ce message.
+
+Un élément peut tout à fait s'envoyer un message à lui même.
+Cela représente une activité interne à l'élément, comme une période de calcul par exemple.
+
+
+
+=== Diagramme de collaboration
+
+Ce diagramme permet de modéliser les interactions entre objets, dans un contexte donné.
+Le contexte des interactions est donné par l'état des objets qui interagissent.
+
+Ce diagramme est aussi appelé diagramme de communication.
+
+image::collaboration.png[caption="Figure 09:", title="Exemple de diagramme de collaboration", alt="Collaboration"]
+
+=== Diagramme de séquence
+
+Ce diagramme permet de modéliser les interactions entre objets au cours du temps.
+Il met l'accent sur la chronologie des envois de message.
+
+Sur un diagramme de séquence, le temps s'écoule verticalement.
+Les événements qui surviennent en premier sont en haut du diagramme,
+et ceux plus tardifs se rencontrent chronologiquement, au fur et à mesure
+qu'on progresse vers le bas.
+
+L'ordre horizontal des éléments (acteurs, objets, ...) n'a par contre aucune importance.
+
+Un diagramme de séquence peut illustrer un cas d'utilisation de manière dynamique.
+
+image::sequence.png[caption="Figure 10:", title="Diagramme de séquence", alt="Dialogue client/serveur"]
+
+==== Période d'activité
+
+Un diagramme de séquence permet de représenter une période d'activité d'un objet
+à l'aide d'une zone rectangulaire représentant la période de la vie de l'objet
+durant laquelle cet objet est actif (au sens du diagramme considéré).
+
+Cette zone rectangulaire permet aussi de représenter une récursion.
+
+==== Conditions et itérations
+
+Pour représenter une exécution conditionnelle sur un diagramme de séquence,
+il est possible de dédoubler la ligne de vie de l'objet concerné.
+Cela n'est cependant pas nécessaire : on peut en effet exprimer les conditions
+dans le descriptif d'un message.
+
+Il est aussi possible de représenter une itération.
+
+==== Destruction d'un objet
+
+Il est possible de représenter la fin du cycle de vie d'un objet
+grâce à une croix en bas de sa ligne de vie.
+
+
+
+=== Diagramme d'activité
+
+Un diagramme d'activité permet de relier différentes activités entre elles.
+Passer d'une activité à une autre se fait via une transition.
+Une transition reliant deux activités est utilisée automatiquement dès que la première activité se termine.
+
+image::activity_transition.png[caption="Figure 12.1:", title="Transition d'un diagramme d'activité", alt="Flèche"]
+
+Le début d'un diagramme d'activité est matérialisé par un rond noir plein.
+Il est indispensable.
+
+La fin d'un diagramme d'activité est matérialisée par un rond noir entouré d'un cercle.
+Elle est facultative, car un diagramme d'activité est terminé quand il n'y a plus d'activité en cours.
+
+Pour organiser et faciliter la lecture d'un diagramme d'activité,
+il est possible de matérialiser des "couloirs d'activité".
+
+image::activity_corridors.png[caption="Figure 12.2:", title="Couloirs d'activité", alt="Couloirs"]
+
+Une transition conditionnelle est représentée en utilisant un ou plusieurs losanges ainsi que des gardes.
+
+image::activity.png[caption="Figure 12.3:", title="Transitions conditionnelles", alt="Choix d'un animal domestique"]
+
+Il est possible de paralléliser plusieurs activités grâce à des barres de synchronisation.
+Les barres de synchronisation respectent les règles suivantes :
+
+* une barre n'est franchie que lorsque toutes les activités qui y arrivent sont terminées
+* les activités partant d'une barre démarrent toutes en même temps
+
+image::activity_parallelization.png[caption="Figure 12.4:", title="Parallélisation", alt="Démarrage d'une voiture"]

@@ -1,0 +1,126 @@
+﻿
+:imagesdir: resources/pert
+
+Le rôle principal d'un chef de projet est d'organiser l'usage des différentes ressources à sa disposition
+(charge de travail des équipes, ...) en les découpant en différentes activités, ou tâches,
+dont l'enchainement garantit que le périmètre du projet soit respecté.
+
+Une tâche est un ensemble d'actions qui, lorsqu'elles sont toutes entièrement réalisées,
+marquent un avancement significatif du projet.
+Le projet est lui-même terminé lorsque toutes les tâches qui le composent sont réalisées.
+
+Le périmètre de chaque tâche doit être correctement défini :
+
+* si une tâche n'est pas assez détaillée, la visibilité ne sera pas bonne et la gestion de projet ne sera guère facilitée.
+* si une tâche est trop détaillée, le trop grand nombre de tâches obstruera à son tour la visibilité.
+
+Le diagramme PERT/CPM et le diagramme de Gantt sont deux techniques largement utilisées pour planifier.
+Ces deux types de diagrammes permettent de coordonner des tâches plus ou moins séquentielles
+avec pour objectif d'obtenir une prévision réaliste des délais et des coûts.
+
+== PERT/CPM
+
+PERT/CPM permet de mettre en évidence :
+
+* les dépendances entre tâches
+* la parallélisation des tâches
+* trois estimations (optimiste, pessimiste, réaliste) de la durée des tâches
+* la marge des tâches et du projet qu'elles composent
+
+=== Caractéristiques d'une tâche
+Chaque tâche `T` offre les caractéristiques suivantes :
+
+* *Durée* : Durée `D(T)` nécessaire à la réalisation de la tâche considérée.
+* *Prédécesseurs* : Autres tâches devant être entièrement réalisées avant que `T` ne puisse débuter.
+* *Successeurs* : Autres tâches ayant `T` comme prédecesseur.
+* *DO* : Date de Début au plus tôt `DO(T)` (_ES: Earliest Start Time_).
+  `T` ne peut pas débuter avant cette date.
+* *FO* : Date de Fin au plus tôt   `FO(T)`  (_EF: Earliest Finish Time_).
+  `T` ne peut pas être terminée avant cette date.
+* *DA* : Date de Début au plus tard `DA(T)` (_ES: Latest Start Time_).
+  `T` doit commencer avant cette date.
+* *FA* : Date de Fin au plus tard   `FA(T)` (_ES: Latest Finish Time_).
+  `T` doit être terminée avant cette date.
+* *Marge* : La marge `M(T)` est le retard maximal admissible (_Slack_/_Float_).
+
+image::task.png[caption="Figure 01:", title="Tâche PERT/CPM", alt="Example de représentation"]
+
+`FO(T) = DO(T) + D(T)` : une tâche ne peut finir avant qu'elle ait été entièrement réalisée. +
+`DA(T) = FA(T) - D(T)` : une tâche doit être entièrement réalisée avant de finir. +
+`DO(T) = max(FO(prédécesseurs(T)))` : une tâche ne peut débuter que lorsque ses prérequis sont finis. +
+`FA(T) = min(DA(successeurs(T)))` : les successeurs d'une tâche ne peuvent débuter que lorsque cette tâche est finie. +
+`M(T) = FA(T) - FO(T)` : la marge est égal au délai entre la date à laquelle elle _doit_ terminer et la date à laquelle elle _peut_ terminer.
+
+image::chart.png[caption="Figure 02:", title="Diagramme PERT/CPM", alt="PERT/CPM"]
+
+==== Chemin critique
+
+Une tâche dont la marge est égale à 0 est considérée comme *critique*.
+Cela signifie que le moindre retard dans la réalisation de cette tâche retardera d'autant le projet complet.
+
+Le *chemin critique* est le chemin le plus long du diagramme de PERT.
+Toutes les tâches du chemin critique ont la même marge (éventuellement 0, mais pas forcément).
+Si une tâche du chemin critique accuse davantage de retard que sa marge, tout le projet sera retardé d'autant.
+
+==== Jalons
+
+Il peut être pertinent de créer dans un diagramme de PERT des *jalons*.
+Un jalon est typiquement une tâche "virtuelle" dont la durée est égale à 0.
+Elle marque (et permet de contrôler) un moment important de l'avancement d'un projet.
+
+==== Topologie
+
+* Y a t'il exactement un tâche de début et une tâche de fin ?
+* Toutes les tâches ont-elles au moins un prédecesseur et un successeur ?
+* Tous les liens sont-ils représentatifs ?
+
+image::error-1.png[caption="Figure 03.1:", title="Transition redondante", alt="Redondance"]
+
+image::error-2.png[caption="Figure 03.2:", title="Création d'un jalon", alt="Simplification"]
+
+=== Démarche pas à pas
+
+1. *Identifier* _toutes_ les tâches à réaliser, sans négliger certaines tâches "annexes" :
+** Le projet nécessite-t-il des technologies non maîtrisées en interne (besoins en formation, en procédure d'achat, ...) ?
+** La charge est-elle trop grande pour les équipes actuelles (besoins en recrutement, ...) ?
+** Tout est-il présent pour assurer la qualité du projet (besoin en documentation, en tests, ...) ?
+** Une tâche particulièrement complexe nécessite-t-elle d'être gérée comme un sous-projet ?
+2. *Estimer la durée* de chacune des tâches.
+   Étant donné qu'il est impossible, lors de la phase de planification, de connaître la durée réelle
+   de chaque tâche, on l'estime comme une variable, de manière probabiliste.
+** Temps moyen estimé `TM` : temps de travail réaliste, nécessaire dans des conditions "normales"
+** Temps optimiste `TO` : temps de travail dans des conditions "idéales" (aucune interruption ni difficulté imprévue, ...)
+** Temps pessimiste `TP` : temps de travail dans les "pires" conditions (déficit d'effectif, multiples imprévus, ...)
+** La durée est donc une durée "espérée", obtenue grâce à la formule suivante:
+  `D = (TO + 4×TM + TP)÷6`
+** C'est lors du calcul de la durée qu'on choisit (ou non) de s'accorder un délai de précaution.
+   Après, il est trop tard ; en particulier, le calcul ultérieur de sa marge n'est pas là pour ça !
+3. *Ordonnancer* les tâches
+** organiser leur séquencement chronologique
+** optimiser en envisageant les parallélismes possibles
+** déterminer le chemin critique
+4. *Planifier* les différentes tâches
+** affectation des ressources humaines nécessaires
+** affectation des ressources matérielles nécessaires
+** affectation de davantage de (ou de meilleures) ressources sur les tâches critiques
+
+== Gantt
+
+Comparé à un diagramme de PERT/CPM, un diagramme de Gantt est peut-être plus simple à appréhender.
+Il a comme avantage de permettre de clairement visualiser les dates de début et de fin,
+le pourcentage de complétion de chaque tâche, ainsi que leur chevauchement éventuel.
+En revanche, il met moins l'accent sur les dépendances entre tâches et ne prend pas en compte
+la marge ou le risque.
+
+Dans un diagramme de Gantt, un tâche n'a qu'une date de début ou une date de fin, ainsi qu'une durée.
+Les tâches s'enchainent ensuite de manière logique, en utilisant l'un des quatre types de liaison :
+
+* de Fin à Début (FD) : une tâche ne peut pas commencer avant que la précédente ne soit terminée
+* de Début à Début (DD) : une tâche ne peut pas commencer avant que la précédente ne commence
+* de Fin à Fin (FF) : une tâche ne peut pas se terminer avant que la précédente ne soit terminée
+* de Début à Fin (DF) : une tâche ne peut pas se terminer avant que la précédente ne commence
+
+Une tâche peut évidemment avoir plusieurs autres tâches la précédant.
+De même, une tâche peut précéder plusieurs autres tâches.
+
+image::gantt.png[caption="Figure 04:", title="Exemple de diagramme de Gantt : Rédaction d'une documentation", alt="Gantt"]

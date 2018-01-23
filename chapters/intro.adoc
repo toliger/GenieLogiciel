@@ -1,0 +1,61 @@
+﻿:imagesdir: resources
+
+== Définitions
+
+=== Le projet
+
+Un projet est un processus *unique*, qui consiste en un ensemble d'*activités* coordonnées et maîtrisées
+comportant des dates de début et de fin, entrepris dans le but d'atteindre un objectif conforme
+à des exigences spécifiques de *qualité* avec des contraintes de *coûts* et de *délais*.
+
+image::quality/QCT.png[caption="Figure 01:", title="Qualité, Budget, Délai sont interdépendants"]
+
+Ces contraintes de qualité, de coûts et de délais fixent le *périmètre* du projet.
+Elles sont interdépendantes : "gagner" sur l'une fait souvent "perdre" sur l'une ou l'autre.
+
+image::quality/NOPE.png[caption="Figure 02:", 500px, title="« Je veux le meilleur, le moins cher et je ne veux pas attendre ! »"]
+
+Les activités d'un projet informatique créent des *livrables* : outils, méthodes ou services informatiques.
+
+=== Les acteurs et leurs rôles
+
+Le projet est réalisé avant tout par des hommes et des femmes.
+Ces personnes physiques sont réunies en _entités_ qui sont autant de personnes morales
+(une entreprise, un service ou une équipe particuliers, ...).
+
+Chacune de ces entités assume une ou plusieurs responsabilités
+(planifier, concevoir, développer, tester, ...)
+qui, si elles sont correctement menées, aboutiront au succès du projet.
+
+Durant la phase de réalisation d'un projet, on peut distinguer deux entités particulières :
+
+* le *client*: aussi appelé _Maîtrise d'ouvrage_ (_MOA_) ou _Project owner_,
+  il s'agit de celui qui *exprime le besoin*.
+* le *fournisseur*: aussi appelé _Maîtrise d'œuvre_ (_MOE_),
+  il s'agit de celui qui *répond au besoin*.
+
+En plus du client et de son fournisseur, d'autres entités peuvent être *partie prenante* dans le projet.
+Il s'agit des utilisateurs finaux de la solution, des organismes finançant le projet, etc.
+
+[[roles_moa]]
+==== La Maîtrise d'OuvrAge (MOA)
+
+La maîtrise d'ouvrage est à l'origine du projet.
+C'est elle qui en fixe les objectifs que sont le *besoin* à remplir, ainsi que les *coûts* et les *délais* du projet.
+
+C'est elle qui détient la *connaissance fonctionnelle* du domaine dans lequel s'inscrit le projet,
+tel que le cadre dans lequel doit exister le projet, et l'attente des fonctionnalités qu'il aportera.
+
+Il s'agit du *propriétaire* au final du projet.
+La MOA est donc *celui qui paye*.
+
+[[roles_moe]]
+==== La Maîtrise d'Œuvre (MOE)
+
+La maîtrise d'œuvre fournit le produit attendu par la maîtrise d'ouvrage.
+C'est elle qui assure la qualité, les coûts et les délais.
+
+Elle peut se faire aider par un ou plusieurs fournisseurs.
+C'est alors à elle qu'incombe la responsabilité de coordoner et de superviser ses prestataires.
+
+La MOE est *celui qui réalise*.

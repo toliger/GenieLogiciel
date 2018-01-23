@@ -1,0 +1,47 @@
+image::https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png[Creative Commons License, link="http://creativecommons.org/licenses/by-nc-sa/4.0/"]
+image::https://travis-ci.org/wiztigers/GenieLogiciel.svg?branch=master[link=https://travis-ci.org/wiztigers/GenieLogiciel]
+
+= Génie logiciel
+
+image::https://ent.unistra.fr/uPortal/media/skins/universality/blunistra/images/institution_logo.png[alt="Logo de l'Université de Strasbourg", link=https://www.unistra.fr/]
+
+== Description
+
+Ce document constitue un https://wiztigers.github.io/GenieLogiciel/[support de cours] de génie logiciel, enseigné depuis l'année scolaire 2016-2017 à l'https://www.unistra.fr/[Université de Strasbourg]. +
+Vous pouvez le consultez https://wiztigers.github.io/GenieLogiciel/[en suivant le lien suivant].
+
+Les objectifs en termes de connaissances et de compétences à acquérir par l'étudiant lors de ce cours sont les suivantes :
+
+* Savoir procéder à l'analyse, à la modélisation et au développement de divers types de systèmes logiciels;
+* Être capable de s'adapter aux divers types de matériels et de logiciels en usage dans les entreprises;
+* Comprendre l'importance d'organiser et de structurer un projet de développement de système, d'en estimer les coûts et les bénéfices et d'en coordonner la réalisation;
+* Être en mesure de communiquer facilement, tant de façon orale qu'écrite, les résultats de ses analyses et travaux;
+* Acquérir des méthodes de travail, une capacité de synthèse et un degré d'autonomie qui le rendront apte à résoudre divers types de problèmes rencontrés dans sa pratique professionnelle, ou à poursuivre des études supérieures;
+* Savoir s'adapter aux situations changeantes de sa discipline et de la société et être capable de contribuer à leur évolution.
+
+En pratique, ce cours constitue une formation accélérée aux sujets suivants :
+
+* Contexte d'entreprise : les acteurs, les enjeux, quelques aspects organisationels.
+* Quelques définitions indispensables : le projet, son périmètre, ses qualités.
+* Les cycles de vie d'un projet, ses différentes phases d'existence.
+* Aperçu de quelques méthodes d'analyse.
+* Outils de planification : PERT/CPM, Gantt.
+* Modélisation UML (les principaux diagrammes uniquement).
+* Les différents types de tests (dont: tests unitaires et tests automatiques)
+* Le travail collaboratif à travers la gestion de version et l'intégration continue.
+
+== Mise en garde
+
+Comme je l'ai écrit, ce livre est un *support*, qui n'est pas destiné à _remplacer_ une présence assidue en cours ! +
+Il est là pour vous donner une (bonne) idée des différents points que nous aborderons, pour vous permettre de suivre sans avoir à passer votre temps à prendre des notes, et pour vous servir de bouée de sauvetage si vous avez un empêchement ponctuel. +
+Cependant, comme il est rédigé de manière à être conçis et à vous donner accès rapidement aux informations essentielles, il n'est pas vraiment exhaustif et ne contient que peu d'exemples ou de détails contextuels, qui font le sel de la vie en entreprise en général, et du génie logiciel en particulier ...
+
+== Licence
+
+Le script de publication sur github pages, pour ce que ça vaut, est publié sous https://www.gnu.org/licenses/agpl-3.0.fr.html[licence GNU Affero GPL 3.0] [https://www.gnu.org/licenses/why-affero-gpl.fr.html[?]]
+Le contenu proprement dit de ce livre (ie. le texte et les images) est publié sous https://creativecommons.org/licenses/by-nc-sa/3.0/fr/[licence Creative Commons BY-NC-SA 3.0].
+En résumé, ce que vous avez sous les yeux est destiné à vous apprendre des trucs, pas à faire de l'argent avec !
+
+Si vous désirez contribuer à son amélioration, n'hésitez pas à en discuter avec moi en ouvrant une issue ou à me proposer directement dans une pull request.
+
+Merci, et bonne lecture ! (◕‿◕✿)

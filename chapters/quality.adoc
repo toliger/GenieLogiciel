@@ -1,0 +1,169 @@
+﻿
+:imagesdir: resources/quality
+
+[[chapter_quality]]
+= Qualité d'un logiciel
+
+Lorsqu'on parle de la qualité d'un logiciel, on parle en fait de plusieurs *caractéristiques*
+différentes, elles-mêmes décomposées en sous-caractéristiques (ou attributs).
+
+Toutes les caractéristiques d'un logiciel n'ont pas forcément la même importance pour une organisation donnée.
+C'est pourquoi chaque organisation définit son propre *modèle de qualité*,
+avec parfois plusieurs modèles applicables à ses différents produits logiciels.
+En particulier, chaque organisation définit ses propres méthodes (métriques)
+pour évaluer le *degré de présence* des différents attributs de qualité.
+
+
+Les principales *normes* utilisées pour la définition de modèle(s) de qualité :
+ISO/IEC 9126 (ancienne version) et ISO/IEC 25010 (nouvelle version).
+
+Dans ces normes, le terme _logiciel_ est employé au sens large.
+Il peut désigner à la fois le code source, les exécutables, les librairies,
+les documents d'architecture, et ainsi de suite. 
+En conséquence, la notion d'_utilisateur_ peut elle aussi s'appliquer, suivant la caractéristique
+et/ou le logiciel considéré, à un client ou à un développeur, par exemple.
+
+== Caractéristiques
+
+* *Capacité fonctionnelle* (Functional suitability) +
+  Est-ce que le logiciel répond aux besoins fonctionnels exprimés ?
+** _Pertinence_ (Suitability / Functional appropriateness) +
+   Est-ce que toutes les fonctionnalités présentes sont adéquates ?
+** _Exactitude_ (Accuracy / Functional Correctness) +
+   Est-ce que les résultats ou effets fournis sont corrects ?
+** _Complétude_ (Functional completeness) +
+   Est-ce que les résultats ou effets fournis sont suffisants ?
+** _Conformité_ (Functionality compliance) +
+   Est-ce que le logiciel respecte les normes et règlements en vigueur ?
+
+* *Fiabilité* (Reliability) +
+  Est-ce que le logiciel maintient son niveau de service dans des conditions précises et pendant une période déterminée ?
+** _Maturité_ (Maturity) +
+  Est-ce que la fréquence d'apparition des incidents est faible ?
+** _Tolérance aux pannes_ (Fault tolerance) +
+  Est-ce que l'apparition d'un incident dégrade le comportement du logiciel ?
+** _Facilité de récupération_ (Recoverability) +
+  Quel est la capacité du logiciel à retourner dans un état opérationnel complet après une panne ?
+** _Disponibilité (Availability)_ +
+  Est-ce que les fonctionnalités du logiciel sont disponibles en permanence ?
+** _Conformité_ (Reliability compliance) +
+   Est-ce que le logiciel respecte les normes et règlements en vigueur ?
+
+[[quality_usability]]
+* *Ergonomie* (Usability) +
+  Effectivité, efficacité et satisfaction avec laquelle des utilisateurs spécifiés
+  accomplissent des objectifs spécifiés dans un environnement particulier.
+** _Facilité de compréhension_ (Understandability / appropriateness recognizability) +
+   Est-ce qu'il est (intuitivement) facile pour un utilisateur de comprendre et retenir comment réaliser une opération ?
+** _Facilité d'apprentissage_ (Learnability) +
+   Est-ce qu'il est facile de former de futurs utilisateurs à l'utilisation du logiciel ?
+** _Facilité d'exploitation_ (Operability) +
+   Est-ce qu'il est facile pour l'utilisateur d'accomplir sa tâche ?
+** _Protection contre les erreurs d'utilisation_ (User error protection) +
+   Comment réagit le logiciel si son utilisateur a un comportement inatendu ?
+** _Accessibilité_ (Accessibility) +
+   Est-ce que le logiciel est utilisable par des personnes en situation de handicap ?
+** _Attrait_ (Attractiveness / user interface aesthetics) +
+   Est-ce que l'utilisateur a envie d'utiliser l'interface ?
+** _Conformité_ (Usability compliance) +
+   Est-ce que le logiciel respecte les normes et règlements en vigueur ?
+
+* *Rendement* (Performance Efficiency) +
+  Est-ce que le logiciel requiert un dimensionnement rentable et proportionné de la plate-forme d’hébergement en regard des autres exigences ?
+** _Comportement temporel_ (Time behaviour) +
+   Est-ce que le temps de réponse du logiciel varie en fonction de son usage ?
+** _Utilisation des ressources_ (Resource utilization) +
+   Est-ce que les resources (mémoire, processeur, ...) sont correctement utilisées par le logiciel ?
+** _Capacité_ (Capacity) +
+   Est-ce que les ressources fournies par le logiciel le sont au bon moment et en quantité adéquate ?
+** _Conformité_ (Efficiency compliance) +
+   Est-ce que le logiciel respecte les normes et règlements en vigueur ?
+
+* *Maintenabilité* (Maintainability) +
+  Est-ce que faire évoluer le logiciel est aisé en cas d'anomalie ou de nouveaux besoins ?
+** _Facilité d'analyse_ (Analyzability) +
+   Est-ce qu'il est facile d'identifier les déficiences du logiciel ou leur cause ?
+** _Facilité de modification_ (Modifiability) +
+   Quel est l'effort nécessaire pour remédier à ces déficiences ?
+** _Testabilité_ (Testability) +
+   Quel est l'effort nécessaire pour valider le comportement du logiciel ?
+** _Modularité_ (modularity) +
+   Est-ce que modifier un composant du logiciel impacte peu les autres composants ?
+** _Ré-utilisabilité_ (Reusability) +
+   Est-ce qu'il est facile de combiner des composants existants pour obtenir une nouvelle fonctionnalité ?
+** _Conformité_ (Maintainability compliance) +
+   Est-ce que le logiciel respecte les normes et règlements en vigueur ?
+
+* *Portabilité* (Portability) +
+  Est-ce que le logiciel peut être transféré d’une plate-forme ou d’un environnement à un autre ?
+** _Facilité d'adaptation_ (Adaptability) +
+  Est-ce qu'il est facile d'adapter le logiciel à des changements d'environnement opérationnel ?
+** _Facilité d'installation_ (Installability) +
+  Est-ce qu'il est facile d'installer le logiciel dans un environnement prévu ?
+** _Interchangeabilité_ (Replaceability) +
+  Est-ce qu'il est facile d'utiliser ce logiciel à la place d'un autre dans un même environnement ?
+** _Conformité_ (Portability compliance) +
+   Est-ce que le logiciel respecte les normes et règlements en vigueur ?
+
+* *Compatibilité* (Compatibility)
+  Est-ce que le logiciel fonctionne bien avec d'autres ?
+** _Coexistence_ (Co-existence) +
+   Est-ce que le fonctionnement du logiciel altère ou est altéré par un autre ?
+** _Interopérabilité_ (Interoperability) +
+   Est-ce que le logiciel peut communiquer avec d'autres ?
+
+* *Sécurité* (Security)
+  Est-ce qu'on peut faire confiance au logiciel ?
+** _Confidentialité_ (Confidentiality) +
+   Est ce que les données ne sont accessibles qu'à ceux qui y sont autorisés ?
+** _Intégrité_ (Integrity) +
+   Est-ce que les donnés sont garanties contre une modification non autorisée ?
+** _Non-répudiation_ (Non-repudiation) +
+   Est-ce que le logiciel peut prouver que chaque action a bien eu lieu ?
+** _Responsabilité_ (Accountability) +
+   Est-ce que le logiciel peut relier chaque action à son auteur ?
+** _Authentification_ (Authenticity) +
+   Est-ce que le logiciel peut empêcher une identité d'être usurpée ?
+
+== La « Sur-qualité »
+
+On appelle parfois « sur-qualité » le fait de réaliser une fonctionnalité
+alors que celle-ci n'est pas <<lifecycle_specification,spécifiée>>.
+
+image::surqualite_hard.png[caption="Figure 03:", 400px, title="« Sur-qualité »", alt="« Sur-qualité »"]
+
+L'interprétation habituelle est alors la suivante :
+
+* Réaliser une fonctionnalité demandée est normal : c'est ce en quoi consiste la qualité logicielle.
+* Ne pas réaliser une fonctionnalité alors qu'elle est demandée dégrade la qualité du logiciel.
+* Ne pas réaliser une fonctionnalité qui n'est pas demandée est normal.
+* Mais réaliser une fonctionnalité alors que celle-ci n'est pas demandée est une perte
+  ou un manque à gagner pour le fournisseur, étant donné que le client ne va pas payer pour
+  obtenir quelque chose qu'il n'a pas demandé !
+
+Bien que tout à fait défendable, cette façon de résumer la « sur-qualité » est limitative.
+Il est possible d'interpréter la situation de manière plus nuancée,
+en se posant la question : la fonctionnalité considérée est elle _utile_ ou _inutile_ pour le client ?
+Cette question exprime parfaitement la différence entre le besoin tel qu'il est _exprimé_ par le client
+et le besoin _réel_ du client (voir la phase d'<<lifecycle_analysis,analyse du besoin>>).
+
+image::surqualite_smooth.png[caption="Figure 04:", 400px, title="Une vision alternative de la « Sur-qualité »", alt="« Sur-qualité » alternative"]
+
+On a alors l'interprétation suivante :
+
+* Réaliser une fonctionnalité demandée est normal _si celle-ci est utile_.
+* Réaliser une fonctionnalité demandée mais _inutile_ peut signifier un manque
+  lors de la phase d'<<lifecycle_analysis,analyse du besoin>>.
+* Ne pas réaliser une fonctionnalité alors que celle-ci est demandée est une faute du fournisseur.
+** Cependant, ci la fonctionnalité non réalisée s'avère inutile pour le client,
+   celui-ci ne sera peut-être pas gêné par son absence.
+* Ne pas réaliser une fonctionnalité qui n'est pas demandée est normal.
+** Mais si la fonctionnalité non réalisée aurait été finalement utile au client ?
+   Il s'agit-là d'une opportunité d'amélioration du produit ...
+* Réaliser une fonctionnalité alors que celle-ci n'est pas demandée est:
+** une perte pour le fournisseur, effectivement, si la fonctionnalité en question est inutile.
+** une manière d'aller au devant du besoin du client, et donc une preuve de la qualité du service
+   fourni par le fournisseur, qui apporte la preuve qu'il a mieux saisi le besoin réel du client
+   que le client lui-même.
+
+Avec ce point de vue alternatif, la « sur-qualité » peut donc devenir un atout commercial.

@@ -1,0 +1,30 @@
+= Génie Logiciel - Support de cours
+Régis WITZ <rwitz@unistra.fr>
+:doctype: book
+:toc: left
+:toc-title: Table des Matières
+:toclevels: 2
+
+
+include::chapters/intro.adoc[]
+
+include::chapters/quality.adoc[]
+
+include::chapters/lifecycle.adoc[]
+
+= Planification
+
+include::chapters/pert.adoc[]
+
+= Modélisation UML
+
+include::chapters/uml.adoc[]
+
+= Tests
+
+include::chapters/tests.adoc[]
+
+= Intégration continue
+
+include::chapters/ci.adoc[]
+

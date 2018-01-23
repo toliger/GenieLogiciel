@@ -1,0 +1,83 @@
+﻿[[continuous_integration]]
+
+L'intégration continue permet de builder, tester et, éventuellement, livrer et déployer un ou plusieurs systèmes
+et ce, de manière *automatique*, *fiable* et *systématique*.
+
+Voici à quoi ressemble le workflow typique d'un développeur travaillant avec un serveur d'intégration continue.
+Partons du principe que le développeur doit implémenter une nouvelle fonctionnalité `F`.
+
+. D'abord, le développeur met à jour sa copie locale avec le code issue du dépôt de sources central
+. Ensuite, il implémente `F`, en codant à la fois.
+.. la fonctionnalité `F` proprement dite
+.. le code testant l'implémentation de `F`
+. Ensuite, il effectue un build local.
+  Ce build effectue non seulement la phase habituelle de compilation, mais exécute aussi les tests.
+. Si les tests sont OK, il peut mettre à jour sa copie locale.
+  En effet, d'autres développeurs ont très bien pu modifier le code du dépôt central pendant qu'il implémentait `F`.
+.. Si il y a des nouveautés, le développeur les fusionne (_merge_) dans les siennes.
+   Puis, il retourne à l'étape _3_.
+.. Sinon, il commite son implémentation de `F`.
+. Suite à ce commit, l'intégration continue va automatiquement builder le système (et donc lancer les tests).
+.. Si le build échoue, le développeur doit corriger le problème qui fait que son build passe localement,
+   mais qu'il échoue sur le serveur. Donc : retour à l'étape _2_.
+.. Si le build passe, et seulement alors, `F` peut être considérée comme finie d'être implémentée !
+
+Afin d'en arriver là, il est nécessaire de prendre en compte plusieurs points en termes
+de configuration du serveur d'intégration continue,
+du mécanisme de build proprement dit,
+de la manière dont les développeur vont commiter,
+et de la visibilité offerte par l'intégration continue.
+
+== Configuration
+
+* Une intégration continue nécessite l'usage impératif d'un gestionnaire de sources.
+  Le gestionnaire de source choisi dépend des préférences de l'équipe de développement.
+  Cependant, il est important qu'une seule branche de référence soit identifiée.
+  C'est cette branche, appelée _master_, qui servira pour la livraison.
+* De la même manière, il est nécessaire d'avoir un serveur d'intégration continue.
+  Ce serveur d'intégration continue doit :
+** avoir accès à tout le nécessaire pour builder et tester entièrement le projet.
+** fournir le maximum d'outils aux membres de l'équipe de développement.
+
+== Build
+
+Le build doit impérativement être automatique.
+En d'autre termes, cela signifie que toute modification du système doit systématiquement déclencher un build.
+
+Les bénéfices sont multiples :
+
+* Le mécanisme de build peut être très complexe :
+  nécessitant de nombreuses dépendances,
+  découpée en nombreuses phases conditionnelles,
+  visant plusieurs plateformes différentes,
+  intégrant une pipeline de déploiement ...
+  Toute automatisation de ce processus est cela de moins à gérer par l'équipe de développement.
+* Un build automatique est la meilleure manière de se préserver des erreurs humaines.
+* L'exécution des tests fait partie intégrante du build.
+* Un serveur d'intégration continue peut être configuré pour ne builder que le nécessaire
+  (c'est à dire uniquement ce qui a été modifié, ainsi que ce qui en dépend).
+  Cela améliore la rapidité avec laquelle le produit peut être livrée.
+
+== Commits
+
+Un bon usage quotidien d'un serveur d'intégration se traduit par une discipline de modification du code résumée par l'axiome _« commit early, commit often »_ : cela signifie que toute modification devrait être commitée, de la manière la plus immédiate et la plus atomique possible.
+
+Les bénéfices sont les suivants :
+
+* Si un ou plusieurs tests sont en échec suite à un commit de quelques lignes,
+  l'erreur est plus facile à analyser et à corriger que si le commit fesait des dizaine de lignes ou davantage.
+* Se forcer à commiter souvent favorise en général un meilleur découpage du code, et donc une meilleure conception.
+* Commiter souvent de manière utile permet d'enrichir l'historique maintenue par le gestionnaire de sources,
+  ce qui facilite l'analyse lors de corrections ou d'évolutions futures.
+  Ce dernier point suppose évidemment la présence de commentaires de commits informatifs.
+
+== Visibilité
+
+L'intégration continue permet la transparence.
+
+Transparent pour les membres de l'équipe de développement eux-mêmes, qui savent de manière permanente où ils vont,
+car ils profitent à la fois du feedback du client mais aussi de celui de leur intégration continue.
+
+Cela signifie aussi de se rendre visible à l'extérieur de l'équipe de développement,
+par exemple en rendant les artefacts disponibles aux endroits appropriés à ceux qui en ont besoin.
+

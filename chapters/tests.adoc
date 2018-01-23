@@ -1,0 +1,372 @@
+
+:imagesdir: resources/tests
+
+Tester un produit a pour but d'en garantir sa qualité.
+Un test logiciel fournit une vue objective et indépendante
+de l'état d'implémentation de la fonctionalité correspondante.
+Il permet entre autres d'évaluer que le produit :
+
+* réagit correctement face à toutes sortes d'interactions
+  qu'il est possible d'avoir avec lui
+* accomplit ses fonctions de la manière désirée par le client :
+  non seulement chaque fonctionnalité doit déboucher sur la situation attendue,
+  mais elle doit le faire dans le temps et l'environnement spécifiés
+
+Il semble évidemment impossible de décrire le moindre cas de test
+sans disposer de la spécification correspondante.
+Spécifications et tests sont donc entre autres intrinsèquement liés
+dans la plupart des modèles de développement, comme le <<model_v,cycle en V>>.
+
+
+
+== Analyse statique
+
+L'*analyse statique* du code (_sans_ l'exécuter) permet d'obtenir
+une idée du comportement qu'il aura lors de son exécution.
+Certaine méthodes formelles d'analyse statique de code existent
+(par exemple, la logique de Hoare) ; mais aucune ne permet de dire à coup sûr
+si le code produira des erreurs lors de son exécution.
+Cependant, appliquer un certain nombre de principes lors du codage
+permet de réduire le _risque d'erreur_ lors de l'exécution du code.
+
+Les principes à appliquer peuvent parfois être empiriques.
+Ils dépendent en général du langage de programmation utilisé
+(toujours initialiser une variable avant de l'utiliser,
+limiter le nombre de structures de contrôle, ...).
+
+L'analyse statique du code est aujourd'hui souvent intégrée dans
+les outils de développement de base des langages de programmation
+que sont les compilateurs et les IDE.
+Une solution comme SonarQube est un autre exemple d'outil d'analyse statique.
+
+=== Revue de code
+
+La revue de code est une méthode empirique d'analyse statique qui consiste
+à faire lire le code source d'un développeur par une autre développeur.
+Le but est d'obtenir un point de vue additionel sur la conception et
+l'implémentation, et ainsi d'augmenter la qualité du code.
+
+
+
+== Niveaux de granularité
+
+* Un *test unitaire* teste individuellement une unité de code ;
+  il s'agit en général d'une fonction ou d'un objet.
+  On s'intéresse à la _plus petite partie testable_ d'un logiciel.
+* Un *test d'intégration* combine différents modules logiciels et les teste
+  comme un groupe fonctionnel.
+* Un *test système* est conduit sur un système _complet_ et _intégré_.
+  Il évalue la manière dont les différents groupes fonctionnels communiquent.
+* Un *test de validation* vérifie que le système correspond au besoin exprimé.
+
+Puisque pour tester le logiciel à un niveau toujours plus élevé
+il s'agit de combiner/intégrer ses différents composants les uns avec les autres,
+il est légitime de se demander dans quel ordre intégrer ces composants.
+
+Il existe pour répondre à cette qustion différentes approches.
+
+image::dependances.png[caption="Figure 01:", 400px, title="Exemple de dépendances", alt="Dépendances"]
+
+[[bottom-up]]
+=== Approche « bottom-up »
+
+Avec l'approche « *bottom-up* », on intègre les composants les uns avec les autres
+en commencant par ceux qui ont le moins de dépendances.
+
+. D'abord l'ensemble des composants sans aucune dépendance
+. Ensuite, l'ensemble des modules qui dépendent d'un ou plusieurs composants de l'ensemble précédent
+
+Et ainsi de suite, jusqu'à intégrer le (ou les) composant(s) du plus haut niveau.
+
+Dans la figure précédente, on intègrerait avec l'approche « bottom-up »
+d'abord les composants _D_, _E_, _G_ et _H_, puis seulement _F_ et _B_, puis ensuite _C_, et enfin _A_.
+
+==== Avantages
+
+* Étant donné qu'on ne commence les tests d'intégration d'un composant particulier
+  que lorsque les tests d'intégration de _toutes_ ses dépendances ont réussi,
+  cela signifie qu'une intégration échouée d'un composant indique que l'erreur se trouve
+  dans ce composant particulier, et pas dans une de ses dépendances. +
+  Cette approche offre donc une bonne *localisation des erreurs*.
+* Cette approche étant intuitive et correspondant bien souvent à la réalité de la phase de développement
+  (où les dépendances d'un composant sont développées avant le composant lui-même),
+  les tests d'intégration d'un composant peuvent être réalisés *juste après son développement*.
+* Pour la même raison, cette approche tire parti de la *réutilisabilité* des composants :
+  chaque composant est testé avec ses dépendances réelles, elles-mêmes déjà développées et intégrées.
+
+==== Inconvénients
+
+* Les composants de plus haut niveau, qui sont bien souvent ceux qui remplissent directement
+  le besoin métier, et donc les seuls qui intéressent vraiment le client, sont testés *en dernier*.
+  La qualité du système n'est donc garantie qu'à la toute fin.
+* De même, cette approche est tardive à valider la conception du logiciel.
+  En effet, plus tardive est le test d'intégration d'un composant,
+  plus tardif est le fait de vérifier que celui-ci fonctionne comme le prévoit le schéma d'architecture.
+* Enfin, cette approche nécessite évidemment la présence de modules *sans dépendances*.
+
+[[top-down]]
+=== Approche « top-down »
+
+Avec l'approche « *top-down* », on intègre les composants les uns avec les autres
+en commencant par celui ou ceux de plus haut niveau.
+
+. D'abord le composant de plus haut niveau
+. Puis l'ensemble des composants dont le précédent dépend directement
+. Puis l'ensemble des dépendances directes de l'ensemble des composants précédent
+
+Et ainsi de suite, jusqu'à intégrer le (ou les) composant(s) qui n'ont aucune dépendance.
+
+Les dépendances d'un composant particulier sont, avec cette approche, remplacés par des bouchons
+(voir la description du <<model_evolutive,modèle de développement évolutif - itératif>>).
+
+Dans la figure précédente, on intègrerait avec l'approche « bottom-up »
+d'abord le composant _A_, puis _B_ et _C_, puis seulement _D_, _E_ et _F_, puis enfin _G_ et _H_.
+
+==== Avantages
+
+* Puisqu'on peut vérifier la qualité des composants les plus importants (fonctionnellement parlant)
+  dès le début, cette approche permet un *prototypage rapide* de la solution.
+* La *conception est mise à l'épreuve*, elle aussi, plus rapidement :
+  les besoins des composants de plus haut niveau sont implémentés et éprouvés au fur et à mesure.
+  En cas d'inadéquation entre la réalité et la conception d'origine,
+  cette dernière peut être améliorée sans remettre en cause trop importante de l'existant.
+  Elle offre donc une *flexibilité d'implémentation* appréciable.
+* De par le recours systématique au bouchonnage, chaque composant est testé *en isolation*,
+  ce qui offre une bonne localisation des erreurs.
+
+==== Inconvénients
+
+* Le recours systématique aux bouchons peut être vu comme imposant
+  une *charge de développement et de maintenance* un peu plus importante.
+* Le risque est de *négliger les composants de plus bas niveau* :
+** Il est nécessaire de s'assurer que ceux-ci soient entièrement développés et testés,
+   même si ce sont les derniers à l'être.
+   En effet il faut garder à l'esprit que même si les tests des modules de plus haut niveau sont réussis,
+   rien ne garantit qu'il fonctionneront correctement lorsque les bouchons seront remplacés par leurs
+   dépendances réelles.
+** Il est parfois facile d'oublier de prendre en compte la réutilisabilité des composants.
+
+=== Autres approches
+
+* L'approche en « *sandwich* » tente de maximiser les avantages des deux approches précédentes
+  en intégrant en même temps et indépendamment les composants de haut et de bas niveau.
+  En contrepartie, le niveau médian est parfois négligé.
+* L'approche « *big bang* » intègre tous les composants en même temps.
+  Pour des raisons évidentes de complexité, cette approche est difficile à adopter pour les gros projets.
+
+
+
+== Niveaux d'accessibilité
+
+* Tester un logiciel en mode « *boîte noire* » consiste à en tester le comportement
+  sans avoir aucune connaissance concernant son fonctionnement interne.
+  Un test « boîte noire » connaît uniquement _ce que_ doit faire le logiciel,
+  et pas _comment_ il le fait. +
+  En mode boite noire, le testeur n'a à priori pas besoin de savoir programmer.
+  Il peut donc apporter un regard différent, mais peut potentiellement fournir
+  des efforts inutiles.
+* Un test en mode « *boîte blanche* » nécessite de connaître le fonctionnement
+  interne d'un logiciel ainsi que les structures de données mises en jeu.
+  Un tel test accorde autant d'intérêt aux mécanismes internes d'un programme
+  qu'aux résultats qu'il produit. +
+  L'analyse statique fonctionne évidemment toujours en mode boîte blanche.
+
+
+
+== Tests fonctionnels vs tests non-fonctionnels
+
+Un test fonctionnel a pour objectif de vérifier la bonne implémentation d'un <<uml_usecases,cas d'utilisation>>. Il est donc fortement lié à un *besoin*.
+
+Un test non fonctionnel a pour objectif de vérifier le respect d'une *contrainte*. Cette contrainte est la plupart du temps technique.
+
+
+[[tests_types]]
+== Types de tests
+
+On peut citer de nombreux types de tests différents.
+Même si elle a vocation à mettre en évidence la diversité des tests possibles à réaliser,
+la liste suivante n'est pas exhaustive.
+
+* tests de *déploiement* / d'*installation* du logiciel dans son environnement de production
+* test de *compatibilité* du logiciel avec d'autres composants existants
+* *smoke tests* / tests de *démarrage* :
+  vérifier que le logiciel démarre bien et accomplit ses fonctionnalités minimales
+* *soak tests* / *stress tests* / tests de *charge* :
+  vérifier que le logiciel continue de remplir le besoin à grande échelle,
+  ou en le privant d'une partie de ses ressources
+* *sanity tests* : vérifier si on peut se permettre d'exécuter le test suivant
+* test de *non-regression* par rapport aux fonctionnalités existantes du logiciel
+* tests *alpha* puis *beta* / *pilote* : sur un panel d'utilisateurs pré-sélectionnés
+* tests *destructifs* : vérifier si on arrive à détruire tout ou partie des fonctionnalités du logiciel
+* tests de *performance* : vérifier si les contraintes de performance du logiciel sont remplies
+* tests de *sécurité* : vérifier la présence d'aucune faille de sécurité
+* tests de *concurrence* : vérifier le comportement du logiciel durant une phase d'activité normale
+* tests d'*usabilité*, tests d'*accessibilité* : voir la qualité d'<<quality_usability,ergonomie>>
+* tests de *localisation* : vérifier que la qualité du logiciel est maintenue pour toutes les cultures
+* tests de *conformité* par rapport à une norme, par exemple en activant tous les warnings du compilateur
+* tests *continuels* : voir le chapitre sur l'intégration continue
+
+
+
+== Caractéristiques
+
+Un logiciel étant constitué de la somme de tous ses composants,
+si chacun de ces composants est testé de manière indépendante, exhaustive
+et conforme à sa spécification, la qualité de tout le logiciel est garantie.
+
+Afin de se rapprocher au maximum de l'exhaustivité, les tests d'une application
+doivent être les plus détaillés possibles.
+
+Idéalement, chaque test devrait être indépendant des autres.
+Par extension, cela signifie que le périmètre de chaque test devrait être limité.
+Cependant, au sein de ce périmètre, le test doit être le plus détaillé possible.
+
+=== Déroulement
+
+==== Situation initiale (« _given_ »)
+
+Il s'agit de l'état dans lequel se trouve le système avant
+d'appliquer le comportement décrit par le test.
+
+La situation initiale d'un test correspond à ses *pré-conditions*:
+les données en entrées et/ou une suite de commandes de *mise en place* (_setup_).
+
+==== Action (« _when_ »)
+
+Il s'agit d'une suite d'événements (actions utilisateur, message réseau, ...)
+appliqués au système à partir de la situation initiale.
+
+Ce comportement appliqué se traduit souvent par une commande (ou une suite de commandes)
+visant à amener le système de la situation initiale vers une situation attendue correspondante.
+
+==== Situation attendue (« _then_ »)
+
+Il s'agit de l'état dans lequel doit se trouver le système après avoir appliqué
+le comportement décrit à partir de la situation initiale.
+
+Si la situation réelle (ou situation observée) est différente de la situation attendue, le test _doit_ échouer.
+
+=== Qualités
+
+==== Isolation
+
+===== Isolation de l'élément testé
+
+Afin de minimiser les effets de bords indésirables lors des tests,
+il est préférable que l'élément à tester le soit en isolation ;
+c'est à dire, en remplaçant ses dépendances par des objets spécifiquement créés pour le test.
+Ces objets spécifiques sont à priori bien plus simples, et donc exempts de dysfonctionnements, que leurs équivalents « réels ».
+
+Cette manière de tester est similaire à l'approche <<top-down,« top-down »>> vue précédement.
+En pratique, il est cependant souvent nécessaire de trouver le bon compromis en ce qui concerne le niveau d'étanchéité des tests :
+
+* Une étanchéité totale des tests isole parfaitement chaque élément testé.
+  Un échec à un tel test localise automatiquement l'anomalie dans l'élement en question, puisqu'aucune de ses dépendances n'est utilisée.
+  Cependant, en raison de la multiplicité des objets de tests spécifiques, le code de test correspondant peut être difficile à maintenir.
+* Ne tester aucun composant en isolation garantit à priori de gagner du temps, puisque tout les éléments de code produits sont utilisés en production.
+  Cependant, en cas de test(s) en échec, l'analyse est complexe, puisque l'anomalie peut se trouver non seulement dans l'objet testé,
+  mais aussi dans n'importe laquelle de ses dépendances, ou encore dans les interactions entre ces différents éléments.
+
+====== Objets spécifiques à un contexte de test
+
+* Un _dummy_ est un objet sans aucun comportement, qui peut être utilisé par exemple pour compléter une liste de paramètres d'appel.
+  Le comportement de l'objet remplacé ne doit avoir aucune influence sur le déroulement du test.
+* Un _stub_ (ou _bouchon_) est un objet dont le retour est pré-programmé, et est à priori toujours le même.
+  Le _stub_ a un comportement peu complexe.
+* Un _fake_ s'apparente à un _stub_ dont le comportement est plus complexe.
+  Le comportement d'un _fake_ est censé se rapprocher de celui d'un objet ou d'un groupe d'objets utilisés en production.
+  Cependant, un _fake_ est bel est bien un objet à n'utiliser que dans un contexte de tests, et ne doit jamais être utilisé en production !
+* Un _spy_ est un _stub_ qui offre des fonctionnalités d'analyse.
+  Il permet par exemple de logger des informations supplémentaires quand on l'utilise, ou d'accumuler certaines métriques sur son utilisation.
+* Un _mock_ est un objet dont le comportement est pré-programmé.
+  Un _mock_ provoque une erreur si il est utilisé en dehors de ce comportement.
+
+===== Isolation des tests entre eux
+
+Chaque test devrait pouvoir être exécuté de manière indépendante, en autonomie.
+De plus, si plusieurs tests sont exécutés (ie. sous forme de *suite* de tests),
+leur séquencement devrait pouvoir changer d'une exécution à l'autre sans altérer le résultat de chaque test.
+
+En effet, si un test `T` dépend de l'exécution préalable d'un autre test `P` :
+
+* si `P` et `T` échouent, l'échec de `T` est-il du uniquement à l'échec de `P`, ou à un ou plusieurs autres problèmes propres à `T` ?
+* si `P` échoue mais que `T` réussit, la situation est-elle normale ?
+  `T` ne devrait-il pas échouer aussi, puisque sa précondition, `P`, n'est pas remplie ?
+* cette dépendance de `T` envers `P` reflète-t-elle vraiment la spécification ?
+
+Toutes ces questions compliquent fortement l'analyse et donc la maintenance du système.
+Dans la situation précédement décrite, il est préférable de considérer `P`,
+non pas comme un test indépendant, mais comme faisant partie de la mise en place de `T`.
+
+===== Fixtures
+
+La plupart des frameworks de test proposent au moins deux fonctions spécifiques, appelées *fixtures* :
+
+* une fonction `setUp` destinée à regrouper les commandes de mise en place d'un contexte
+  (ie. d'une sitation initiale) commun à tous les tests d'une suite donnée.
+  Cette fonction est systématiquement appelée avant chaque test de la suite.
+* une fonction `tearDown` destinée à regrouper les commandes de "nettoyage",
+  permettant aux autres tests de la suite de repartir d'une situation initiale saine.
+  Cette fonction est systématiquement appelée après chaque test de la suite.
+
+[NOTE.example,caption=""]
+====
+Voici certaines opérations qui sont typiquement à faire dans une fonction `setUp`:
+
+* Créer une base de données de test spécifique, différente de la base de données de production.
+  Cela peut permettre de préserver la sécurité du système (la base contient de "fausses" informations),
+  de diminuer le temps d'exécution des tests (la base de test est plus légère que la base de prodution),
+  ou tout simplement de rendre leur exécution possible (si le format des données de production est difficilement reproductible).
+* Créer un certain nombre de fichiers (réels ou virtuels).
+  Si les fichiers sont créés sur le disque, ils devront évidemment être supprimés par la fonction `tearDown`.
+* Formatter un disque et installer un système d'exploitation propre.
+  Cela permet de garantir un contexte d'exécution des tests sain.
+* Acquisition d'un device.
+  Ce device devra évidemment être libéré par la fonction `tearDown`.
+* Préparation des données servant au tests sous forme de fakes/stubs/mocks.
+
+====
+
+==== Déterminisme
+
+Le résultat d'un test doit être systématique.
+Tant qu'aucun changement n'est apporté, un test réussi doit rester réussi, et un test en échec doit rester en échec.
+
+Un test déterministe permet de garantir, via entre autres l'usage de bouchons, de mocks et d'une implémentation en isolation,
+qu'une anomalie constatée est reproductible, et donc qu'elle peut être corrigée.
+
+[NOTE.example,caption=""]
+====
+De nombreux éléments peuvent rendre un test non déterministe.
+Par exemple :
+
+* la génération de variables aléatoires (_random_)
+* les _threads_
+* les appels systèmes : date/heure, internationalisation, ...
+
+====
+
+==== Exhaustivité
+
+Un test unitaire étant la validation d'un comportement spécifique, il n'est par nature qu'un indicateur partiel de qualité.
+Seule l'exhaustivité des tests permet donc de garantir la qualité globale d'un système.
+
+Il est en pratique nécessaire de tester _tous_ les élements suivants :
+
+* les cas nominaux, testant la capacité fonctionnelle du système en regard de sa spécification
+* les cas d'erreur, ou la façon dont le système réagit aux entrées imprévues
+* différentes types d'inputs, notamment les cas limites
+
+En pratique, il est indispensable de créer un ou plusieurs nouveaux tests dès qu'une anomalie (eg. une régression) est constatée !
+
+===== Couverture de code
+
+Tester le niveau de couverture du code offre un bon indicateur sur l'exhaustivité avec laquelle le code de tests vérifie le code source.
+
+Il existe différent niveau de granularité de couverture de code :
+
+* vérifier que toutes les fonctions sont appelées
+* vérifier que toutes les instructions sont exécutées
+* pour chaque structure de contrôle, vérifier que tous les chemins d'exécutions sont empruntés
+* pour chaque expression booléenne, vérifier que toutes les opérandes contribuent à son évaluation
+
