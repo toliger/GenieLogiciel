@@ -13,8 +13,13 @@ cd ${stylesdir} && compass compile && cd -
 mkdir ${exportdir}
 cp README.adoc ${exportdir}
 cp -r resources ${exportdir}/resources
-if [ -e "${stylesdir}/images/${stylename}" ]; then mkdir -p "${exportdir}/images" && cp -r "${stylesdir}/images/${stylename}" "${exportdir}/images/${stylename}"; fi
 cp "${stylesdir}/stylesheets/${stylename}.css" "${exportdir}/${stylename}.css"
+if [ -e "${stylesdir}/images/${stylename}" ]; then
+  mkdir -p "${exportdir}/images";
+  cp -r "${stylesdir}/images/${stylename}" "${exportdir}/images/${stylename}";
+  sed -i.tmp  -e "s/..\/images\/$stylename/.\/images\/$stylename/g" "${exportdir}/${stylename}.css";
+  rm "${exportdir}/${stylename}.css.tmp";
+fi
 # generate HTML
 echo "Generating HTML ..."
 asciidoctor     core.adoc -a linkcss -a stylesheet="${stylename}.css" -o ${exportdir}/index.html
