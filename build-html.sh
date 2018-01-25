@@ -8,7 +8,7 @@ stylename=$2
 git clone https://github.com/asciidoctor/asciidoctor-stylesheet-factory.git ${stylesdir}
 # compile stylesheets
 echo "Generating stylesheets ..."
-cd ${stylesdir} && compass compile && cd -
+cd ${stylesdir} && compass compile sass/${stylename}.scss && cd -
 # copy resources and compiled css to export directory
 mkdir ${exportdir}
 cp README.adoc ${exportdir}
