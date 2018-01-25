@@ -12,6 +12,7 @@ cd ${stylesdir} && compass compile && cd -
 # copy resources and compiled css to export directory
 mkdir ${exportdir}
 cp -r resources ${exportdir}/resources
+if [ -e "${stylesdir}/images/${stylename}" ]; then mkdir -p "${exportdir}/images" && cp -r "${stylesdir}/images/${stylename}" "${exportdir}/images/${stylename}"; fi
 cp "${stylesdir}/stylesheets/${stylename}.css" "${exportdir}/${stylename}.css"
 # generate HTML
 echo "Generating HTML ..."
