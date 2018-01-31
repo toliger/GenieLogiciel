@@ -34,12 +34,12 @@ En pratique, ce cours constitue une formation accélérée aux sujets suivants :
 
 Comme je l'ai écrit, ce livre est un *support*, qui n'est pas destiné à _remplacer_ une présence assidue en cours ! +
 Il est là pour vous donner une (bonne) idée des différents points que nous aborderons, pour vous permettre de suivre sans avoir à passer votre temps à prendre des notes, et pour vous servir de bouée de sauvetage si vous avez un empêchement ponctuel. +
-Cependant, comme il est rédigé de manière à être conçis et à vous donner accès rapidement aux informations essentielles, il n'est pas vraiment exhaustif et ne contient que peu d'exemples ou de détails contextuels, qui font le sel de la vie en entreprise en général, et du génie logiciel en particulier ...
+Cependant, comme il est rédigé de manière à être conçis et à vous donner accès rapidement aux informations essentielles, il n'est pas vraiment exhaustif et ne contient que peu d'exemples ou de détails contextuels, qui font le sel de la vie en entreprise en général, et du génie logiciel en particulier ... Pour tout ça, venez en cours !
 
 == Licence
 
-* Les scripts de publication sur GitHub Pages via Travis CI, pour ce qu'ils valent, sont publiés sous https://www.gnu.org/licenses/agpl-3.0.fr.html[licence GNU Affero GPL 3.0] [https://www.gnu.org/licenses/why-affero-gpl.fr.html[?]]
-* Le contenu proprement dit de ce livre (ie. le texte et les images) est publié sous https://creativecommons.org/licenses/by-nc-nd/3.0/fr/[licence Creative Commons BY-NC-ND 3.0].
+* Les scripts de publication sur GitHub Pages via Travis CI sont publiés sous https://www.gnu.org/licenses/agpl-3.0.fr.html[licence GNU Affero GPL 3.0] [https://www.gnu.org/licenses/why-affero-gpl.fr.html[?]]
+* Le contenu proprement dit de ce livre (texte et images) est publié sous https://creativecommons.org/licenses/by-nc-nd/3.0/fr/[licence Creative Commons BY-NC-ND 3.0].
 
 En résumé, ce que vous avez sous les yeux est là pour vous apprendre des trucs, pas pour que vous fassiez de l'argent avec sans effort !
 

@@ -997,7 +997,7 @@ Ce modèle est donc dans les faits très peu tolérant aux erreurs.</p>
 </div>
 </li>
 <li>
-<p>La durée de vie d&#8217;un projet étant souvent de plusieurs années.
+<p>La durée de vie d&#8217;un projet est souvent de plusieurs années.
 Pourtant, ce modèle est très <strong>intolérant</strong> aux changements.</p>
 <div class="ulist">
 <ul>
@@ -1023,7 +1023,7 @@ Pourtant, ce modèle est très <strong>intolérant</strong> aux changements.</p>
 <li>
 <p>Les domaines où il est impossible ou très coûteux de revenir en arrière.
 Par exemple, c&#8217;est le monde du BTP qui a donné naissance à ce modèle
-(peut-on construire un bâtiment avant d&#8217;avoir spécifié le terrain et conçu les plans ?).</p>
+(peut-on construire un bâtiment avant d&#8217;avoir « spécifié » le terrain et « conçu » les plans ?).</p>
 </li>
 <li>
 <p>Les projets dont le périmètre est faible et la durée très courte.
@@ -1074,13 +1074,12 @@ Il est donc de loin le plus utilisé dans le <strong>domaine industriel</strong>
 </div>
 </li>
 <li>
-<p>Les phases de test sont aussi importantes que les phases de réflexion.
-De plus, il est plus facile de décrire de manière exhaustive comment tester une fonctionnalité
-au moment où celle-ci est conçue. La synergie entre analyse et description du test est profitable.</p>
+<p>Les phases de test (ie. la branche « ascendante » du V) sont aussi importantes que les phases de réflexion (ie. la branche « descendante »).
+En particulier, il est plus facile de décrire de manière exhaustive comment tester une fonctionnalité au moment où celle-ci est conçue.
+La synergie entre analyse d&#8217;une fonctionalité et description du test qui en attestera la qualité est profitable.</p>
 </li>
 <li>
-<p>Puisqu&#8217;il favorise la décomposition hiérarchique et fonctionnelle,
-il permet l&#8217;organisation du travail, des équipes et la maîtrise des coûts (voir la méthode COCOMO).
+<p>Puisqu&#8217;il favorise la décomposition hiérarchique et fonctionnelle, il permet l&#8217;organisation du travail, des équipes et la maîtrise des coûts (exemple: la méthode COCOMO).
 Cela lui offre une bonne visibilité.
 Le suivi de projet est facilité.</p>
 </li>
@@ -1096,9 +1095,9 @@ Le suivi de projet est facilité.</p>
 Le principal problème restant le <strong>manque de souplesse</strong>.</p>
 </li>
 <li>
-<p>Différence entre la théorie et la pratique.
+<p>Il y a une différence entre la théorie et la pratique.
 Les phases durant lesquelles le niveau de détail est accru,
-en particulier celles de spécification détaillées et d&#8217;implémentation,
+en particulier celles de spécification détaillée et d&#8217;implémentation,
 permettent parfois de se rendre compte que les analyses issues des phases précédentes
 sont incomplètes ou carrément irréalisables en l&#8217;état.</p>
 </li>
@@ -1108,8 +1107,7 @@ sont incomplètes ou carrément irréalisables en l&#8217;état.</p>
 <div class="sect3">
 <h4 id="_domaines_d_application_2">Domaines d&#8217;application</h4>
 <div class="paragraph">
-<p>Ses inconvénients persistants en dépit de son vaste taux d&#8217;utilisation font que le cycle en V
-est davantage un <strong>idéal</strong> vers lequel certains aimeraient tendre mais est rarement appliqué tel quel.</p>
+<p>Ses inconvénients persistants en dépit de son vaste taux d&#8217;utilisation font que le cycle en V est davantage un <strong>idéal</strong> vers lequel certains aimeraient tendre mais n&#8217;est pas toujours appliqué tel quel.</p>
 </div>
 <div class="paragraph">
 <p>Il est donc en général utilisé pour de grands projets industriels avec plus ou moins de bonheur.</p>
@@ -1126,12 +1124,11 @@ est davantage un <strong>idéal</strong> vers lequel certains aimeraient tendre 
 <h3 id="model_spiral">En spirale (de Boehm)</h3>
 <div class="paragraph">
 <p>Inspiré par la Roue de Deming, ce modèle itératif met l&#8217;accent sur la <strong>gestion des risques</strong>.
-Il reprend les étapes du <a href="#model_v">cycle en V</a>, mais prévoit la création de versions successives
-au cours de <strong>cycles</strong> de développement.</p>
+Il reprend les étapes du <a href="#model_v">cycle en V</a>, mais prévoit la création de versions successives au cours de <strong>cycles</strong> de développement.</p>
 </div>
 <div class="paragraph">
 <p>Chaque cycle peut être découpé en 4 étapes distinctes
-représentées par l&#8217;acronyme PDAC (<em>Plan-Do-Check-Act</em>) :</p>
+représentées par l&#8217;acronyme PDCA (<em>Plan-Do-Check-Act</em>) :</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1237,7 +1234,7 @@ différents risques peuvent être addressés l&#8217;un après l&#8217;autre.</p
 <p>Possibilité d&#8217;intervertir l&#8217;ordre de certains cycles indépendants</p>
 </li>
 <li>
-<p>Compatible à de nombreuses approches et outils existants.</p>
+<p>Compatible avec de nombreuses approches et outils existants.</p>
 </li>
 </ul>
 </div>
@@ -1247,7 +1244,7 @@ différents risques peuvent être addressés l&#8217;un après l&#8217;autre.</p
 <div class="ulist">
 <ul>
 <li>
-<p>Nécessite une vraie expertise sur l&#8217;évaluation des risques :
+<p>Nécessite une expertise réelle et complète dans le domaine de l&#8217;évaluation des risques :
 la nature des risques peut être différente d&#8217;un cycle à l&#8217;autre.</p>
 </li>
 <li>
@@ -1258,8 +1255,7 @@ la nature des risques peut être différente d&#8217;un cycle à l&#8217;autre.<
 </li>
 <li>
 <p>Verbosité inadaptée pour les petits projets ou des domaines suffisamment connus.
-Dans le pire des cas, la stricte application de ce modèle (en particulier l&#8217;évaluation des risques)
-engendre un coût plus élevé que la réalisation du projet elle-même.</p>
+Dans le pire des cas, la stricte application de ce modèle (en particulier l&#8217;évaluation des risques) engendre un coût plus élevé que la réalisation du projet elle-même.</p>
 </li>
 </ul>
 </div>
@@ -1267,15 +1263,14 @@ engendre un coût plus élevé que la réalisation du projet elle-même.</p>
 <div class="sect3">
 <h4 id="_domaines_d_application_3">Domaines d&#8217;application</h4>
 <div class="paragraph">
-<p>Ce modèle est logiquement approprié aux projets où le périmètre et le risque sont importants.</p>
+<p>Ce modèle est logiquement approprié aux projets où le périmètre est peu maîtrisé et où le risque est important ().</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="model_explore">Exploratoire</h3>
 <div class="paragraph">
-<p>Le principe de ce modèle itératif est de perfectionner à plusieurs reprises (on parle d&#8217;itérations)
-la spécification du projet, ainsi que son développement et sa validation.
+<p>Le principe de ce modèle itératif est de perfectionner à plusieurs reprises, au cours d&#8217;itérations successives, la spécification du projet, ainsi que son développement et sa validation.
 L&#8217;objectif est de <strong>collaborer</strong> avec le client et de <strong>raffiner</strong> de plus en plus la solution.</p>
 </div>
 <div class="imageblock">
@@ -1292,8 +1287,7 @@ L&#8217;objectif est de <strong>collaborer</strong> avec le client et de <strong
 <div class="ulist">
 <ul>
 <li>
-<p>Minimise le risque pour les nouvelles applications : il est possible d&#8217;explorer certaines spécificités
-du systèmes, de les évaluer afin d&#8217;opter pour la meilleure stratégie.</p>
+<p>Minimise le risque pour les nouvelles applications : il est possible d&#8217;explorer certaines spécificités du système, de les évaluer afin d&#8217;opter pour la meilleure stratégie.</p>
 </li>
 <li>
 <p>Le résultat est souvent pleinement compréhensible et satisfaisant pour le client.</p>
@@ -1306,7 +1300,7 @@ du systèmes, de les évaluer afin d&#8217;opter pour la meilleure stratégie.</
 <p>Favorise les tests et les validations intermédiaires.</p>
 </li>
 <li>
-<p>Il est possibile d&#8217;arrêter le processus n&#8217;importe quand.</p>
+<p>Il est possible d&#8217;arrêter le processus n&#8217;importe quand.</p>
 </li>
 </ul>
 </div>
@@ -1333,21 +1327,20 @@ du systèmes, de les évaluer afin d&#8217;opter pour la meilleure stratégie.</
 <div class="sect3">
 <h4 id="_domaines_d_application_4">Domaines d&#8217;application</h4>
 <div class="paragraph">
-<p>Le domaine d&#8217;application de ce modèle est donc les petits systèmes (ou parties d&#8217;un système) interactifs
-dont le résultat peut être visible rapidement. En particulier, les IHM.</p>
+<p>Le domaine d&#8217;application privilégié de ce modèle est donc les petits systèmes (ou parties d&#8217;un système) interactifs dont le résultat peut être visible rapidement.
+En particulier, les interfaces graphiques (IHM, maquette de site web, &#8230;&#8203;).</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="model_evolutive">Évolutif</h3>
 <div class="paragraph">
-<p>Ce modèle itératif vise a réaliser une version provisoire de la solution aux besoins connus
-afin de pouvoir la mettre en exploitation au plus vite.
+<p>Ce modèle itératif vise a réaliser rapidement une version provisoire de la solution aux besoins connus afin de pouvoir la mettre en exploitation le plus rapidement possible.
 De <strong>nouvelles versions</strong> seront ensuite déployées, chacune remplaçant la version précédente.
 Chaque version apportera de nouvelles fonctionnalités ou modifiera les fonctionnalités existantes.</p>
 </div>
 <div class="paragraph">
-<p>Les versions intermédiaires sont réalisés avec tous les principes de qualité d&#8217;une version finale :
+<p>Les versions intermédiaires sont réalisées en incluant toutes les phases d&#8217;existence habituelles d&#8217;un projet (conception, développement, tests, &#8230;&#8203;) et avec tous les principes de qualité d&#8217;une version finale :
 ce ne sont donc <em>pas</em> des prototypes jetables !</p>
 </div>
 <div class="sect3">
@@ -1368,7 +1361,7 @@ Chaque nouvelle version ajoute une nouvelle fonctionalité complète.</p>
 <div class="paragraph">
 <p>Le système doit être dès le départ découpé en fonctionalités bien définies.
 La première version constitue une coquille complète du système.
-Chaque fonctionnalité qui n&#8217;est pas implémentée est remplacée par un <strong>bouchon</strong>.
+Chaque fonctionnalité qui n&#8217;est pas implémentée est remplacée par un <strong><a href="#test_object_stub">bouchon</a></strong>.
 Chaque nouvelle version modifie ou améliore une fonctionalité.</p>
 </div>
 <div class="imageblock">
@@ -1415,7 +1408,7 @@ Chaque nouvelle version modifie ou améliore une fonctionalité.</p>
 </div>
 </li>
 <li>
-<p>La manière d&#8217;obtenir un retour des utilisateurs doit être maîtrisée.</p>
+<p>La manière d&#8217;obtenir un retour (<em>feedback</em>) des utilisateurs doit être maîtrisée.</p>
 </li>
 <li>
 <p>Risque de remise en cause du noyau assurant les fonctionnalités de base.</p>
@@ -1455,7 +1448,7 @@ qui offrent tous au moins les trois caractéristiques suivantes :</p>
 </div>
 <div class="paragraph">
 <p>Différents implémentations de ces principes ont vu le jour :
-<em>RAD</em>, <em>Crystal Clear</em>, processessus unifiés (modèle en "Y" ou <em>2TUP</em>, <em>RUP</em>, <em>AUP</em>, <em>XUP</em>), &#8230;&#8203;
+<em>RAD</em>, <em>Crystal Clear</em>, processus <strong>unifiés</strong> (modèle en "Y" ou <em>2TUP</em>, <em>RUP</em>, <em>AUP</em>, <em>XUP</em>), &#8230;&#8203;
 Cependant, les implémentations les plus utilisées sont aujourd&#8217;hui
 <a href="#lifecycle_xp"><em>Extreme Programming</em> (<em>XP</em>)</a> et <a href="#lifecycle_scrum"><em>Scrum</em></a>.</p>
 </div>
@@ -1668,14 +1661,14 @@ il est indispensable de faire de l'<a href="#continuous_integration"><strong>int
 <p>Étant admis que la revue de code est utile, celle-ci sera faite systématiquement, via la <strong>programmation en binôme</strong>.</p>
 </li>
 <li>
-<p>Étant admis qu&#8217;une bonne architecture logicielle est indispensable, la conception sera améliorée systématiquement,
+<p>Étant admis qu&#8217;une bonne architecture logicielle est indispensable, la conception sera améliorée continuellement,
 via la pratique de <strong>refactoring</strong> systématique.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_test_driven_development_tdd">Test Driven Development (TDD)</h6>
+<h6 id="tdd">Test Driven Development (TDD)</h6>
 <div class="paragraph">
 <p>Le <em>TDD</em> est une discipline de développement qui oblige à écrire systématiquement et de manière exhaustive
 le code testant la fonctionnalité avant même de développer la fonctionnalité en elle-même.
@@ -1791,7 +1784,7 @@ d'<strong>inspection</strong> des livrables, et d'<strong>adaptabilité</strong>
 <div class="ulist">
 <ul>
 <li>
-<p>la <strong>réunion de planification</strong> (ou _planning poker) qui a lieu en début de sprint</p>
+<p>la <strong>réunion de planification</strong> (ou <em>planning poker</em>) qui a lieu en début de sprint</p>
 </li>
 <li>
 <p>la <strong>mêlée quotidienne</strong> (ou <em>standup meeting</em>), qui réunit quotidiennement tous les membres de l&#8217;équipe
@@ -1842,7 +1835,7 @@ dans une optique d'<strong>amélioration continue</strong>.</p>
 <p>Le <strong>product owner</strong> est le propriétaire du produit, et le client de l&#8217;équipe de développement.
 C&#8217;est lui qui détient la <strong>vision</strong> de ce que doit être le produit.
 C&#8217;est donc aussi à lui qu&#8217;appartient le <a href="#agility_backlogs">product backlog</a> :
-il fixe la priorité entre les différentes activités et qui s&#8217;assure que leur spécification est comprise de tous.
+il fixe la priorité entre les différentes activités et s&#8217;assure que leur spécification est comprise de tous.
 <em>Scrum</em> recommande que le product owner soit <strong>toujours présent</strong> sur le même site que l&#8217;équipe de développement,
 qui peut avoir besoin de son retour ou de ses explications à tout moment pendant le sprint.</p>
 </li>
@@ -1851,7 +1844,7 @@ qui peut avoir besoin de son retour ou de ses explications à tout moment pendan
 que cela soit au niveau de la qualité comme des délais.
 Ce sont eux qui estiment le coût de chaque activité lors du <em>planning poker</em>.<br>
 Chacun des membres de l&#8217;équipe de développement est considéré comme <strong>non-spécialisé</strong> / pluridisciplinaire.
-Cela signifie que n&#8217;importe quel membre peut intervenir sur n&#8217;importe quelle activité du sprint backlog.<br>
+Cela signifie que n&#8217;importe quel membre peut intervenir sur n&#8217;importe quelle activité du <em>sprint backlog</em>.<br>
 L&#8217;équipe de développement fonctionne en auto-organisation : <em>Scrum</em> n&#8217;impose rien quant à la façon dont les développements se déroulent ; elle se contente de fournir un cadre pour que la qualité et les délais soient respectés.<br>
 L&#8217;équipe de développement est <strong>mono-produit</strong> et ne prend ses ordres que du product owner.<br>
 <em>Scrum</em> recommande une taille de 3 à 9 personnes composant l&#8217;équipe de développement.</p>
@@ -1946,11 +1939,11 @@ avec pour objectif d&#8217;obtenir une prévision réaliste des délais et des c
 <code>T</code> ne peut pas être terminée avant cette date.</p>
 </li>
 <li>
-<p><strong>DA</strong> : Date de Début au plus tard <code>DA(T)</code> (<em>ES: Latest Start Time</em>).
+<p><strong>DA</strong> : Date de Début au plus tard <code>DA(T)</code> (<em>LS: Latest Start Time</em>).
 <code>T</code> doit commencer avant cette date.</p>
 </li>
 <li>
-<p><strong>FA</strong> : Date de Fin au plus tard   <code>FA(T)</code> (<em>ES: Latest Finish Time</em>).
+<p><strong>FA</strong> : Date de Fin au plus tard   <code>FA(T)</code> (<em>LF: Latest Finish Time</em>).
 <code>T</code> doit être terminée avant cette date.</p>
 </li>
 <li>
@@ -3774,7 +3767,7 @@ par exemple en rendant les artefacts disponibles aux endroits appropriés à ceu
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-25 10:02:41 UTC
+Last updated 2018-01-31 06:16:55 UTC
 </div>
 </div>
 </body>
