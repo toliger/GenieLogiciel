@@ -278,7 +278,7 @@ Les acteurs savent précisément ce qui doit être livré, à quelle date et ce 
   Ce modèle est donc dans les faits très peu tolérant aux erreurs.
 ** Que se passe-t'il si un besoin a été mal interprété ?
 **  Et si un détail de conception s'avère inadapté lors de l'implémentation ou du déploiement ?
-* La durée de vie d'un projet étant souvent de plusieurs années.
+* La durée de vie d'un projet est souvent de plusieurs années.
   Pourtant, ce modèle est très *intolérant* aux changements.
 ** Que se passe-t'il si le besoin évolue ?
 ** Et si la nature du marché change ?
@@ -289,7 +289,7 @@ Ce modèle peut néanmoins être adapté dans certains cas :
 
 * Les domaines où il est impossible ou très coûteux de revenir en arrière.
   Par exemple, c'est le monde du BTP qui a donné naissance à ce modèle
-  (peut-on construire un bâtiment avant d'avoir spécifié le terrain et conçu les plans ?).
+  (peut-on construire un bâtiment avant d'avoir « spécifié » le terrain et « conçu » les plans ?).
 * Les projets dont le périmètre est faible et la durée très courte.
   Dans de tels petits projets, le risque de retour en arrière est à priori faible.
 
@@ -316,11 +316,10 @@ Il est donc de loin le plus utilisé dans le *domaine industriel*.
 ** Vaste taux d'usage en entreprise depuis les années 80
 ** Supporté par de nombreux standards
 ** Appuyé par de nombreux outils
-* Les phases de test sont aussi importantes que les phases de réflexion.
-  De plus, il est plus facile de décrire de manière exhaustive comment tester une fonctionnalité
-  au moment où celle-ci est conçue. La synergie entre analyse et description du test est profitable.
-* Puisqu'il favorise la décomposition hiérarchique et fonctionnelle,
-  il permet l'organisation du travail, des équipes et la maîtrise des coûts (voir la méthode COCOMO).
+* Les phases de test (ie. la branche « ascendante » du V) sont aussi importantes que les phases de réflexion (ie. la branche « descendante »).
+  En particulier, il est plus facile de décrire de manière exhaustive comment tester une fonctionnalité au moment où celle-ci est conçue.
+  La synergie entre analyse d'une fonctionalité et description du test qui en attestera la qualité est profitable.
+* Puisqu'il favorise la décomposition hiérarchique et fonctionnelle, il permet l'organisation du travail, des équipes et la maîtrise des coûts (exemple: la méthode COCOMO).
   Cela lui offre une bonne visibilité.
   Le suivi de projet est facilité.
 
@@ -328,16 +327,15 @@ Il est donc de loin le plus utilisé dans le *domaine industriel*.
 
 * Ne fait qu'amenuiser les inconvénients du <<model_waterfall,modèle en cascade>> sur lequel il est basé.
   Le principal problème restant le *manque de souplesse*.
-* Différence entre la théorie et la pratique.
+* Il y a une différence entre la théorie et la pratique.
   Les phases durant lesquelles le niveau de détail est accru,
-  en particulier celles de spécification détaillées et d'implémentation,
+  en particulier celles de spécification détaillée et d'implémentation,
   permettent parfois de se rendre compte que les analyses issues des phases précédentes
   sont incomplètes ou carrément irréalisables en l'état.
 
 ==== Domaines d'application
 
-Ses inconvénients persistants en dépit de son vaste taux d'utilisation font que le cycle en V
-est davantage un *idéal* vers lequel certains aimeraient tendre mais est rarement appliqué tel quel.
+Ses inconvénients persistants en dépit de son vaste taux d'utilisation font que le cycle en V est davantage un *idéal* vers lequel certains aimeraient tendre mais n'est pas toujours appliqué tel quel.
 
 Il est donc en général utilisé pour de grands projets industriels avec plus ou moins de bonheur.
 
@@ -349,11 +347,10 @@ image::v-real.png[caption="Figure 03:", title="Cycle en V, trop fréquemment", a
 === En spirale (de Boehm)
 
 Inspiré par la Roue de Deming, ce modèle itératif met l'accent sur la *gestion des risques*.
-Il reprend les étapes du <<model_v,cycle en V>>, mais prévoit la création de versions successives
-au cours de *cycles* de développement.
+Il reprend les étapes du <<model_v,cycle en V>>, mais prévoit la création de versions successives au cours de *cycles* de développement.
 
 Chaque cycle peut être découpé en 4 étapes distinctes
-représentées par l'acronyme PDAC (_Plan-Do-Check-Act_) :
+représentées par l'acronyme PDCA (_Plan-Do-Check-Act_) :
 
 * Planifier
 ** Analyse des besoins
@@ -387,29 +384,27 @@ Comme dans tout modèle itératif, le nombre de cycles n'est pas déterminé à 
 * Mise en avant des objectifs de qualité.
 * Intègre maintenance et développement.
 * Possibilité d'intervertir l'ordre de certains cycles indépendants
-* Compatible à de nombreuses approches et outils existants.
+* Compatible avec de nombreuses approches et outils existants.
 
 ==== Inconvénients
 
-* Nécessite une vraie expertise sur l'évaluation des risques :
+* Nécessite une expertise réelle et complète dans le domaine de l'évaluation des risques :
   la nature des risques peut être différente d'un cycle à l'autre.
 * Mettre en place ce modèle assez complexe nécessite une grande expérience.
 * Les premiers cycles de la spirale ne produisent en général pas de solution exploitable.
 * Verbosité inadaptée pour les petits projets ou des domaines suffisamment connus.
-  Dans le pire des cas, la stricte application de ce modèle (en particulier l'évaluation des risques)
-  engendre un coût plus élevé que la réalisation du projet elle-même.
+  Dans le pire des cas, la stricte application de ce modèle (en particulier l'évaluation des risques) engendre un coût plus élevé que la réalisation du projet elle-même.
 
 ==== Domaines d'application
 
-Ce modèle est logiquement approprié aux projets où le périmètre et le risque sont importants.
+Ce modèle est logiquement approprié aux projets où le périmètre est peu maîtrisé et où le risque est important ().
 
 
 
 [[model_explore]]
 === Exploratoire
 
-Le principe de ce modèle itératif est de perfectionner à plusieurs reprises (on parle d'itérations)
-la spécification du projet, ainsi que son développement et sa validation.
+Le principe de ce modèle itératif est de perfectionner à plusieurs reprises, au cours d'itérations successives, la spécification du projet, ainsi que son développement et sa validation.
 L'objectif est de *collaborer* avec le client et de *raffiner* de plus en plus la solution.
 
 image::explore.png[caption="Figure 05:", title="Modèle exploratoire", alt="Mutliples versions intermédiaires"]
@@ -418,12 +413,11 @@ En général, c'est le délai accordé au projet qui décide du nombre d'itérat
 
 ==== Avantages
 
-* Minimise le risque pour les nouvelles applications : il est possible d'explorer certaines spécificités
-  du systèmes, de les évaluer afin d'opter pour la meilleure stratégie.
+* Minimise le risque pour les nouvelles applications : il est possible d'explorer certaines spécificités du système, de les évaluer afin d'opter pour la meilleure stratégie.
 * Le résultat est souvent pleinement compréhensible et satisfaisant pour le client.
 * Théoriquement livrable à chaque itération :
 ** Favorise les tests et les validations intermédiaires.
-** Il est possibile d'arrêter le processus n'importe quand.
+** Il est possible d'arrêter le processus n'importe quand.
 
 ==== Inconvénients
 
@@ -433,20 +427,19 @@ En général, c'est le délai accordé au projet qui décide du nombre d'itérat
 
 ==== Domaines d'application
 
-Le domaine d'application de ce modèle est donc les petits systèmes (ou parties d'un système) interactifs
-dont le résultat peut être visible rapidement. En particulier, les IHM.
+Le domaine d'application privilégié de ce modèle est donc les petits systèmes (ou parties d'un système) interactifs dont le résultat peut être visible rapidement.
+En particulier, les interfaces graphiques (IHM, maquette de site web, ...).
 
 
 
 [[model_evolutive]]
 === Évolutif
 
-Ce modèle itératif vise a réaliser une version provisoire de la solution aux besoins connus
-afin de pouvoir la mettre en exploitation au plus vite.
+Ce modèle itératif vise a réaliser rapidement une version provisoire de la solution aux besoins connus afin de pouvoir la mettre en exploitation le plus rapidement possible.
 De *nouvelles versions* seront ensuite déployées, chacune remplaçant la version précédente.
 Chaque version apportera de nouvelles fonctionnalités ou modifiera les fonctionnalités existantes.
 
-Les versions intermédiaires sont réalisés avec tous les principes de qualité d'une version finale :
+Les versions intermédiaires sont réalisées en incluant toutes les phases d'existence habituelles d'un projet (conception, développement, tests, ...) et avec tous les principes de qualité d'une version finale :
 ce ne sont donc _pas_ des prototypes jetables !
 
 ==== Modèle incrémental
@@ -460,7 +453,7 @@ image::iterative-vertical.png[caption="Figure 07.1:", title="Incrémental, par p
 
 Le système doit être dès le départ découpé en fonctionalités bien définies.
 La première version constitue une coquille complète du système.
-Chaque fonctionnalité qui n'est pas implémentée est remplacée par un *bouchon*.
+Chaque fonctionnalité qui n'est pas implémentée est remplacée par un *<<test_object_stub,bouchon>>*.
 Chaque nouvelle version modifie ou améliore une fonctionalité.
 
 image::iterative-horizontal.png[caption="Figure 07.2:", title="Évolutif, par prototypage horizontal", alt="Prototypage horizontal"]
@@ -477,7 +470,7 @@ image::iterative-horizontal.png[caption="Figure 07.2:", title="Évolutif, par pr
 * Risque d'aboutir à un parc hétérogène :
 ** Assurer la tracabilité de chaque version.
 ** Assurer la tracabilité de chacun de leurs composants.
-* La manière d'obtenir un retour des utilisateurs doit être maîtrisée.
+* La manière d'obtenir un retour (_feedback_) des utilisateurs doit être maîtrisée.
 * Risque de remise en cause du noyau assurant les fonctionnalités de base.
 
 ==== Domaines d'application
@@ -499,7 +492,7 @@ qui offrent tous au moins les trois caractéristiques suivantes :
 Les principes de l'agilité à été formalisées dans le _Manifeste Agile_ (2001).
 
 Différents implémentations de ces principes ont vu le jour :
-_RAD_, _Crystal Clear_, processessus unifiés (modèle en "Y" ou _2TUP_, _RUP_, _AUP_, _XUP_), ...
+_RAD_, _Crystal Clear_, processus *unifiés* (modèle en "Y" ou _2TUP_, _RUP_, _AUP_, _XUP_), ...
 Cependant, les implémentations les plus utilisées sont aujourd'hui
 <<lifecycle_xp,_Extreme Programming_ (_XP_)>> et <<lifecycle_scrum,_Scrum_>>.
 
@@ -603,9 +596,10 @@ permettent d'atteindre un excellent niveau de qualité logicielle.
 * Étant admis que l'intégration est une phase cruciale,
   il est indispensable de faire de l'<<continuous_integration,*intégration continue*>>.
 * Étant admis que la revue de code est utile, celle-ci sera faite systématiquement, via la *programmation en binôme*.
-* Étant admis qu'une bonne architecture logicielle est indispensable, la conception sera améliorée systématiquement,
+* Étant admis qu'une bonne architecture logicielle est indispensable, la conception sera améliorée continuellement,
   via la pratique de *refactoring* systématique.
 
+[[tdd]]
 ====== Test Driven Development (TDD)
 
 Le _TDD_ est une discipline de développement qui oblige à écrire systématiquement et de manière exhaustive
@@ -659,7 +653,7 @@ d'*inspection* des livrables, et d'*adaptabilité*.
 
 _Scrum_ comporte certaines réunions, ou rituels, pour promouvoir ces valeurs :
 
-* la *réunion de planification* (ou _planning poker) qui a lieu en début de sprint
+* la *réunion de planification* (ou _planning poker_) qui a lieu en début de sprint
 * la *mêlée quotidienne* (ou _standup meeting_), qui réunit quotidiennement tous les membres de l'équipe
   durant 15 minutes au maximum, et offre à chacun l'opportunité de confier rapidement aux autres :
 ** ce qu'il a fait depuis la denière mêlée
@@ -679,14 +673,14 @@ _Scrum_ reconnait exactement trois rôles (ni plus, ni moins) pour les membres d
 * Le *product owner* est le propriétaire du produit, et le client de l'équipe de développement.
   C'est lui qui détient la *vision* de ce que doit être le produit.
   C'est donc aussi à lui qu'appartient le <<agility_backlogs,product backlog>> : 
-  il fixe la priorité entre les différentes activités et qui s'assure que leur spécification est comprise de tous.
+  il fixe la priorité entre les différentes activités et s'assure que leur spécification est comprise de tous.
   _Scrum_ recommande que le product owner soit *toujours présent* sur le même site que l'équipe de développement,
   qui peut avoir besoin de son retour ou de ses explications à tout moment pendant le sprint.
 * Les membres de l'*équipe de développement* sont collectivement responsables de la livraison du sprint,
   que cela soit au niveau de la qualité comme des délais.
   Ce sont eux qui estiment le coût de chaque activité lors du _planning poker_. +
   Chacun des membres de l'équipe de développement est considéré comme *non-spécialisé* / pluridisciplinaire.
-  Cela signifie que n'importe quel membre peut intervenir sur n'importe quelle activité du sprint backlog. +
+  Cela signifie que n'importe quel membre peut intervenir sur n'importe quelle activité du _sprint backlog_. +
   L'équipe de développement fonctionne en auto-organisation : _Scrum_ n'impose rien quant à la façon dont les développements se déroulent ; elle se contente de fournir un cadre pour que la qualité et les délais soient respectés. +
   L'équipe de développement est *mono-produit* et ne prend ses ordres que du product owner. +
   _Scrum_ recommande une taille de 3 à 9 personnes composant l'équipe de développement.

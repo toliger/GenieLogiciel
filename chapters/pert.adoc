@@ -38,9 +38,9 @@ Chaque tâche `T` offre les caractéristiques suivantes :
   `T` ne peut pas débuter avant cette date.
 * *FO* : Date de Fin au plus tôt   `FO(T)`  (_EF: Earliest Finish Time_).
   `T` ne peut pas être terminée avant cette date.
-* *DA* : Date de Début au plus tard `DA(T)` (_ES: Latest Start Time_).
+* *DA* : Date de Début au plus tard `DA(T)` (_LS: Latest Start Time_).
   `T` doit commencer avant cette date.
-* *FA* : Date de Fin au plus tard   `FA(T)` (_ES: Latest Finish Time_).
+* *FA* : Date de Fin au plus tard   `FA(T)` (_LF: Latest Finish Time_).
   `T` doit être terminée avant cette date.
 * *Marge* : La marge `M(T)` est le retard maximal admissible (_Slack_/_Float_).
 
