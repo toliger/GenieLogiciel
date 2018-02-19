@@ -2244,7 +2244,7 @@ C&#8217;est pourquoi les acteurs sont surtout définis par leur rôle dans un di
 <h5 id="_cas_d_utilisation">Cas d&#8217;utilisation</h5>
 <div class="paragraph">
 <p><strong>Action</strong> du système en réponse au besoin exprimé par un acteur.
-Plusieurs cas d&#8217;utilisation peuvent être relié entre eux (relations de dépendance, de hiérarchie).
+Plusieurs cas d&#8217;utilisation peuvent être reliés entre eux (relations de dépendance, de hiérarchie).
 Pour faciliter la compréhension et la réutilisation, les cas d&#8217;utilisation peuvent être organisés en <strong>packages</strong>.</p>
 </div>
 </div>
@@ -2535,12 +2535,6 @@ Il peut être préférable de limiter leur utilisation, et de modéliser d&#8217
 </td>
 </tr>
 </table>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_interfaces">Interfaces</h5>
-<div class="paragraph">
-<p>TODO</p>
 </div>
 </div>
 <div class="sect4">
@@ -3385,24 +3379,24 @@ mais aussi dans n&#8217;importe laquelle de ses dépendances, ou encore dans les
 <div class="ulist">
 <ul>
 <li>
-<p>Un <em>dummy</em> est un objet sans aucun comportement, qui peut être utilisé par exemple pour compléter une liste de paramètres d&#8217;appel.
+<p><a id="test_object_dummy"></a> Un <em>dummy</em> est un objet sans aucun comportement, qui peut être utilisé par exemple pour compléter une liste de paramètres d&#8217;appel.
 Le comportement de l&#8217;objet remplacé ne doit avoir aucune influence sur le déroulement du test.</p>
 </li>
 <li>
-<p>Un <em>stub</em> (ou <em>bouchon</em>) est un objet dont le retour est pré-programmé, et est à priori toujours le même.
+<p><a id="test_object_stub"></a> Un <em>stub</em> (ou <em>bouchon</em>) est un objet dont le retour est pré-programmé, et est à priori toujours le même.
 Le <em>stub</em> a un comportement peu complexe.</p>
 </li>
 <li>
-<p>Un <em>fake</em> s&#8217;apparente à un <em>stub</em> dont le comportement est plus complexe.
+<p><a id="test_object_fake"></a> Un <em>fake</em> s&#8217;apparente à un <em>stub</em> dont le comportement est plus complexe.
 Le comportement d&#8217;un <em>fake</em> est censé se rapprocher de celui d&#8217;un objet ou d&#8217;un groupe d&#8217;objets utilisés en production.
 Cependant, un <em>fake</em> est bel est bien un objet à n&#8217;utiliser que dans un contexte de tests, et ne doit jamais être utilisé en production !</p>
 </li>
 <li>
-<p>Un <em>spy</em> est un <em>stub</em> qui offre des fonctionnalités d&#8217;analyse.
+<p><a id="test_object_spy"></a> Un <em>spy</em> est un <em>stub</em> qui offre des fonctionnalités d&#8217;analyse.
 Il permet par exemple de logger des informations supplémentaires quand on l&#8217;utilise, ou d&#8217;accumuler certaines métriques sur son utilisation.</p>
 </li>
 <li>
-<p>Un <em>mock</em> est un objet dont le comportement est pré-programmé.
+<p><a id="test_object_mock"></a> Un <em>mock</em> est un objet dont le comportement est pré-programmé.
 Un <em>mock</em> provoque une erreur si il est utilisé en dehors de ce comportement.</p>
 </li>
 </ul>
@@ -3767,7 +3761,7 @@ par exemple en rendant les artefacts disponibles aux endroits appropriés à ceu
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-31 06:16:55 UTC
+Last updated 2018-02-19 08:02:33 UTC
 </div>
 </div>
 </body>
