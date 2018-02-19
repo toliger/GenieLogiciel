@@ -66,7 +66,7 @@ C'est pourquoi les acteurs sont surtout définis par leur rôle dans un diagramm
 ===== Cas d'utilisation
 
 *Action* du système en réponse au besoin exprimé par un acteur.
-Plusieurs cas d'utilisation peuvent être relié entre eux (relations de dépendance, de hiérarchie).
+Plusieurs cas d'utilisation peuvent être reliés entre eux (relations de dépendance, de hiérarchie).
 Pour faciliter la compréhension et la réutilisation, les cas d'utilisation peuvent être organisés en *packages*.
 
 ===== Package (paquet)
@@ -195,10 +195,6 @@ image::association_naire.png[caption="Figure 06.8:", title="Relation n-aire avec
 De telles associations peuvent être difficiles à déchiffrer.
 Il peut être préférable de limiter leur utilisation, et de modéliser d'autres relations.
 ====
-
-===== Interfaces
-
-TODO
 
 ===== Héritage
 

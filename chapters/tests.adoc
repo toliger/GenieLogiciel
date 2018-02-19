@@ -270,16 +270,16 @@ En pratique, il est cependant souvent nécessaire de trouver le bon compromis en
 
 ====== Objets spécifiques à un contexte de test
 
-* Un _dummy_ est un objet sans aucun comportement, qui peut être utilisé par exemple pour compléter une liste de paramètres d'appel.
+* [[test_object_dummy]] Un _dummy_ est un objet sans aucun comportement, qui peut être utilisé par exemple pour compléter une liste de paramètres d'appel.
   Le comportement de l'objet remplacé ne doit avoir aucune influence sur le déroulement du test.
-* Un _stub_ (ou _bouchon_) est un objet dont le retour est pré-programmé, et est à priori toujours le même.
+* [[test_object_stub]] Un _stub_ (ou _bouchon_) est un objet dont le retour est pré-programmé, et est à priori toujours le même.
   Le _stub_ a un comportement peu complexe.
-* Un _fake_ s'apparente à un _stub_ dont le comportement est plus complexe.
+* [[test_object_fake]] Un _fake_ s'apparente à un _stub_ dont le comportement est plus complexe.
   Le comportement d'un _fake_ est censé se rapprocher de celui d'un objet ou d'un groupe d'objets utilisés en production.
   Cependant, un _fake_ est bel est bien un objet à n'utiliser que dans un contexte de tests, et ne doit jamais être utilisé en production !
-* Un _spy_ est un _stub_ qui offre des fonctionnalités d'analyse.
+* [[test_object_spy]] Un _spy_ est un _stub_ qui offre des fonctionnalités d'analyse.
   Il permet par exemple de logger des informations supplémentaires quand on l'utilise, ou d'accumuler certaines métriques sur son utilisation.
-* Un _mock_ est un objet dont le comportement est pré-programmé.
+* [[test_object_mock]] Un _mock_ est un objet dont le comportement est pré-programmé.
   Un _mock_ provoque une erreur si il est utilisé en dehors de ce comportement.
 
 ====== Isolation des tests entre eux
