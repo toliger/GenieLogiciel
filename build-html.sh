@@ -10,7 +10,7 @@ git clone https://github.com/asciidoctor/asciidoctor-stylesheet-factory.git ${st
 echo "Generating stylesheets ..."
 cd ${stylesdir} && compass compile sass/${stylename}.scss && cd -
 # copy resources and compiled css to export directory
-mkdir ${exportdir}
+mkdir -p ${exportdir}
 cp README.adoc ${exportdir}
 cp -r resources ${exportdir}/resources
 cp "${stylesdir}/stylesheets/${stylename}.css" "${exportdir}/${stylename}.css"
