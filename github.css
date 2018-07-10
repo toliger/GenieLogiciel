@@ -169,9 +169,9 @@ object, svg { display: inline-block; vertical-align: middle; }
 
 .center { margin-left: auto; margin-right: auto; }
 
-.spread { width: 100%; }
+.stretch { width: 100%; }
 
-p.lead, .paragraph.lead > p, #preamble > .sectionbody > .paragraph:first-of-type p { font-size: 1.23333em; line-height: 1.6; }
+p.lead { font-size: 1.23333em; line-height: 1.6; }
 
 .subheader, .admonitionblock td.content > .title, .audioblock > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .stemblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, table.tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title { line-height: 1.4; color: #777; font-weight: 300; margin-top: 0.2em; margin-bottom: 0.5em; }
 
@@ -387,11 +387,11 @@ b.button:after { content: "]"; padding: 0 2px 0 3px; }
 
 .admonitionblock td.content > .title, .audioblock > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .stemblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, table.tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title { text-rendering: optimizeLegibility; text-align: left; }
 
-table.tableblock > caption.title { white-space: nowrap; overflow: visible; max-width: 0; }
+table.tableblock.fit-content > caption.title { white-space: nowrap; width: 0; }
 
-.paragraph.lead > p, #preamble > .sectionbody > .paragraph:first-of-type p { color: #333; }
+.paragraph.lead > p, #preamble > .sectionbody > [class="paragraph"]:first-of-type p { font-size: 1.23333em; line-height: 1.6; color: #333; }
 
-table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p { font-size: inherit; }
+table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p { font-size: inherit; }
 
 .admonitionblock > table { border-collapse: separate; border: 0; background: none; width: 100%; }
 .admonitionblock > table td.icon { text-align: center; width: 80px; }
@@ -466,12 +466,16 @@ table.pyhltable .linenodiv { background: none !important; padding-right: 0 !impo
 .quoteblock .attribution br, .verseblock .attribution br { display: none; }
 .quoteblock .attribution cite, .verseblock .attribution cite { display: block; letter-spacing: -0.025em; color: #666666; }
 
-.quoteblock.abstract { margin: 0 0 1em 0; display: block; }
-.quoteblock.abstract blockquote, .quoteblock.abstract blockquote p { text-align: left; word-spacing: 0; }
-.quoteblock.abstract blockquote:before, .quoteblock.abstract blockquote p:first-of-type:before { display: none; }
+.quoteblock.abstract { margin: 0 1em 1em 1em; display: block; }
+.quoteblock.abstract > .title { margin: 0 0 0.375em 0; font-size: 1.15em; text-align: center; }
+.quoteblock.abstract blockquote, .quoteblock.abstract blockquote p { word-spacing: 0; line-height: 1.6; }
+.quoteblock.abstract blockquote:before, .quoteblock.abstract p:before { display: none; }
 
 table.tableblock { max-width: 100%; border-collapse: separate; }
-table.tableblock td > .paragraph:last-child p > p:last-child, table.tableblock th > p:last-child, table.tableblock td > p:last-child { margin-bottom: 0; }
+
+p.tableblock:last-child { margin-bottom: 0; }
+
+td.tableblock > .content { margin-bottom: -1em; }
 
 table.tableblock, th.tableblock, td.tableblock { border: 0 solid #ddd; }
 
@@ -493,7 +497,11 @@ table.frame-all { border-width: 1px; }
 
 table.frame-sides { border-width: 0 1px; }
 
-table.frame-topbot { border-width: 1px 0; }
+table.frame-topbot, table.frame-ends { border-width: 1px 0; }
+
+table.stripes-all tr, table.stripes-odd tr:nth-of-type(odd) { background: #f9f9f9; }
+
+table.stripes-none tr, table.stripes-odd tr:nth-of-type(even) { background: none; }
 
 th.halign-left, td.halign-left { text-align: left; }
 
@@ -576,8 +584,8 @@ td.hdlist1 { font-weight: bold; padding-bottom: 1em; }
 
 .thumb, .th { line-height: 0; display: inline-block; border: solid 4px #fff; -webkit-box-shadow: 0 0 0 1px #ddd; box-shadow: 0 0 0 1px #ddd; }
 
-.imageblock.left, .imageblock[style*="float: left"] { margin: 0.26667em 0.66667em 1.33333em 0; }
-.imageblock.right, .imageblock[style*="float: right"] { margin: 0.26667em 0 1.33333em 0.66667em; }
+.imageblock.left { margin: 0.26667em 0.66667em 1.33333em 0; }
+.imageblock.right { margin: 0.26667em 0 1.33333em 0.66667em; }
 .imageblock > .title { margin-bottom: 0; }
 .imageblock.thumb, .imageblock.th { border-width: 6px; }
 .imageblock.thumb > .title, .imageblock.th > .title { padding: 0 0.13333em; }
@@ -699,7 +707,7 @@ b.conum * { color: inherit !important; }
 
 .conum:not([data-value]):empty { display: none; }
 
-p.lead, .paragraph.lead > p, #preamble > .sectionbody > .paragraph:first-of-type p { font-size: 1em; color: #666; }
+p.lead { font-size: 1em; color: #666; }
 
 h2 { color: #325D72; border-bottom: 1px solid #ddd; }
 
@@ -708,13 +716,13 @@ h2 { color: #325D72; border-bottom: 1px solid #ddd; }
 #header, #content, #footnotes { max-width: 660px; padding-left: 0; padding-right: 0; }
 
 #content ul { list-style-type: none; }
-#content ul li { background: url('./images/github/li-chevron.png?1519027374') 0 0.4em no-repeat; padding-left: .7em; }
+#content ul li { background: url('./images/github/li-chevron.png?1531225925') 0 0.4em no-repeat; padding-left: .7em; }
 
 .olist.procedure > ol { counter-reset: li; list-style: none; position: relative; }
 .olist.procedure > ol > li { position: relative; padding: 5px 0 5px 55px; margin-bottom: 5px; }
 .olist.procedure > ol > li:before { content: counter(li); counter-increment: li; position: absolute; top: 0; left: 0; height: 100%; width: 30px; padding: 0 10px 0 0; color: #999; font-size: 1.46667em; font-weight: bold; line-height: 1.6; text-align: right; border-right: 1px solid #ddd; }
 
-.quoteblock blockquote { background: url('./images/github/blockquote-arrow.png?1519027374') 0 2px no-repeat; padding-left: 1em; }
+.quoteblock blockquote { background: url('./images/github/blockquote-arrow.png?1531225925') 0 2px no-repeat; padding-left: 1em; }
 
 .sidebarblock > .content > .title { margin-top: -20px; margin-right: -20px; margin-left: -20px; margin-bottom: 20px; padding: 1em; font-size: 0.8em; background: #eaeaea; }
 
