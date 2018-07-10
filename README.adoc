@@ -3,7 +3,7 @@ image::https://travis-ci.org/wiztigers/GenieLogiciel.svg?branch=master[link=http
 
 = Génie logiciel
 
-image::https://ent.unistra.fr/uPortal/media/skins/universality/blunistra/images/institution_logo.png[alt="Logo de l'Université de Strasbourg", link=https://www.unistra.fr/]
+image::https://www.unistra.fr/fileadmin/templates/unistra-v2/images/logo_excellence.png[alt="Logo de l'Université de Strasbourg", link=https://www.unistra.fr/]
 
 == Description
 
