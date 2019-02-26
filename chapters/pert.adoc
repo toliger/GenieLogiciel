@@ -71,7 +71,7 @@ Elle marque (et permet de contrôler) un moment important de l'avancement d'un p
 
 ===== Topologie
 
-* Y a t'il exactement un tâche de début et une tâche de fin ?
+* Y a t'il exactement une tâche de début et une tâche de fin ?
 * Toutes les tâches ont-elles au moins un prédecesseur et un successeur ?
 * Tous les liens sont-ils représentatifs ?
 
@@ -113,7 +113,7 @@ le pourcentage de complétion de chaque tâche, ainsi que leur chevauchement év
 En revanche, il met moins l'accent sur les dépendances entre tâches et ne prend pas en compte
 la marge ou le risque.
 
-Dans un diagramme de Gantt, un tâche n'a qu'une date de début ou une date de fin, ainsi qu'une durée.
+Dans un diagramme de Gantt, une tâche n'a qu'une date de début ou une date de fin, ainsi qu'une durée.
 Les tâches s'enchainent ensuite de manière logique, en utilisant l'un des quatre types de liaison :
 
 * de Fin à Début (FD) : une tâche ne peut pas commencer avant que la précédente ne soit terminée
